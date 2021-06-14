@@ -251,7 +251,7 @@
             </el-col>
           </el-row>
         </el-form-item>
-        <el-form-item label="五级标签" label-width="formLabelWidth">
+        <el-form-item label="五级标签" >
           <el-input v-model="form.fifth" autocomplete="off"></el-input>
         </el-form-item>
         <el-form-item label="状态" label-width="formLabelWidth">
@@ -267,6 +267,7 @@
             <el-option label="未通过" value="unpassed"></el-option>
           </el-select>
         </el-form-item>
+
 
 
       </el-form>

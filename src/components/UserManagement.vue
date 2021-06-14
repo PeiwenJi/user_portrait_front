@@ -55,9 +55,13 @@
       </el-tab-pane>
       <el-tab-pane label="用户管理" name="second">
         <el-card>
-          <div>
-            <span class="graph_title">用户管理</span>
-          </div>
+          <el-row :gutter="20" style="margin-top: 20px" >
+           <el-col span="18"><span class="graph_title">用户管理</span></el-col>
+            <el-col span="6"> <el-button
+              size="mini"
+              type="danger"
+              @click="handleDelete(scope.$index, scope.row)">添加用户</el-button></el-col>
+          </el-row>
           <el-row :gutter="20" style="margin-top: 20px" >
             <el-col :span="6">
               <span>邮箱</span>
