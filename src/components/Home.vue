@@ -25,6 +25,16 @@
           </el-link>
         </div>
         <div style="margin-top: 10px">
+          <el-link :underline="false" @click="userManagement">
+            User Management
+          </el-link>
+        </div>
+        <div style="margin-top: 10px">
+          <el-link :underline="false" @click="tagManagement">
+            Tag Management
+          </el-link>
+        </div>
+        <div style="margin-top: 10px">
           <el-link
             :underline="false"
             @click="exit"
@@ -71,6 +81,11 @@
 
       labelSearch() {
         this.$router.push({path: '/LabelSearch'});
+      }, userManagement() {
+        this.$router.push({path: '/UserManagement'});
+      },
+      tagManagement() {
+        this.$router.push({path: '/TagManagement'});
       },
 
       handleClose(done) {
