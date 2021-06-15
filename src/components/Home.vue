@@ -2,7 +2,7 @@
   <body id="home">
   <el-container>
     <el-aside width="200px">
-      <div class="avatar" style="margin-top: 20px" @click="user_info_visible=true">
+      <div class="avatar" style="margin-top: 20px">
         <el-avatar
           :size="100"
           :src="require('@/assets/avatar01.png')"
@@ -10,17 +10,24 @@
         </el-avatar>
       </div>
       <div style="margin-top: 10px">
-        <span style="font-family: 'Agency FB'; font-weight: bolder; color: white; font-size: large">Welcome, {{name}}</span>
+        <el-link
+          :underline="false"
+          @click="openUserInfo">
+          <i class="el-icon-thumb"></i>
+          Welcome
+        </el-link>
       </div>
       <el-divider></el-divider>
       <div class="router">
         <div style="margin-top: 10px">
           <el-link :underline="false" @click="labelSearch">
+            <i class="el-icon-search"></i>
             Label Search
           </el-link>
         </div>
         <div style="margin-top: 10px">
           <el-link :underline="false" @click="">
+            <i class="el-icon-user"></i>
             User Search
           </el-link>
         </div>
@@ -40,6 +47,7 @@
             @click="exit"
             v-loading.fullscreen.lock="exit_loading_visible"
             element-loading-text="Exiting...">
+            <i class="el-icon-switch-button"></i>
             Exit
           </el-link>
         </div>
@@ -51,12 +59,6 @@
     </el-main>
   </el-container>
 
-  <!--用户信息-->
-  <el-drawer title="User Information" :visible.sync="user_info_visible" :before-close="handleClose" :append-to-body="true">
-    <el-form>
-
-    </el-form>
-  </el-drawer>
   </body>
 </template>
 
@@ -65,7 +67,6 @@
     name: "Home",
     data() {
       return {
-        name: 'EchoHeart',
         exit_loading_visible: false,
         user_info_visible: false,
       }
@@ -74,6 +75,7 @@
       exit() {
         this.exit_loading_visible = true;
         setTimeout(() => {
+          window.sessionStorage.clear();
           this.exit_loading_visible = false;
           this.$router.push({path: '/'});
         }, 2000);
@@ -88,13 +90,10 @@
         this.$router.push({path: '/TagManagement'});
       },
 
-      handleClose(done) {
-        this.$confirm('确认关闭？')
-          .then(_ => {
-            done();
-          })
-          .catch(_ => {});
+      openUserInfo() {
+        this.$router.push({path: '/UserInfo'});
       }
+
     }
   }
 </script>
@@ -118,17 +117,19 @@
   }
 
   .el-link {
-    font-family: 'MV Boli';
-    font-size: large;
+    font-family: 'Agency FB';
     font-weight: bolder;
-    color: #d4d4d4
+    color: white;
+    font-size: large
   }
 
-  .el-drawer_title{
-    font-family: PingFang SC;
-    font-size: xx-large;
-    font-weight: bolder;
-    color: #551657
+  .el-drawer {
+    background-color: #052aae;
+  }
+
+  .el-card {
+    width: 80%;
+    box-shadow: 0 2px 4px #052aae, 0 0 6px rgba(0, 0, 0, .04)
   }
 
   #home {
