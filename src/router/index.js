@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Login from '@/components/Login'
 import Home from '@/components/Home'
 import LabelSearch from '@/components/LabelSearch'
+import UserInfo from '@/components/UserInfo'
 
 Vue.use(Router)
 
@@ -17,7 +18,8 @@ export default new Router({
       name: 'Home',
       component: Home,
       children: [
-        {path: '/LabelSearch', name: 'LabelSearch', component: LabelSearch}
+        {path: '/LabelSearch', name: 'LabelSearch', component: LabelSearch},
+        {path: '/UserInfo', name: 'UserInfo', component: UserInfo}
       ]
     }
   ]
