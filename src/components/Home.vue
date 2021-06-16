@@ -99,7 +99,7 @@
 
 <style scoped>
   .el-aside {
-    background-color: #052aae;
+    background-color: #000066;
     text-align: center;
     border-radius: 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04)
@@ -108,7 +108,7 @@
   .el-main {
     margin-left: 3px;
     border-radius: 20px;
-    box-shadow: 0 2px 4px #052aae, 0 0 6px rgba(0, 0, 0, .04)
+    box-shadow: 0 2px 4px #000066, 0 0 6px rgba(0, 0, 0, .04)
   }
 
   .el-container {

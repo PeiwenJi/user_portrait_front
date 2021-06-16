@@ -34,13 +34,20 @@
         </div>
       </el-col>
     </el-card>
-    <!--  管理员表格  -->
+
+    <!--  管理员管理  -->
     <el-card style="margin-top: 50px">
-      <a-input-search placeholder="input search text" style="width: 500px;font-size: 20px;margin: 10px 0 25px 0" @search="onSearch" />
-      <a-button type="dashed">
+
+      <!-- 搜索管理员 -->
+      <a-input-search placeholder="input search admin name" style="width: 500px;font-size: 20px;margin: 10px 0 25px 0" @search="onSearch" />
+
+      <!-- 增加管理员 -->
+      <a-button type="dashed" @click="visible_addAdmin_form = true">
         Add
       </a-button>
-      <a-table :columns="columns" :data-source="data" bordered>
+
+      <!-- 管理员表格 -->
+      <a-table :columns="columns" :data-source="data" bordered row-key="email">
         <template
           v-for="col in ['name', 'password', 'company']"
           :slot="col"
@@ -59,11 +66,12 @@
             </template>
           </div>
         </template>
+        <!-- 表格操作 -->
         <template slot="operation" slot-scope="text, record, index">
           <div class="editable-row-operations">
           <span v-if="record.editable">
-            <a @click="() => save(record.key)">Save</a>
-            <a-popconfirm title="Sure to cancel?" @confirm="() => cancel(record.key)">
+            <a @click="() => saveEdit(record)">Save</a>
+            <a-popconfirm title="Sure to cancel?" @confirm="() => cancelEditAdmin(record.key)">
               <a>Cancel</a>
             </a-popconfirm>
           </span>
@@ -73,7 +81,7 @@
           <!-- 删除 -->
           <a-popconfirm
             title="Sure to delete?"
-            @confirm="() => onDelete(record.key)"
+            @confirm="() => onDelete(record)"
             style="float: right;"
           >
             <a>Delete</a>
@@ -82,8 +90,32 @@
         </template>
       </a-table>
 
-
+      <!-- 增加管理员的表单 -->
+      <el-dialog title="Add" :visible.sync="visible_addAdmin_form" :append-to-body="true">
+        <el-form ref="addAdmin_form" :rules="formRules" :model="addAdmin_form" label-width="100px" >
+          <el-form-item label="name" prop="name">
+            <el-input v-model="addAdmin_form.name"></el-input>
+          </el-form-item>
+          <el-form-item label="password" prop="password">
+            <el-input v-model="addAdmin_form.password" show-password></el-input>
+          </el-form-item>
+          <el-form-item label="email" prop="email">
+            <el-input v-model="addAdmin_form.email"></el-input>
+          </el-form-item>
+          <el-form-item label="company" prop="company">
+            <el-input v-model="addAdmin_form.company"></el-input>
+          </el-form-item>
+          <el-form-item label="identity">
+            <el-input v-model="addAdmin_form.identity" :disabled="true"></el-input>
+          </el-form-item>
+          <el-row type="flex" justify="end">
+            <el-button type="danger" icon="el-icon-delete" circle @click="cancelAddAdmin"></el-button>
+            <el-button type="success" icon="el-icon-check" circle @click="addAdmin"></el-button>
+          </el-row>
+        </el-form>
+      </el-dialog>
     </el-card>
+
   </body>
 </template>
 
@@ -131,29 +163,65 @@ const columns = [
 export default {
   name: 'AdminManagement',
   data () {
-    // this.cacheData = data.map(item => ({ ...item }))
     return {
-      //校长查询信息
-      // queryInfo_question: {
-      //   query: '', //查询条件
-      //   pageNum: 1, //当前页
-      //   pageSize: 4 //每页最大数
-      // },
-      // questionList: [],
-      total_admin: 0, //问题记录数
+      // 设置增加管理员表单不可见
+      visible_addAdmin_form : false,
+      // 增加管理员的表单
+      addAdmin_form:{
+        name: "",
+        password: "",
+        email: "",
+        company: "",
+        identity: "admin"
+      },
 
+      // 表单验证
+      formRules: {
+        name: [
+          {required:true, message:"Please input name!", trigger:"blur"}
+        ],
+        password: [
+          {required:true, message:"Please input password!", trigger:"blur"}
+        ],
+        email: [
+          {required:true, message:"Please input email!", trigger:"blur"}
+        ],
+        company: [
+          {required:true, message:"Please input company!", trigger:"blur"}
+        ]
+      },
+
+      // 记录管理员数量
+      total_admin: 0,
+
+      // 表格数据
       data:[],
       columns,
       editingKey: ''
     }
   },
+  // 计数器
   components: {
     CountTo
   },
+  // 初始化
   created(){
     this.getAdminList();
   },
+
   methods: {
+    handleSetLineChartData (type) {
+      this.$emit('handleSetLineChartData', type)
+    },
+    handleChange (value, key, column) {
+      const newData = [...this.data]
+      const target = newData.filter(item => key === item.key)[0]
+      if (target) {
+        target[column] = value
+        this.data = newData
+      }
+    },
+
     // 获取管理员列表
     getAdminList () {
       this.$http.get("getAdminList").then(response=>{
@@ -166,17 +234,52 @@ export default {
         }
       )
     },
-    handleSetLineChartData (type) {
-      this.$emit('handleSetLineChartData', type)
-    },
-    handleChange (value, key, column) {
-      const newData = [...this.data]
-      const target = newData.filter(item => key === item.key)[0]
-      if (target) {
-        target[column] = value
-        this.data = newData
+
+    // 增加管理员
+    addAdmin (){
+      if(this.addAdmin_form.name != ""
+        && this.addAdmin_form.password != ""
+        && this.addAdmin_form.email != ""
+        && this.addAdmin_form.company != ""){
+
+        this.$http.post("addAdmin", {
+          name: this.addAdmin_form.name,
+          password: this.addAdmin_form.password,
+          email: this.addAdmin_form.email,
+          company: this.addAdmin_form.company,
+          identity: this.addAdmin_form.identity
+        }).then(
+          response=>{
+            if(response.data == "ok"){
+              console.log(response);
+              this.cancelAddAdmin()
+              this.getAdminList()
+              this.$message.success("add successfully！");
+              console.log("sucess")
+            }
+            else{
+              console.log(response);
+              this.$message.success("add failure！");
+              this.cancelAddAdmin()
+              console.log("error")
+            }
+          })
+      }
+      else{
+        this.$message.success("Please input full information！");
       }
     },
+
+    // 取消添加管理员
+    cancelAddAdmin(){
+      this.addAdmin_form.name = '';
+      this.addAdmin_form.password = '';
+      this.addAdmin_form.email = '';
+      this.addAdmin_form.company = '';
+      this.visible_addAdmin_form = false;
+    },
+
+    // 编辑状态
     edit (key) {
       const newData = [...this.data]
       const target = newData.filter(item => key === item.key)[0]
@@ -186,33 +289,56 @@ export default {
         this.data = newData
       }
     },
-    save  (key) {
-      const newData = [...this.data]
-      const newCacheData = [...this.cacheData]
-      const target = newData.filter(item => key === item.key)[0]
-      const targetCache = newCacheData.filter(item => key === item.key)[0]
-      if (target && targetCache) {
-        delete target.editable
-        this.data = newData
-        Object.assign(targetCache, target)
-        this.cacheData = newCacheData
-      }
+
+    // 保存编辑
+    saveEdit  (record) {
+      // console.log(record);
+      this.$http.post("addAdmin", {
+        name: record.name,
+        password: record.password,
+        email: record.email,
+        company: record.company,
+        identity: "admin"
+      }).then(
+        response=> {
+          if(response.data == "ok"){
+            console.log(response);
+            this.getAdminList()
+            this.$message.success("save successfully！");
+            console.log("save sucess")
+          }
+          else{
+            console.log(response);
+            this.$message.success("save failure！");
+            console.log("save error")
+          }
+        })
       this.editingKey = ''
+      this.getAdminList()
     },
-    cancel (key) {
-      const newData = [...this.data]
-      const target = newData.filter(item => key === item.key)[0]
+
+    // 取消编辑
+    cancelEditAdmin (key) {
       this.editingKey = ''
-      if (target) {
-        Object.assign(target, this.cacheData.filter(item => key === item.key)[0])
-        delete target.editable
-        this.data = newData
-      }
+      this.getAdminList()
     },
-    onDelete (key) {
-      const newData = [...this.data]
-      this.data = newData.filter(item => item.key !== key)
+
+    //删除管理员
+    onDelete (record) {
+      this.$http.delete("deleteAdmin?email=" + record.email).then(
+        response=> {
+          if (response.data != "ok") {
+            this.$message.success("delete failure！");
+            console.log("error")
+          } else {
+            console.log("success")
+            this.$message.success("delete successfully！");
+            this.getAdminList();
+          }
+        })
     },
+
+    // 搜索
     onSearch (value) {
       console.log(value)
     }
