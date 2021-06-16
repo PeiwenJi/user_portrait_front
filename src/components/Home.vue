@@ -9,14 +9,31 @@
           style="box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04)" alt >
         </el-avatar>
       </div>
-      <div style="margin-top: 10px">
-        <span style="font-family: 'Agency FB'; font-weight: bolder; color: white; font-size: large">Welcome, {{name}}</span>
-      </div>
-      <el-divider></el-divider>
+<!--      <div style="margin-top: 10px">-->
+<!--        <span style="font-family: 'Agency FB'; font-weight: bolder; color: white; font-size: large">Welcome, {{name}}</span>-->
+        <div style="margin-top: 10px">
+          <el-link
+            :underline="false"
+            @click="openUserInfo">
+            <i class="el-icon-thumb"></i>
+            Welcome
+          </el-link>
+        </div>
+        <el-divider></el-divider>
       <div class="router">
         <div style="margin-top: 10px">
           <el-link :underline="false" @click="labelSearch">
             Label Search
+          </el-link>
+        </div>
+        <div style="margin-top: 10px">
+          <el-link :underline="false" @click="userManagement">
+            User Management
+          </el-link>
+        </div>
+        <div style="margin-top: 10px">
+          <el-link :underline="false" @click="tagManagement">
+            Tag Management
           </el-link>
         </div>
         <div style="margin-top: 10px">
@@ -60,7 +77,6 @@
     name: "Home",
     data() {
       return {
-        name: 'EchoHeart',
         exit_loading_visible: false,
         user_info_visible: false,
       }
@@ -69,6 +85,7 @@
       exit() {
         this.exit_loading_visible = true;
         setTimeout(() => {
+          window.sessionStorage.clear();
           this.exit_loading_visible = false;
           this.$router.push({path: '/'});
         }, 2000);
@@ -76,6 +93,17 @@
 
       labelSearch() {
         this.$router.push({path: '/LabelSearch'});
+      },
+
+      userManagement() {
+        this.$router.push({path: '/UserManagement'});
+      },
+      tagManagement() {
+        this.$router.push({path: '/TagManagement'});
+      },
+
+      openUserInfo() {
+        this.$router.push({path: '/UserInfo'});
       },
 
       rolePermission() {
@@ -128,6 +156,16 @@
     font-weight: bolder;
     color: #551657
   }
+
+  .el-drawer {
+    background-color: #000066;
+  }
+
+  .el-card {
+    width: 80%;
+    box-shadow: 0 2px 4px #000066, 0 0 6px rgba(0, 0, 0, .04)
+  }
+
 
   #home {
     height: 100%;
