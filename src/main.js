@@ -13,6 +13,9 @@ Vue.prototype.$http = axios
 //设置访问根路径
 axios.defaults.baseURL = "http://localhost:9000"
 
+import * as echarts from 'echarts';
+Vue.prototype.$echarts = echarts;
+
 Vue.use(ElementUI)
 
 Vue.config.productionTip = false

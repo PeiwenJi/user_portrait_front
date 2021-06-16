@@ -10,15 +10,19 @@
         </el-avatar>
       </div>
       <div style="margin-top: 10px">
-        <el-link
-          :underline="false"
-          @click="openUserInfo">
+        <el-link :underline="false" @click="openUserInfo">
           <i class="el-icon-thumb"></i>
           Welcome
         </el-link>
       </div>
       <el-divider></el-divider>
       <div class="router">
+        <div style="margin-top: 10px">
+          <el-link :underline="false" @click="goHome">
+            <i class="el-icon-s-data"></i>
+            Data
+          </el-link>
+        </div>
         <div style="margin-top: 10px">
           <el-link :underline="false" @click="labelSearch">
             <i class="el-icon-search"></i>
@@ -31,20 +35,18 @@
             User Search
           </el-link>
         </div>
+<!--        <div style="margin-top: 10px">-->
+<!--          <el-link :underline="false" @click="userManagement">-->
+<!--            User Management-->
+<!--          </el-link>-->
+<!--        </div>-->
+<!--        <div style="margin-top: 10px">-->
+<!--          <el-link :underline="false" @click="tagManagement">-->
+<!--            Tag Management-->
+<!--          </el-link>-->
+<!--        </div>-->
         <div style="margin-top: 10px">
-          <el-link :underline="false" @click="userManagement">
-            User Management
-          </el-link>
-        </div>
-        <div style="margin-top: 10px">
-          <el-link :underline="false" @click="tagManagement">
-            Tag Management
-          </el-link>
-        </div>
-        <div style="margin-top: 10px">
-          <el-link
-            :underline="false"
-            @click="exit"
+          <el-link :underline="false" @click="exit"
             v-loading.fullscreen.lock="exit_loading_visible"
             element-loading-text="Exiting...">
             <i class="el-icon-switch-button"></i>
@@ -83,15 +85,26 @@
 
       labelSearch() {
         this.$router.push({path: '/LabelSearch'});
-      }, userManagement() {
+      },
+
+      userManagement() {
         this.$router.push({path: '/UserManagement'});
       },
+
       tagManagement() {
         this.$router.push({path: '/TagManagement'});
       },
 
       openUserInfo() {
         this.$router.push({path: '/UserInfo'});
+      },
+
+      goHome() {
+        this.$router.push({path: '/DataPage'});
+      },
+
+      userSearch() {
+        this.$router.push({path: ''});
       }
 
     }
@@ -100,17 +113,17 @@
 
 <style scoped>
   .el-aside {
-    background-color: #052aae;
+    background-color: #ff6b6b;
     text-align: center;
     border-radius: 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04)
   }
 
-  .el-main {
-    margin-left: 3px;
-    border-radius: 20px;
-    box-shadow: 0 2px 4px #052aae, 0 0 6px rgba(0, 0, 0, .04)
-  }
+  /*.el-main {*/
+  /*  margin-left: 3px;*/
+  /*  border-radius: 20px;*/
+  /*  box-shadow: 0 2px 4px #052aae, 0 0 6px rgba(0, 0, 0, .04)*/
+  /*}*/
 
   .el-container {
     height: 100%;
