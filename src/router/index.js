@@ -9,6 +9,8 @@ import LabelSearch from '@/components/LabelSearch'
 import UserInfo from '@/components/UserInfo'
 import UserManagement from '@/components/UserManagement'
 import TagManagement from '@/components/TagManagement'
+import AdminManagement from '@/components/SuperAdministrator/AdminManagement'
+import RolePermission from '@/components/SuperAdministrator/RolePermission.vue'
 
 Vue.use(Router)
 
@@ -27,7 +29,9 @@ export default new Router({
         {path: '/DataPage', name: 'DataPage', component: DataPage},
         {path: '/LabelSearch', name: 'LabelSearch', component: LabelSearch},
         {path: '/UserManagement', name: 'UserManagement', component: UserManagement},
-        {path: '/TagManagement', name: 'TagManagement', component: TagManagement}
+        {path: '/TagManagement', name: 'TagManagement', component: TagManagement},
+        {path: '/AdminManagement', name: 'AdminManagement', component: AdminManagement},
+        {path: '/RolePermission', name: 'RolePermission', component: RolePermission}
       ]
     }
   ]

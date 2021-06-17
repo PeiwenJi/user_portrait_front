@@ -35,18 +35,30 @@
             User Search
           </el-link>
         </div>
-<!--        <div style="margin-top: 10px">-->
-<!--          <el-link :underline="false" @click="userManagement">-->
-<!--            User Management-->
-<!--          </el-link>-->
-<!--        </div>-->
-<!--        <div style="margin-top: 10px">-->
-<!--          <el-link :underline="false" @click="tagManagement">-->
-<!--            Tag Management-->
-<!--          </el-link>-->
-<!--        </div>-->
         <div style="margin-top: 10px">
-          <el-link :underline="false" @click="exit"
+          <el-link :underline="false" @click="userManagement">
+            User Management
+          </el-link>
+        </div>
+        <div style="margin-top: 10px">
+          <el-link :underline="false" @click="tagManagement">
+            Tag Management
+          </el-link>
+        </div>
+        <div style="margin-top: 10px">
+          <el-link :underline="false" @click="adminManagement">
+            Admin Management
+          </el-link>
+        </div>
+        <div style="margin-top: 10px">
+          <el-link :underline="false" @click="rolePermission">
+            Role Permission
+          </el-link>
+        </div>
+        <div style="margin-top: 10px">
+          <el-link
+            :underline="false"
+            @click="exit"
             v-loading.fullscreen.lock="exit_loading_visible"
             element-loading-text="Exiting...">
             <i class="el-icon-switch-button"></i>
@@ -105,7 +117,15 @@
 
       userSearch() {
         this.$router.push({path: ''});
-      }
+      },
+
+      rolePermission() {
+        this.$router.push({path: '/RolePermission'});
+      },
+
+      adminManagement() {
+        this.$router.push({path: '/AdminManagement'});
+      },
 
     }
   }

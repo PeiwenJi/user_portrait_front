@@ -4,7 +4,7 @@
     <el-tabs v-model="activeName" @tab-click="handleClick">
       <el-tab-pane label="事务总览" name="first" >
         <el-row>
-          <el-col span="8"> <el-card class="box-card" style="width: 90%;margin-left: 15px">
+          <el-col :span="8"> <el-card class="box-card" style="width: 90%;margin-left: 15px">
             <div slot="header" class="clearfix">
               <el-row :gutter="20">
                 <el-col :span="18"><span class="graph_title">标签数目</span></el-col>
@@ -17,7 +17,7 @@
               </el-row>
             </div>
           </el-card> </el-col>
-          <el-col span="8">   <el-card class="box-card" style="width: 90%;margin-left: 15px">
+          <el-col :span="8">   <el-card class="box-card" style="width: 90%;margin-left: 15px">
             <div slot="header" class="clearfix">
               <el-row :gutter="20">
                 <el-col :span="18"><span class="graph_title">开发总数</span></el-col>
@@ -30,7 +30,7 @@
               </el-row>
             </div>
           </el-card></el-col>
-          <el-col span="8">   <el-card class="box-card" style="width: 90%;margin-left: 15px">
+          <el-col :span="8">   <el-card class="box-card" style="width: 90%;margin-left: 15px">
             <div slot="header" class="clearfix">
               <el-row :gutter="20">
                 <el-col :span="18"><span class="graph_title">上线总数</span></el-col>
@@ -47,7 +47,7 @@
 
           <div style="width: 100%;margin-top: 200px">
             <el-row style="margin-top: 20px">
-              <el-col span="12">
+              <el-col :span="12">
                 <el-card class="box-card" style="width: 90%;margin-left: 15px">
                   <div slot="header" class="clearfix">
                     <el-row >
@@ -61,7 +61,7 @@
                   </div>
                 </el-card>
               </el-col>
-              <el-col span="12">
+              <el-col :span="12">
                 <el-card class="box-card" style="width: 90%;margin-left: 15px">
                   <div slot="header" class="clearfix">
                     <el-row >
@@ -91,19 +91,19 @@
           </div>
           <el-row>
             <el-col :span="5">
-              <el-select v-model="level_1" placeholder="一级标签">
+              <el-select v-model="first" placeholder="一级标签">
                 <el-option label="电商" value="电商">
                 </el-option>
               </el-select>
             </el-col>
             <el-col :span="5">
-              <el-select v-model="level_2" placeholder="二级标签">
+              <el-select v-model="second" placeholder="二级标签">
                 <el-option label="综合" value="综合">
                 </el-option>
               </el-select>
             </el-col>
             <el-col :span="5">
-              <el-select v-model="level_3" placeholder="三级标签">
+              <el-select v-model="third" placeholder="三级标签">
                 <el-option label="人口属性" value="人口属性">
                 </el-option>
                 <el-option label="商业属性" value="商业属性">
@@ -115,22 +115,22 @@
               </el-select>
             </el-col>
             <el-col :span="5">
-              <el-select v-model="level_4" placeholder="四级标签">
-                <el-option label="性别" value="性别" v-show="level_3=='人口属性'">
+              <el-select v-model="forth" placeholder="四级标签">
+                <el-option label="性别" value="性别" v-show="third=='人口属性'">
                 </el-option>
-                <el-option label="年龄段" value="年龄段" v-show="level_3=='人口属性'">
+                <el-option label="年龄段" value="年龄段" v-show="third=='人口属性'">
                 </el-option>
-                <el-option label="身高" value="身高" v-show="level_3=='人口属性'">
+                <el-option label="身高" value="身高" v-show="third=='人口属性'">
                 </el-option>
-                <el-option label="民族" value="民族" v-show="level_3=='人口属性'">
+                <el-option label="民族" value="民族" v-show="third=='人口属性'">
                 </el-option>
-                <el-option label="消费周期" value="消费周期" v-show="level_3=='商业属性'">
+                <el-option label="消费周期" value="消费周期" v-show="third=='商业属性'">
                 </el-option>
-                <el-option label="消费能力" value="消费能力" v-show="level_3=='商业属性'">
+                <el-option label="消费能力" value="消费能力" v-show="third=='商业属性'">
                 </el-option>
-                <el-option label="登录频率" value="登录频率" v-show="level_3=='行为属性'">
+                <el-option label="登录频率" value="登录频率" v-show="third=='行为属性'">
                 </el-option>
-                <el-option label="房产" value="房产" v-show="level_3=='用户价值'">
+                <el-option label="房产" value="房产" v-show="third=='用户价值'">
                 </el-option>
               </el-select>
             </el-col>
@@ -138,15 +138,18 @@
               <el-button icon="el-icon-search" circle style="background-color: #052aae; color: white"></el-button>
             </el-col>
           </el-row>
-<!--          表格-->
+          <!--          表格-->
           <el-table
-            :data="tableData"
+            :data="tagsTableData"
             border
             style="width: 100%;margin-top: 20px">
             <el-table-column
               fixed
+              type="index"
+              align="center"
               prop="num"
               label="序号"
+              width="100"
             >
             </el-table-column>
             <el-table-column
@@ -198,11 +201,11 @@
 
 
   </div>
-<!--  修改标签信息的弹出框-->
+  <!--  修改标签信息的弹出框-->
   <div style="width: 100%;margin-top: 20px">
     <el-dialog title="标签信息" :visible.sync="handleEditVisible" :modal-append-to-body="false">
       <el-form :model="form">
-<!--        标签基本信息-->
+        <!--        标签基本信息-->
         <el-form-item>
           <el-row :gutter="20">
             <el-col :span="5">
@@ -231,21 +234,21 @@
             </el-col>
             <el-col :span="5">
               <el-select v-model="form.forth" placeholder="四级标签">
-                <el-option label="性别" value="性别" v-show="level_3=='人口属性'">
+                <el-option label="性别" value="性别" v-show="form.third=='人口属性'">
                 </el-option>
-                <el-option label="年龄段" value="年龄段" v-show="level_3=='人口属性'">
+                <el-option label="年龄段" value="年龄段" v-show="form.third=='人口属性'">
                 </el-option>
-                <el-option label="身高" value="身高" v-show="level_3=='人口属性'">
+                <el-option label="身高" value="身高" v-show="form.third=='人口属性'">
                 </el-option>
-                <el-option label="民族" value="民族" v-show="level_3=='人口属性'">
+                <el-option label="民族" value="民族" v-show="form.third=='人口属性'">
                 </el-option>
-                <el-option label="消费周期" value="消费周期" v-show="level_3=='商业属性'">
+                <el-option label="消费周期" value="消费周期" v-show="form.third=='商业属性'">
                 </el-option>
-                <el-option label="消费能力" value="消费能力" v-show="level_3=='商业属性'">
+                <el-option label="消费能力" value="消费能力" v-show="form.third=='商业属性'">
                 </el-option>
-                <el-option label="登录频率" value="登录频率" v-show="level_3=='行为属性'">
+                <el-option label="登录频率" value="登录频率" v-show="form.third=='行为属性'">
                 </el-option>
-                <el-option label="房产" value="房产" v-show="level_3=='用户价值'">
+                <el-option label="房产" value="房产" v-show="form.third=='用户价值'">
                 </el-option>
               </el-select>
             </el-col>
@@ -285,30 +288,58 @@
     name: "user_management",
     data() {
       return {
-        activeName:'first',
-        mail: '',
-        company:'',
-        identity:'',
+        activeName:'second',
+        first:'',
+        second:'',
+        third:'',
+        forth:'',
         handleEditVisible:false,
-        tableData: [{
-          num:'1',
-          nickName:'test',
-          company:'test',
-          mail:'test',
-          table_identity:'test'
+        tagsTableData: [{
+          num:'',
+          first:'',
+          second:'',
+          third:'',
+          forth:'',
+          fifth:'',
+          status:''
         }],
         form: {
-         status:"applying"
+          status:"applying"
 
         },
       }
+    },
+    created(){
+      this.initTagsTable();
     },
     methods: {
       handleEdit(index, row) {
         this.handleEditVisible = true;
       },
       handleClick(tab, event) {
-        console.log(tab, event);
+        //console.log(tab, event);
+      },
+      initTagsTable(){
+        // this.$http.get("initTags").then(response=> {
+        //     console.log("initTags")
+        //   }, response => {
+        //     console.log("error")
+        //   }
+        // )
+        this.$http.post("showTags",{
+          first:this.first,
+          second:this.second,
+          third:this.third,
+          forth:this.forth,
+          fifth:'',
+          status:'',
+          id:''
+        }).then(response => {
+            this.tagsTableData=response.data
+          }, response => {
+            console.log("error")
+          }
+        )
       }
 
     }
