@@ -29,7 +29,8 @@
             <div class="card-panel-text" style="line-height: 20px; color: rgba(0, 0, 0, 0.45); font-size: 18px; margin-bottom: 12px;">
               Administrator
             </div>
-            <count-to :start-val="0" :end-val=total_admin :duration="2600" class="card-panel-num" style="font-size: 24px;"/>
+<!--            <count-to :start-val="0" :end-val=total_admin :duration="2600" class="card-panel-num" style="font-size: 24px;"/>-->
+              <count-to :start-val="0" :end-val="100" :duration="2600" class="card-panel-num" style="font-size: 24px;"/>
           </div>
         </div>
       </el-col>
@@ -346,67 +347,67 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style>
   /*卡片样式 */
   .el-card {
     box-shadow: 0 2px 4px #000066, 0 0 6px rgba(0, 0, 0, .04)
   }
   /*管理员人数样式*/
-  .panel-group {
+  /*.panel-group {*/
 
-    .card-panel {
-      height: 108px;
-      cursor: pointer;
-      font-size: 12px;
-      position: relative;
-      overflow: hidden;
-      color: #666;
-      background: #fff;
-      box-shadow: 4px 4px 40px rgba(0, 0, 0, .05);
-      border-color: rgba(0, 0, 0, .05);
+  /*  .card-panel {*/
+  /*    height: 108px;*/
+  /*    cursor: pointer;*/
+  /*    font-size: 12px;*/
+  /*    position: relative;*/
+  /*    overflow: hidden;*/
+  /*    color: #666;*/
+  /*    background: #fff;*/
+  /*    box-shadow: 4px 4px 40px rgba(0, 0, 0, .05);*/
+  /*    border-color: rgba(0, 0, 0, .05);*/
 
-      &:hover {
-        .card-panel-icon-wrapper {
-        }
-      }
+  /*    &:hover {*/
+  /*      .card-panel-icon-wrapper {*/
+  /*      }*/
+  /*    }*/
 
-      .icon-people {
-        color: #40c9c6;
-      }
+  /*    .icon-people {*/
+  /*      color: #40c9c6;*/
+  /*    }*/
 
-      .icon-message {
-        color: #36a3f7;
-      }
+  /*    .icon-message {*/
+  /*      color: #36a3f7;*/
+  /*    }*/
 
-      .icon-money {
-        color: #f4516c;
-      }
+  /*    .icon-money {*/
+  /*      color: #f4516c;*/
+  /*    }*/
 
-      .icon-shopping {
-        color: #34bfa3
-      }
+  /*    .icon-shopping {*/
+  /*      color: #34bfa3*/
+  /*    }*/
 
-      .card-panel-icon-wrapper {
+  /*    .card-panel-icon-wrapper {*/
 
-      }
+  /*    }*/
 
-      .card-panel-icon {
-        float: left;
-        font-size: 48px;
-      }
+  /*    .card-panel-icon {*/
+  /*      float: left;*/
+  /*      font-size: 48px;*/
+  /*    }*/
 
-      .card-panel-description {
+  /*    .card-panel-description {*/
 
-        .card-panel-text {
+  /*      .card-panel-text {*/
 
-        }
+  /*      }*/
 
-        .card-panel-num {
+  /*      .card-panel-num {*/
 
-        }
-      }
-    }
-  }
+  /*      }*/
+  /*    }*/
+  /*  }*/
+  /*}*/
 
   @media (max-width:550px) {
     .card-panel-description {

@@ -84,27 +84,27 @@
 </template>
 
 <script>
-  export default {
-    name: "LabelSearch",
-    data() {
-      return {
-        level_1: '',
-        level_2: '',
-        level_3: '',
-        level_4: '',
-        man_percentage: 70,
-        woman_percentage: 30,
-      }
-    },
-    methods: {
-
+export default {
+  name: 'LabelSearch',
+  data () {
+    return {
+      level_1: '',
+      level_2: '',
+      level_3: '',
+      level_4: '',
+      man_percentage: 70,
+      woman_percentage: 30
     }
+  },
+  methods: {
+
   }
+}
 </script>
 
 <style scoped>
   .el-card {
-    box-shadow: 0 2px 4px #052aae, 0 0 6px rgba(0, 0, 0, .04)
+    box-shadow: 0 2px 4px #000066, 0 0 6px rgba(0, 0, 0, .04)
   }
 
   .graph_title {
