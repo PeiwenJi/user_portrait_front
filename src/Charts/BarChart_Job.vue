@@ -1,5 +1,5 @@
 <template>
-  <div id="barChart_job" style="width: 850px; height: 260px; margin-top: -20px"></div>
+  <div id="barChart_job" style="width: 850px; height: 260px; margin-top: -40px"></div>
 </template>
 
 <script>
@@ -11,7 +11,9 @@
     name: "BarChart_Job",
 
     methods: {
-      draw(){
+      async draw(){
+        const {data: res_job} = await this.$http.get("getJob");
+
         let barChart_job = this.$echarts.init((document.getElementById("barChart_job")));
 
         let option_job = {
@@ -37,7 +39,7 @@
           },
           series: [
             {
-              name: '2011年',
+              name: 'Number',
               type: 'bar',
               itemStyle: {
                 normal: {
@@ -51,7 +53,7 @@
                   }
                 }
               },
-              data: [18203, 23489, 29034, 104970, 131744, 630230]
+              data: [res_job[0], res_job[1], res_job[2], res_job[3], res_job[4], res_job[5]]
             }
           ]
         }

@@ -11,7 +11,9 @@
     name: "PieChart_Marriage",
 
     methods: {
-      draw(){
+      async draw(){
+        const {data: res_marriage} = await this.$http.get("getMarriage");
+
         let pieChart_marriage = this.$echarts.init((document.getElementById("pieChart_marriage")));
 
         let option_marriage = {
@@ -44,9 +46,9 @@
               radius: '55%',
               center: ['50%', '50%'],
               data: [
-                {value: 300, name: '离异'},
-                {value: 735, name: '未婚'},
-                {value: 510, name: '已婚'},
+                {value: res_marriage[0], name: '离异'},
+                {value: res_marriage[1], name: '未婚'},
+                {value: res_marriage[2], name: '已婚'},
               ].sort(function (a, b) { return a.value - b.value; }),
               roseType: 'radius',
               label: {

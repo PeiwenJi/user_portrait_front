@@ -1,5 +1,5 @@
 <template>
-  <div id="barChart_age" style="width: 850px; height: 300px; margin-top: -20px"></div>
+  <div id="barChart_age" style="width: 850px; height: 300px; margin-top: -30px"></div>
 </template>
 
 <script>
@@ -38,10 +38,9 @@
           yAxis: [
             {
               type: 'value',
-              name: '人数',
               min: 0,
               max: 1500,
-              interval: 100,
+              interval: 300,
             },
           ],
 

@@ -12,7 +12,7 @@
 
     methods: {
       async draw(){
-        const {data: res} = await this.$http.get("getGender");
+        const {data: res_gender} = await this.$http.get("getGender");
 
         let pieChart_gender = this.$echarts.init((document.getElementById("pieChart_gender")));
 
@@ -32,16 +32,27 @@
 
           series: [
             {
-              name: 'Gender',
+              name: 'Number',
               type: 'pie',
-              center: ['50%', '50%'],
-              roseType: 'area',
+              radius: ['40%', '70%'],
+              avoidLabelOverlap: false,
+              label: {
+                show: true,
+                position: 'left',
+                fontWeight: 'bold',
+                fontSize: '15',
+              },
               itemStyle: {
-                borderRadius: 8
+                normal: {
+                  color: function(params) {
+                    var colorList = ['#60C0DD', '#C6E579'];
+                    return colorList[params.dataIndex]
+                  }
+                }
               },
               data: [
-                {value: res[0], name: '男'},
-                {value: res[1], name: '女'},
+                {value: res_gender[0], name: '男'},
+                {value: res_gender[1], name: '女'},
               ]
             }
           ]

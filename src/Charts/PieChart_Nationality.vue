@@ -11,10 +11,12 @@
     name: "PieChart_Nationality",
 
     methods: {
-      draw(){
-        var pieChart_nationality = this.$echarts.init((document.getElementById("pieChart_nationality")));
+      async draw(){
+        const {data: res_nationality} = await this.$http.get("getNationality");
 
-        var option_nationality = {
+        let pieChart_nationality = this.$echarts.init((document.getElementById("pieChart_nationality")));
+
+        let option_nationality = {
           title: {
             text: 'Nationality',
             left: 'right',
@@ -31,14 +33,24 @@
               center: ['50%', '50%'],
               roseType: 'area',
               itemStyle: {
-                borderRadius: 8
+                borderRadius: 8,
+                normal: {
+                  color: function(params) {
+                    var colorList = [
+                      '#FE8463','#B5C334','#FCCE10','#E87C25','#27727B',
+                      '#FE8463','#9BCA63','#FAD860','#F3A43B','#60C0DD',
+                      '#D7504B','#C6E579','#F4E001','#F0805A','#26C0C0'
+                    ];
+                    return colorList[params.dataIndex]
+                  }
+                }
               },
               data: [
-                {value: 860, name: '中国大陆'},
-                {value: 438, name: '香港'},
-                {value: 532, name: '澳门'},
-                {value: 330, name: '台湾'},
-                {value: 720, name: '其他'}
+                {value: res_nationality[0], name: '中国大陆'},
+                {value: res_nationality[1], name: '香港'},
+                {value: res_nationality[2], name: '澳门'},
+                {value: res_nationality[3], name: '台湾'},
+                {value: res_nationality[4], name: '其他'}
               ]
             }
           ]

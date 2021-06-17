@@ -11,14 +11,12 @@
     name: "PieChart_PoliticalFace",
 
     methods: {
-      draw(){
+      async draw(){
+        const {data: res_politicalFac} = await this.$http.get("getPoliticalFace")
+
         let pieChart_politicalFace = this.$echarts.init((document.getElementById("pieChart_politicalFace")));
 
         let option_politicalFace = {
-          tooltip: {
-            trigger: 'item'
-          },
-
           title: {
             text: 'PoliticalFace',
             left: 'right',
@@ -28,48 +26,27 @@
             }
           },
 
-          visualMap: {
-            show: false,
-            min: 0,
-            max: 1000,
-            inRange: {
-              colorLightness: [0, 1]
-            }
-          },
           series: [
             {
-              name: 'PoliticalFace',
+              name: 'Nationality',
               type: 'pie',
-              radius: '55%',
               center: ['50%', '50%'],
-              data: [
-                {value: 635, name: '群众'},
-                {value: 473, name: '党员'},
-                {value: 245, name: '无党派人士'},
-              ].sort(function (a, b) { return a.value - b.value; }),
-              roseType: 'radius',
-              label: {
-                color: '#000000'
-              },
-              labelLine: {
-                lineStyle: {
-                  color: 'rgb(0,0,0)'
-                },
-                smooth: 0.2,
-                length: 10,
-                length2: 20
-              },
+              roseType: 'area',
               itemStyle: {
-                color: '#ff6b6b',
-                shadowBlur: 200,
-                shadowColor: 'rgba(255,255,255,0)'
+                normal: {
+                  color: function(params) {
+                    var colorList = [
+                      '#FE8463','#9BCA63','#FAD860'
+                    ];
+                    return colorList[params.dataIndex]
+                  }
+                }
               },
-
-              animationType: 'scale',
-              animationEasing: 'elasticOut',
-              animationDelay: function (idx) {
-                return Math.random() * 200;
-              }
+              data: [
+                {value: res_politicalFac[0], name: '群众'},
+                {value: res_politicalFac[1], name: '党员'},
+                {value: res_politicalFac[2], name: '无党派人士'},
+              ]
             }
           ]
 
