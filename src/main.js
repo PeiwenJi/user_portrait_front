@@ -5,6 +5,11 @@ import App from './App'
 import router from './router'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
+import * as echarts from 'echarts'
+
+// 引入ant-design-vue
+import Antd from 'ant-design-vue'
+import 'ant-design-vue/dist/antd.css'
 
 //导入axios
 import axios from 'axios'
@@ -16,6 +21,10 @@ axios.defaults.baseURL = "http://localhost:9000"
 Vue.use(ElementUI)
 
 Vue.config.productionTip = false
+Vue.use(Antd)
+
+// echarts 需要挂载到Vue原型上
+Vue.prototype.$echarts = echarts
 
 /* eslint-disable no-new */
 new Vue({
