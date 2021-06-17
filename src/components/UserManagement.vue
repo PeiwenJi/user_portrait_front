@@ -48,7 +48,7 @@
           <!-- 用户变化的折线图-->
           <el-card class="box-card"style="width:90%;margin-top: 200px;margin-left: 5%" >
             <div >
-              <div style="width: 100%;height: 400px" id="userChanged" ></div>
+              <div style="width: 100%;height: 400px" id="userChanged"  ref="userChanged"></div>
             </div>
           </el-card>
         </el-row>
@@ -357,7 +357,7 @@
               });
               this.addUserVisible = false;
               this.numChanged=true
-              this.$message.success("success",1500)
+              this.$message.success("success",1000)
               setTimeout(this.clickSearch,1000)   //hbase加入数据需要一点时间，需要晚点执行才可以
 
             }
@@ -405,9 +405,9 @@
 </script>
 
 <style scoped>
-  .el-card {
-    box-shadow: 0 2px 4px #052aae, 0 0 6px rgba(0, 0, 0, .04)
-  }
+  /*.el-card {*/
+  /*  box-shadow: 0 2px 4px #052aae, 0 0 6px rgba(0, 0, 0, .04)*/
+  /*}*/
 
   .input{
     width: 250px;
