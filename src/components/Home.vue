@@ -47,6 +47,11 @@
           </el-link>
         </div>
         <div style="margin-top: 10px">
+          <el-link :underline="false" @click="tagCheck">
+            Tag Check
+          </el-link>
+        </div>
+        <div style="margin-top: 10px">
           <el-link
             :underline="false"
             @click="exit"
@@ -112,6 +117,10 @@
 
       adminManagement() {
         this.$router.push({path: '/AdminManagement'});
+      },
+
+      tagCheck() {
+        this.$router.push({path: '/TagCheck'});
       },
 
       handleClose(done) {

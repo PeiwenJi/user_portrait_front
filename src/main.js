@@ -22,9 +22,10 @@ Vue.use(Antd)
 Vue.use(ElementUI)
 
 Vue.config.productionTip = false
+Vue.use(Antd)
 
 // echarts 需要挂载到Vue原型上
-// Vue.prototype.$echarts = echarts
+Vue.prototype.$echarts = echarts
 
 /* eslint-disable no-new */
 new Vue({

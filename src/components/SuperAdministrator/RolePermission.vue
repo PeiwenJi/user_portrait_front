@@ -11,10 +11,10 @@
   <el-card style="margin-top: 50px">
     <el-table
       :data="data"
-      :header-cell-style="{background:'#000066',color:'white', opacity:0.8}"
+      :header-cell-style="{background:'#339999',color:'white', opacity:0.8}"
       stripe
       border
-      style="width: 100%">
+      style="width: 100%; font-size: 16px; margin: 20px 0px">
       <el-table-column
         prop="identity"
         label="Identity"
