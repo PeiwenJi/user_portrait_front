@@ -221,8 +221,8 @@
                 else
                   this.$message.error("Fail to update");
 
-                this.edit_visible = false;
                 this.edit_loading_visible = false;
+                this.$message.success("Update successfully");
               }, 2000)
             }
           }
@@ -242,8 +242,8 @@
                 this.setCookie("Password", Base64.encode(this.reset_form.new_password));
 
                 this.reset_form = {};
-                this.reset_visible = false;
                 this.reset_loading_visible = false;
+                this.$message.success("Reset successfully");
               }
             }, 2000)
           }

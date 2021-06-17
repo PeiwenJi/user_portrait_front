@@ -2,28 +2,37 @@
   <body id="home">
   <el-container>
     <el-aside width="200px">
-      <div class="avatar" style="margin-top: 20px" @click="user_info_visible=true">
+      <div class="avatar" style="margin-top: 20px">
         <el-avatar
           :size="100"
           :src="require('@/assets/avatar01.png')"
           style="box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04)" alt >
         </el-avatar>
       </div>
-<!--      <div style="margin-top: 10px">-->
-<!--        <span style="font-family: 'Agency FB'; font-weight: bolder; color: white; font-size: large">Welcome, {{name}}</span>-->
-        <div style="margin-top: 10px">
-          <el-link
-            :underline="false"
-            @click="openUserInfo">
-            <i class="el-icon-thumb"></i>
-            Welcome
-          </el-link>
-        </div>
-        <el-divider></el-divider>
+      <div style="margin-top: 10px">
+        <el-link :underline="false" @click="openUserInfo">
+          <i class="el-icon-thumb"></i>
+          Welcome
+        </el-link>
+      </div>
+      <el-divider></el-divider>
       <div class="router">
         <div style="margin-top: 10px">
+          <el-link :underline="false" @click="goHome">
+            <i class="el-icon-s-data"></i>
+            Data
+          </el-link>
+        </div>
+        <div style="margin-top: 10px">
           <el-link :underline="false" @click="labelSearch">
+            <i class="el-icon-search"></i>
             Label Search
+          </el-link>
+        </div>
+        <div style="margin-top: 10px">
+          <el-link :underline="false" @click="">
+            <i class="el-icon-user"></i>
+            User Search
           </el-link>
         </div>
         <div style="margin-top: 10px">
@@ -52,6 +61,7 @@
             @click="exit"
             v-loading.fullscreen.lock="exit_loading_visible"
             element-loading-text="Exiting...">
+            <i class="el-icon-switch-button"></i>
             Exit
           </el-link>
         </div>
@@ -63,12 +73,6 @@
     </el-main>
   </el-container>
 
-  <!--用户信息-->
-  <el-drawer title="User Information" :visible.sync="user_info_visible" :before-close="handleClose" :append-to-body="true">
-    <el-form>
-
-    </el-form>
-  </el-drawer>
   </body>
 </template>
 
@@ -98,12 +102,21 @@
       userManagement() {
         this.$router.push({path: '/UserManagement'});
       },
+
       tagManagement() {
         this.$router.push({path: '/TagManagement'});
       },
 
       openUserInfo() {
         this.$router.push({path: '/UserInfo'});
+      },
+
+      goHome() {
+        this.$router.push({path: '/DataPage'});
+      },
+
+      userSearch() {
+        this.$router.push({path: ''});
       },
 
       rolePermission() {
@@ -114,58 +127,43 @@
         this.$router.push({path: '/AdminManagement'});
       },
 
-      handleClose(done) {
-        this.$confirm('确认关闭？')
-          .then(_ => {
-            done();
-          })
-          .catch(_ => {});
-      }
     }
   }
 </script>
 
 <style scoped>
   .el-aside {
-    background-color: #000066;
+    background-color: #ff6b6b;
     text-align: center;
     border-radius: 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04)
   }
 
-  .el-main {
-    margin-left: 3px;
-    border-radius: 20px;
-    box-shadow: 0 2px 4px #000066, 0 0 6px rgba(0, 0, 0, .04)
-  }
+  /*.el-main {*/
+  /*  margin-left: 3px;*/
+  /*  border-radius: 20px;*/
+  /*  box-shadow: 0 2px 4px #052aae, 0 0 6px rgba(0, 0, 0, .04)*/
+  /*}*/
 
   .el-container {
     height: 100%;
   }
 
   .el-link {
-    font-family: 'MV Boli';
-    font-size: large;
+    font-family: 'Agency FB';
     font-weight: bolder;
-    color: #d4d4d4
-  }
-
-  .el-drawer_title{
-    font-family: PingFang SC;
-    font-size: xx-large;
-    font-weight: bolder;
-    color: #551657
+    color: white;
+    font-size: large
   }
 
   .el-drawer {
-    background-color: #000066;
+    background-color: #052aae;
   }
 
   .el-card {
     width: 80%;
-    box-shadow: 0 2px 4px #000066, 0 0 6px rgba(0, 0, 0, .04)
+    box-shadow: 0 2px 4px #052aae, 0 0 6px rgba(0, 0, 0, .04)
   }
-
 
   #home {
     height: 100%;

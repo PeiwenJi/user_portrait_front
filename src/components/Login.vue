@@ -476,7 +476,7 @@
                 window.sessionStorage.setItem("Password", Base64.encode(this.login_form.password));
 
                 this.login_form = {};
-                this.$router.push({path: "/LabelSearch"})
+                this.$router.push({path: "/DataPage"})
               }
               else if(res == "Password error")
                 this.$message.error(res);
