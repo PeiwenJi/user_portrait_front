@@ -1,5 +1,5 @@
 <template>
-  <body id="user_management">
+  <body id="tags_management">
   <div style="width: 100%">
     <el-tabs v-model="activeName" @tab-click="handleClick">
       <el-tab-pane label="事务总览" name="first" >
@@ -7,13 +7,13 @@
           <el-col :span="8"> <el-card class="box-card" style="width: 90%;margin-left: 15px">
             <div slot="header" class="clearfix">
               <el-row :gutter="20">
-                <el-col :span="18"><span class="graph_title">标签数目</span></el-col>
+                <el-col :span="18"><span class="graph_title">四级标签</span></el-col>
                 <el-col :span="6"><span class="ant-tag-green" style="margin-left:50px ">总</span></el-col>
               </el-row>
             </div>
             <div class="text item">
               <el-row :gutter="20" type="flex" justify="center">
-                <span class="text-2xl" >500人</span>
+                <span class="text-2xl" >{{allTagsCount}}条</span>
               </el-row>
             </div>
           </el-card> </el-col>
@@ -103,39 +103,29 @@
               </el-select>
             </el-col>
             <el-col :span="5">
-              <el-select v-model="third" placeholder="三级标签">
-                <el-option label="人口属性" value="人口属性">
+              <el-select v-model="third" placeholder="三级标签" @change="getSearchForthTags">
+                <el-option label="人口属性" value="人口属性（用户特征）">
                 </el-option>
-                <el-option label="商业属性" value="商业属性">
+                <el-option label="商业属性" value="商业属性（消费特征）">
                 </el-option>
-                <el-option label="行为属性" value="行为属性">
+                <el-option label="行为属性" value="行为属性（兴趣特征）">
                 </el-option>
                 <el-option label="用户价值" value="用户价值">
                 </el-option>
               </el-select>
             </el-col>
             <el-col :span="5">
-              <el-select v-model="forth" placeholder="四级标签">
-                <el-option label="性别" value="性别" v-show="third=='人口属性'">
-                </el-option>
-                <el-option label="年龄段" value="年龄段" v-show="third=='人口属性'">
-                </el-option>
-                <el-option label="身高" value="身高" v-show="third=='人口属性'">
-                </el-option>
-                <el-option label="民族" value="民族" v-show="third=='人口属性'">
-                </el-option>
-                <el-option label="消费周期" value="消费周期" v-show="third=='商业属性'">
-                </el-option>
-                <el-option label="消费能力" value="消费能力" v-show="third=='商业属性'">
-                </el-option>
-                <el-option label="登录频率" value="登录频率" v-show="third=='行为属性'">
-                </el-option>
-                <el-option label="房产" value="房产" v-show="third=='用户价值'">
-                </el-option>
-              </el-select>
-            </el-col>
+                <el-select v-model="forth" placeholder="四级标签" @click="clickSearchForthTagSeletor">
+                  <el-option
+                    v-for="item in searchForthTagsList"
+                    :key="item.value"
+                    :label="item.label"
+                    :value="item.value">
+                  </el-option>
+                </el-select>
+                </el-col>
             <el-col :span="4" style="text-align: center">
-              <el-button icon="el-icon-search" circle style="background-color: #052aae; color: white"></el-button>
+              <el-button icon="el-icon-search" circle style="background-color: #052aae; color: white"  @click="searchTags"></el-button>
             </el-col>
           </el-row>
           <!--          表格-->
@@ -234,21 +224,12 @@
             </el-col>
             <el-col :span="5">
               <el-select v-model="form.forth" placeholder="四级标签">
-                <el-option label="性别" value="性别" v-show="form.third=='人口属性'">
-                </el-option>
-                <el-option label="年龄段" value="年龄段" v-show="form.third=='人口属性'">
-                </el-option>
-                <el-option label="身高" value="身高" v-show="form.third=='人口属性'">
-                </el-option>
-                <el-option label="民族" value="民族" v-show="form.third=='人口属性'">
-                </el-option>
-                <el-option label="消费周期" value="消费周期" v-show="form.third=='商业属性'">
-                </el-option>
-                <el-option label="消费能力" value="消费能力" v-show="form.third=='商业属性'">
-                </el-option>
-                <el-option label="登录频率" value="登录频率" v-show="form.third=='行为属性'">
-                </el-option>
-                <el-option label="房产" value="房产" v-show="form.third=='用户价值'">
+                <el-option
+                  v-for="item in forthTagsList"
+                  :key="item.value"
+                  :label="item.label"
+                  :value="item.value"
+                  :disabled="item.disabled">
                 </el-option>
               </el-select>
             </el-col>
@@ -289,15 +270,15 @@
     data() {
       return {
         activeName:'second',
-        first:'',
-        second:'',
+        first:'电商',
+        second:'综合',
         third:'',
         forth:'',
         handleEditVisible:false,
         tagsTableData: [{
           num:'',
-          first:'',
-          second:'',
+          first:'电商',
+          second:'综合',
           third:'',
           forth:'',
           fifth:'',
@@ -307,10 +288,18 @@
           status:"applying"
 
         },
+        forthTagsList:[],
+        searchForthTagsList:[],
+        allTagsCount:'',
+        developingTagsCount:''
+
       }
     },
     created(){
       this.initTagsTable();
+    },
+    mounted(){
+      this.searchForthTags();
     },
     methods: {
       handleEdit(index, row) {
@@ -319,6 +308,7 @@
       handleClick(tab, event) {
         //console.log(tab, event);
       },
+      //初始化标签表格数据
       initTagsTable(){
         // this.$http.get("initTags").then(response=> {
         //     console.log("initTags")
@@ -336,20 +326,48 @@
           id:''
         }).then(response => {
             this.tagsTableData=response.data
+            this.allTagsCount=response.data.length
           }, response => {
             console.log("error")
           }
         )
+      },
+      //搜索框三级标签发生改变时变动
+      getSearchForthTags(){
+        this.$http.post("showTags?dict=true",{
+          first:this.first,
+          second:this.second,
+          third:this.third,
+          forth:this.forth,
+          fifth:'',
+          status:'',
+          id:''
+        }).then(response => {
+          this.searchForthTagsList = []
+           response.data.forEach(element =>
+           {
+             this.searchForthTagsList.push({label:element.label,value:element.value})
+           })
+          console.log(this.searchForthTagsList)
+          }, response => {
+            console.log("error")
+          }
+        )
+      },
+      //三级标签选择之后虽然searchForthTagsList发生了修改，但是页面并没有刷新，需要这里强制刷新一下
+      clickSearchForthTagSeletor(){
+        this.$forceUpdate
       }
+
 
     }
   }
 </script>
 
 <style scoped>
-  .el-card {
-    box-shadow: 0 2px 4px #052aae, 0 0 6px rgba(0, 0, 0, .04)
-  }
+  /*.el-card {*/
+  /*  box-shadow: 0 2px 4px #052aae, 0 0 6px rgba(0, 0, 0, .04)*/
+  /*}*/
 
   .input{
     width: 250px;

@@ -48,69 +48,35 @@
           </el-select>
         </el-col>
         <el-col :span="4" style="text-align: center">
-          <el-button icon="el-icon-search" circle style="background-color: #052aae; color: white"></el-button>
+          <el-button icon="el-icon-search" circle style="background-color: #052aae; color: white" @click=""></el-button>
         </el-col>
       </el-row>
     </el-card>
   </div>
-  <div style="width: 40%; margin-top: 10px">
-    <el-card>
-      <div>
-        <span class="graph_title">性别比例</span>
-      </div>
-      <div style="margin-top: 10px">
-        <el-row>
-          <el-col :span="1">
-            <span>男</span>
-          </el-col>
-          <el-col :span="23">
-            <el-progress :text-inside="true" :stroke-width="26" :percentage="man_percentage"></el-progress>
-          </el-col>
-        </el-row>
-      </div>
-      <div style="margin-top: 10px">
-        <el-row>
-          <el-col :span="1">
-            <span>女</span>
-          </el-col>
-          <el-col :span="23">
-            <el-progress :text-inside="true" :stroke-width="24" :percentage="woman_percentage"></el-progress>
-          </el-col>
-        </el-row>
-      </div>
-    </el-card>
-  </div>
+
   </body>
 </template>
 
 <script>
-export default {
-  name: 'LabelSearch',
-  data () {
-    return {
-      level_1: '',
-      level_2: '',
-      level_3: '',
-      level_4: '',
-      man_percentage: 70,
-      woman_percentage: 30
-    }
-  },
-  methods: {
+  export default {
+    name: "LabelSearch",
+    data() {
+      return {
+        level_1: '',
+        level_2: '',
+        level_3: '',
+        level_4: '',
+      }
+    },
+    methods: {
 
+    }
   }
-}
 </script>
 
 <style scoped>
   .el-card {
-    box-shadow: 0 2px 4px #000066, 0 0 6px rgba(0, 0, 0, .04)
+    box-shadow: 0 2px 4px #052aae, 0 0 6px rgba(0, 0, 0, .04)
   }
 
-  .graph_title {
-    font-family: PingFang SC;
-    font-size: x-large;
-    font-weight: bolder;
-    color: #3e3ba7
-  }
 </style>

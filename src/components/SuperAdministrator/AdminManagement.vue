@@ -6,15 +6,16 @@
       <el-breadcrumb-item>Admin Management</el-breadcrumb-item>
     </el-breadcrumb>
     <!-- 管理员人数卡片-->
-    <el-card style="margin-top: 50px">
-      <el-col :xs="10" :sm="10" :lg="5" class="card-panel-col" style="margin-bottom: 32px">
-        <div class="card-panel" @click="handleSetLineChartData('newVisitis')" style="height: 130px;
-                                                                                      font-size: 18px;
-                                                                                      overflow: hidden;
-                                                                                      color: #666;
-                                                                                      background: #fff;
-                                                                                      box-shadow: 4px 4px 40px rgba(0, 0, 0, .05);
-                                                                                      border-color: rgba(0, 0, 0, .05);">
+    <div class="card-panel" @click="handleSetLineChartData('newVisitis')" style="height: 150px;
+                                                                                     width: 20%;
+                                                                                     margin-top: 50px;
+                                                                                     margin-left: 40%;
+                                                                                     font-size: 18px;
+                                                                                     overflow: hidden;
+                                                                                     color: #666;
+                                                                                     background: #fff;
+                                                                                     box-shadow: 4px 4px 10px #40c9c6;
+                                                                                     border-color: #40c9c6;">
           <div class="card-panel-icon-wrapper icon-people" style="float: left;
                                                                   margin: 10px 0 0 10px;
                                                                   padding: 16px;
@@ -32,8 +33,6 @@
             <count-to :start-val="0" :end-val=total_admin :duration="2600" class="card-panel-num" style="font-size: 24px;"/>
           </div>
         </div>
-      </el-col>
-    </el-card>
 
     <!--  管理员管理  -->
     <el-card style="margin-top: 50px">
