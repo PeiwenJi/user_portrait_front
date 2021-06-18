@@ -6,6 +6,7 @@ import Home from '@/components/Home'
 
 import DataPage from '@/components/DataPage'
 import LabelSearch from '@/components/LabelSearch'
+import UserSearch from '@/components/UserSearch'
 import UserInfo from '@/components/UserInfo'
 import UserManagement from '@/components/UserManagement'
 import TagManagement from '@/components/TagManagement'
@@ -28,6 +29,7 @@ export default new Router({
         {path: '/UserInfo', name: 'UserInfo', component: UserInfo},
         {path: '/DataPage', name: 'DataPage', component: DataPage},
         {path: '/LabelSearch', name: 'LabelSearch', component: LabelSearch},
+        {path: '/UserSearch', name: 'UserSearch', component: UserSearch},
         {path: '/UserManagement', name: 'UserManagement', component: UserManagement},
         {path: '/TagManagement', name: 'TagManagement', component: TagManagement},
         {path: '/AdminManagement', name: 'AdminManagement', component: AdminManagement},

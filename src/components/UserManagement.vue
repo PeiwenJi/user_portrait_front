@@ -393,6 +393,7 @@
           yAxis: {},
           series:{
             type: 'line',
+            smooth: true,
             data:userChangedList
           }
         }
