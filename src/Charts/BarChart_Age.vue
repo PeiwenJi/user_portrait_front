@@ -1,5 +1,5 @@
 <template>
-  <div id="barChart_age" style="width: 850px; height: 300px; margin-top: -30px"></div>
+  <div ref="barChart_age" style="width: 650px; height: 400px; margin-top: -30px"></div>
 </template>
 
 <script>
@@ -11,8 +11,10 @@
     name: "BarChart_Age",
 
     methods: {
-      draw(){
-        let barChart_age = this.$echarts.init((document.getElementById("barChart_age")));
+      async draw(){
+        const {data: res} = await this.$http.get("getAge");
+
+        let barChart_age = this.$echarts.init(this.$refs.barChart_age);
 
         let option_age = {
           tooltip: {
@@ -39,8 +41,8 @@
             {
               type: 'value',
               min: 0,
-              max: 1500,
-              interval: 300,
+              max: 400,
+              interval: 50,
             },
           ],
 
@@ -60,7 +62,7 @@
                   }
                 }
               },
-              data: [50, 120, 210, 380, 780, 1260, 330, 23]
+              data: [res[0], res[1], res[2], res[3], res[4], res[5], res[6], res[7]]
             }
           ]
 

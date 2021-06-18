@@ -20,43 +20,43 @@
         <div style="margin-top: 10px">
           <el-link :underline="false" @click="goHome">
             <i class="el-icon-s-data"></i>
-            Data
+            数据
           </el-link>
         </div>
-        <div style="margin-top: 10px">
-          <el-link :underline="false" @click="labelSearch">
-            <i class="el-icon-search"></i>
-            Label Search
-          </el-link>
-        </div>
+<!--        <div style="margin-top: 10px">-->
+<!--          <el-link :underline="false" @click="labelSearch">-->
+<!--            <i class="el-icon-search"></i>-->
+<!--            Label Search-->
+<!--          </el-link>-->
+<!--        </div>-->
         <div style="margin-top: 10px">
           <el-link :underline="false" @click="userSearch">
-            <i class="el-icon-user"></i>
-            User Search
+            <i class="el-icon-picture-outline"></i>
+            用户画像
           </el-link>
         </div>
         <div style="margin-top: 10px">
           <el-link :underline="false" @click="userManagement">
             <i class="el-icon-user"></i>
-            User Management
+            用户管理
           </el-link>
         </div>
         <div style="margin-top: 10px">
           <el-link :underline="false" @click="tagManagement">
             <i class="el-icon-collection-tag"></i>
-            Tag Management
+            标签管理
           </el-link>
         </div>
         <div style="margin-top: 10px">
           <el-link :underline="false" @click="adminManagement">
-            <i class="el-icon-user"></i>
-            Admin Management
+            <i class="el-icon-setting"></i>
+            管理员设置
           </el-link>
         </div>
         <div style="margin-top: 10px">
           <el-link :underline="false" @click="rolePermission">
             <i class="el-icon-setting"></i>
-            Role Permission
+            权限设置
           </el-link>
         </div>
         <div style="margin-top: 10px">
@@ -66,7 +66,7 @@
             v-loading.fullscreen.lock="exit_loading_visible"
             element-loading-text="Exiting...">
             <i class="el-icon-switch-button"></i>
-            Exit
+            退出
           </el-link>
         </div>
       </div>
@@ -95,12 +95,12 @@
       },
 
       goHome() {
-        this.$router.push({path: '/DataPage'});
+        this.$router.push({path: '/MainPage'});
       },
 
-      labelSearch() {
-        this.$router.push({path: '/LabelSearch'});
-      },
+      // labelSearch() {
+      //   this.$router.push({path: '/LabelSearch'});
+      // },
 
       userSearch() {
         this.$router.push({path: '/UserSearch'});

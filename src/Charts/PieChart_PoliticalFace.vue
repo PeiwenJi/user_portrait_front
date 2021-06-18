@@ -1,5 +1,5 @@
 <template>
-  <div id="pieChart_politicalFace" style="width: 330px; height: 260px;"></div>
+  <div ref="pieChart_politicalFace" style="width: 470px; height: 360px;"></div>
 </template>
 
 <script>
@@ -14,7 +14,7 @@
       async draw(){
         const {data: res_politicalFac} = await this.$http.get("getPoliticalFace")
 
-        let pieChart_politicalFace = this.$echarts.init((document.getElementById("pieChart_politicalFace")));
+        let pieChart_politicalFace = this.$echarts.init(this.$refs.pieChart_politicalFace);
 
         let option_politicalFace = {
           title: {
