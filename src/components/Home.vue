@@ -42,7 +42,10 @@
           </el-link>
         </div>
         <div style="margin-top: 10px">
-          <el-link :underline="false" @click="tagManagement">
+          <el-link :underline="false"
+                   @click="tagManagement"
+                   v-loading.fullscreen.lock="loading_visible"
+                   element-loading-text="拼命加载中">
             <i class="el-icon-collection-tag"></i>
             标签管理
           </el-link>
@@ -57,6 +60,11 @@
           <el-link :underline="false" @click="rolePermission">
             <i class="el-icon-setting"></i>
             权限设置
+          </el-link>
+        </div>
+        <div style="margin-top: 10px">
+          <el-link :underline="false" @click="tagCheck">
+            Tag Check
           </el-link>
         </div>
         <div style="margin-top: 10px">
@@ -76,7 +84,6 @@
       <router-view></router-view>
     </el-main>
   </el-container>
-
   </body>
 </template>
 
@@ -87,6 +94,8 @@
       return {
         exit_loading_visible: false,
         user_info_visible: false,
+        //标签总览：loading选项
+        loading_visible:false
       }
     },
     methods: {
@@ -111,7 +120,14 @@
       },
 
       tagManagement() {
+
+        this.loading_visible = true;
         this.$router.push({path: '/TagManagement'});
+        //跳转页面之前需要先加载一下
+        setTimeout( () => {
+
+          this.loading_visible = false
+        }, 500);
       },
 
       adminManagement() {
@@ -120,6 +136,10 @@
 
       rolePermission() {
         this.$router.push({path: '/RolePermission'});
+      },
+
+      tagCheck() {
+        this.$router.push({path: '/TagCheck'});
       },
 
       exit() {
@@ -136,7 +156,7 @@
 
 <style scoped>
   .el-aside {
-    background-color: #ff6b6b;
+    background-color: #000066;
     text-align: center;
     border-radius: 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04)
@@ -160,12 +180,12 @@
   }
 
   .el-drawer {
-    background-color: #052aae;
+    background-color: #000066;
   }
 
   .el-card {
     width: 80%;
-    box-shadow: 0 2px 4px #052aae, 0 0 6px rgba(0, 0, 0, .04)
+    box-shadow: 0 2px 4px #000066, 0 0 6px rgba(0, 0, 0, .04)
   }
 
   #home {

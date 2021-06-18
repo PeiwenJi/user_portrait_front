@@ -76,7 +76,7 @@
 
 <style scoped>
   .el-card {
-    box-shadow: 0 2px 4px #ff6b6b, 0 0 6px rgba(0, 0, 0, .04)
+    box-shadow: 0 2px 4px #052aae, 0 0 6px rgba(0, 0, 0, .04)
   }
 
 </style>

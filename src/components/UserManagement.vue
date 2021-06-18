@@ -58,9 +58,9 @@
       </el-tab-pane>
       <el-tab-pane label="用户管理" name="second" style="margin-bottom: 10px">
         <el-card class="box-card" style="width: 95%;margin-left: 2.5%">
+
           <el-row :gutter="20" style="margin-top: 20px" >
             <el-col :span="18"><span class="graph_title">用户管理</span></el-col>
-
           </el-row>
           <el-row :gutter="20" style="margin-top: 20px" >
             <el-col :span="6">
@@ -210,7 +210,9 @@
         handleEditVisible: false,
         addUserVisible:false,
         userTableData: [],
-        form: {  },
+        form: {
+
+        },
         addForm:{identity:'user' },
         userInfo: {
           email: '',
@@ -314,7 +316,7 @@
           }
         )
       },
-      //在对话框内部修改用户的信息
+      //保存对话框内部修改用户的信息
       editUserInfo() {
         this.$http.post("editUserInfo", {
           name: this.form.name,
@@ -325,6 +327,7 @@
         }).then(response => {
           console.log(response);
           this.handleEditVisible = false;
+          this.$message.success("edit user success",1000)
 
         })
       },
@@ -334,6 +337,7 @@
         this.$http.get("deleteUser?email=" + row["email"]).then(response => {
             this.clickSearch()
             this.numChanged =true
+
             this.$message.success("success delete")
           }, response => {
             console.log("error")

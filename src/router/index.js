@@ -11,8 +11,9 @@ import UserInfo from '@/components/UserInfo'
 import UserManagement from '@/components/UserManagement'
 import TagManagement from '@/components/TagManagement'
 import AdminManagement from '@/components/SuperAdministrator/AdminManagement'
-import RolePermission from '@/components/SuperAdministrator/RolePermission.vue'
 import MainPage from '@/components/MainPage'
+import RolePermission from '@/components/SuperAdministrator/RolePermission'
+import TagCheck from '@/components/SuperAdministrator/TagCheck'
 
 Vue.use(Router)
 
@@ -36,6 +37,7 @@ export default new Router({
         {path: '/TagManagement', name: 'TagManagement', component: TagManagement},
         {path: '/AdminManagement', name: 'AdminManagement', component: AdminManagement},
         {path: '/RolePermission', name: 'RolePermission', component: RolePermission},
+        {path: '/TagCheck', name: 'TagCheck', component: TagCheck}
       ]
     }
   ]
