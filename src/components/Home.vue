@@ -30,29 +30,38 @@
           </el-link>
         </div>
         <div style="margin-top: 10px">
-          <el-link :underline="false" @click="">
+          <el-link :underline="false" @click="userSearch">
             <i class="el-icon-user"></i>
             User Search
           </el-link>
         </div>
         <div style="margin-top: 10px">
           <el-link :underline="false" @click="userManagement">
+            <i class="el-icon-user"></i>
             User Management
           </el-link>
         </div>
         <div style="margin-top: 10px">
           <el-link :underline="false" @click="tagManagement">
+            <i class="el-icon-collection-tag"></i>
             Tag Management
           </el-link>
         </div>
         <div style="margin-top: 10px">
           <el-link :underline="false" @click="adminManagement">
+            <i class="el-icon-user"></i>
             Admin Management
           </el-link>
         </div>
         <div style="margin-top: 10px">
           <el-link :underline="false" @click="rolePermission">
+            <i class="el-icon-setting"></i>
             Role Permission
+          </el-link>
+        </div>
+        <div style="margin-top: 10px">
+          <el-link :underline="false" @click="tagCheck">
+            Tag Check
           </el-link>
         </div>
         <div style="margin-top: 10px">
@@ -72,7 +81,6 @@
       <router-view></router-view>
     </el-main>
   </el-container>
-
   </body>
 </template>
 
@@ -86,17 +94,20 @@
       }
     },
     methods: {
-      exit() {
-        this.exit_loading_visible = true;
-        setTimeout(() => {
-          window.sessionStorage.clear();
-          this.exit_loading_visible = false;
-          this.$router.push({path: '/'});
-        }, 2000);
+      openUserInfo() {
+        this.$router.push({path: '/UserInfo'});
+      },
+
+      goHome() {
+        this.$router.push({path: '/DataPage'});
       },
 
       labelSearch() {
         this.$router.push({path: '/LabelSearch'});
+      },
+
+      userSearch() {
+        this.$router.push({path: '/UserSearch'});
       },
 
       userManagement() {
@@ -107,33 +118,33 @@
         this.$router.push({path: '/TagManagement'});
       },
 
-      openUserInfo() {
-        this.$router.push({path: '/UserInfo'});
-      },
-
-      goHome() {
-        this.$router.push({path: '/DataPage'});
-      },
-
-      userSearch() {
-        this.$router.push({path: ''});
+      adminManagement() {
+        this.$router.push({path: '/AdminManagement'});
       },
 
       rolePermission() {
         this.$router.push({path: '/RolePermission'});
       },
 
-      adminManagement() {
-        this.$router.push({path: '/AdminManagement'});
+      tagCheck() {
+        this.$router.push({path: '/TagCheck'});
       },
 
+      exit() {
+        this.exit_loading_visible = true;
+        setTimeout(() => {
+          window.sessionStorage.clear();
+          this.exit_loading_visible = false;
+          this.$router.push({path: '/'});
+        }, 2000);
+      }
     }
   }
 </script>
 
 <style scoped>
   .el-aside {
-    background-color: #ff6b6b;
+    background-color: #000066;
     text-align: center;
     border-radius: 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04)
@@ -157,12 +168,12 @@
   }
 
   .el-drawer {
-    background-color: #052aae;
+    background-color: #000066;
   }
 
   .el-card {
     width: 80%;
-    box-shadow: 0 2px 4px #052aae, 0 0 6px rgba(0, 0, 0, .04)
+    box-shadow: 0 2px 4px #000066, 0 0 6px rgba(0, 0, 0, .04)
   }
 
   #home {
