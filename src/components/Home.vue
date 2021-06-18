@@ -42,7 +42,10 @@
           </el-link>
         </div>
         <div style="margin-top: 10px">
-          <el-link :underline="false" @click="tagManagement">
+          <el-link :underline="false"
+                   @click="tagManagement"
+                   v-loading.fullscreen.lock="loading_visible"
+                   element-loading-text="拼命加载中">
             <i class="el-icon-collection-tag"></i>
             Tag Management
           </el-link>
@@ -91,6 +94,8 @@
       return {
         exit_loading_visible: false,
         user_info_visible: false,
+        //标签总览：loading选项
+        loading_visible:false
       }
     },
     methods: {
@@ -115,7 +120,14 @@
       },
 
       tagManagement() {
+
+        this.loading_visible = true;
         this.$router.push({path: '/TagManagement'});
+        //跳转页面之前需要先加载一下
+        setTimeout( () => {
+
+          this.loading_visible = false
+        }, 500);
       },
 
       adminManagement() {
