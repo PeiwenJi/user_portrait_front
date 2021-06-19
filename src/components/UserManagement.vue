@@ -237,7 +237,7 @@
         count:{
         },
         numChanged:false,
-        super_admin:false,
+        super_admin:true,
         cardNum:12
 
       }
@@ -260,13 +260,14 @@
       console.log(this.super_admin)
       if (window.sessionStorage.getItem("Identity")=="super-admin") {
         this.super_admin==true
-        this.cardNum=8
-      }
 
+      }
+      this.cardNum=8
       //初始化标签栏
       this.$nextTick(() => {
         if(!this.super_admin){
-          //this.$refs.tabs.$children[0].$refs.tabs[1].style.display = 'none';
+
+          this.$refs.tabs.$children[0].$refs.tabs[1].style.display = 'none';
         }
 
 
