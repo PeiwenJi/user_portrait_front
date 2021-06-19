@@ -20,48 +20,46 @@
         <div style="margin-top: 10px">
           <el-link :underline="false" @click="goHome">
             <i class="el-icon-s-data"></i>
-            Data
-          </el-link>
-        </div>
-        <div style="margin-top: 10px">
-          <el-link :underline="false" @click="tagSearch">
-            <i class="el-icon-search"></i>
-            Tag Search
+            数据
           </el-link>
         </div>
         <div style="margin-top: 10px">
           <el-link :underline="false" @click="userSearch">
-            <i class="el-icon-user"></i>
-            User Search
+            <i class="el-icon-picture-outline"></i>
+            用户画像
           </el-link>
         </div>
         <div style="margin-top: 10px">
           <el-link :underline="false" @click="userManagement">
             <i class="el-icon-user"></i>
-            User Management
-          </el-link>
-        </div>
-        <div style="margin-top: 10px">
-          <el-link :underline="false" @click="tagManagement">
-            <i class="el-icon-collection-tag"></i>
-            Tag Management
+            用户管理
           </el-link>
         </div>
         <div style="margin-top: 10px">
           <el-link :underline="false" @click="adminManagement">
             <i class="el-icon-user"></i>
-            Admin Management
+            管理员管理
+          </el-link>
+        </div>
+        <div style="margin-top: 10px">
+          <el-link :underline="false"
+                   @click="tagManagement"
+                   v-loading.fullscreen.lock="loading_visible"
+                   element-loading-text="Loading">
+            <i class="el-icon-collection-tag"></i>
+            标签管理
+          </el-link>
+        </div>
+        <div style="margin-top: 10px">
+          <el-link :underline="false" @click="tagCheck">
+            <i class="el-icon-collection-tag"></i>
+            标签审核
           </el-link>
         </div>
         <div style="margin-top: 10px">
           <el-link :underline="false" @click="rolePermission">
             <i class="el-icon-setting"></i>
-            Role Permission
-          </el-link>
-        </div>
-        <div style="margin-top: 10px">
-          <el-link :underline="false" @click="tagCheck">
-            Tag Check
+            权限设置
           </el-link>
         </div>
         <div style="margin-top: 10px">
@@ -71,7 +69,7 @@
             v-loading.fullscreen.lock="exit_loading_visible"
             element-loading-text="Exiting...">
             <i class="el-icon-switch-button"></i>
-            Exit
+            退出
           </el-link>
         </div>
       </div>
@@ -91,6 +89,8 @@
       return {
         exit_loading_visible: false,
         user_info_visible: false,
+        //标签总览：loading选项
+        loading_visible:false
       }
     },
     methods: {
@@ -99,10 +99,10 @@
       },
 
       goHome() {
-        this.$router.push({path: '/DataPage'});
+        this.$router.push({path: '/MainPage'});
       },
 
-      tagSearch() {
+      labelSearch() {
         this.$router.push({path: '/TagSearch'});
       },
 
@@ -115,7 +115,14 @@
       },
 
       tagManagement() {
+
+        this.loading_visible = true;
         this.$router.push({path: '/TagManagement'});
+        //跳转页面之前需要先加载一下
+        setTimeout( () => {
+
+          this.loading_visible = false
+        }, 500);
       },
 
       adminManagement() {

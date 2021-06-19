@@ -210,7 +210,9 @@
         handleEditVisible: false,
         addUserVisible:false,
         userTableData: [],
-        form: {  },
+        form: {
+
+        },
         addForm:{identity:'user' },
         userInfo: {
           email: '',
