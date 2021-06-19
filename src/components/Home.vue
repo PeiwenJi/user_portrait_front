@@ -20,51 +20,46 @@
         <div style="margin-top: 10px">
           <el-link :underline="false" @click="goHome">
             <i class="el-icon-s-data"></i>
-            Data
-          </el-link>
-        </div>
-        <div style="margin-top: 10px">
-          <el-link :underline="false" @click="labelSearch">
-            <i class="el-icon-search"></i>
-            Label Search
+            数据
           </el-link>
         </div>
         <div style="margin-top: 10px">
           <el-link :underline="false" @click="userSearch">
-            <i class="el-icon-user"></i>
-            User Search
+            <i class="el-icon-picture-outline"></i>
+            用户画像
           </el-link>
         </div>
         <div style="margin-top: 10px">
           <el-link :underline="false" @click="userManagement">
             <i class="el-icon-user"></i>
-            User Management
+            用户管理
+          </el-link>
+        </div>
+        <div style="margin-top: 10px">
+          <el-link :underline="false" @click="adminManagement">
+            <i class="el-icon-user"></i>
+            管理员管理
           </el-link>
         </div>
         <div style="margin-top: 10px">
           <el-link :underline="false"
                    @click="tagManagement"
                    v-loading.fullscreen.lock="loading_visible"
-                   element-loading-text="拼命加载中">
+                   element-loading-text="Loading">
             <i class="el-icon-collection-tag"></i>
-            Tag Management
+            标签管理
           </el-link>
         </div>
         <div style="margin-top: 10px">
-          <el-link :underline="false" @click="adminManagement">
-            <i class="el-icon-user"></i>
-            Admin Management
+          <el-link :underline="false" @click="tagCheck">
+            <i class="el-icon-collection-tag"></i>
+            标签审核
           </el-link>
         </div>
         <div style="margin-top: 10px">
           <el-link :underline="false" @click="rolePermission">
             <i class="el-icon-setting"></i>
-            Role Permission
-          </el-link>
-        </div>
-        <div style="margin-top: 10px">
-          <el-link :underline="false" @click="tagCheck">
-            Tag Check
+            权限设置
           </el-link>
         </div>
         <div style="margin-top: 10px">
@@ -74,7 +69,7 @@
             v-loading.fullscreen.lock="exit_loading_visible"
             element-loading-text="Exiting...">
             <i class="el-icon-switch-button"></i>
-            Exit
+            退出
           </el-link>
         </div>
       </div>
@@ -104,11 +99,11 @@
       },
 
       goHome() {
-        this.$router.push({path: '/DataPage'});
+        this.$router.push({path: '/MainPage'});
       },
 
       labelSearch() {
-        this.$router.push({path: '/LabelSearch'});
+        this.$router.push({path: '/TagSearch'});
       },
 
       userSearch() {
