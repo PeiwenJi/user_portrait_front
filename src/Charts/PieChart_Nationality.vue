@@ -1,5 +1,5 @@
 <template>
-  <div id="pieChart_nationality" style="width: 330px; height: 260px;"></div>
+  <div ref="pieChart_nationality" style="width: 330px; height: 260px;"></div>
 </template>
 
 <script>
@@ -14,7 +14,7 @@
       async draw(){
         const {data: res_nationality} = await this.$http.get("getNationality");
 
-        let pieChart_nationality = this.$echarts.init((document.getElementById("pieChart_nationality")));
+        let pieChart_nationality = this.$echarts.init(this.$refs.pieChart_nationality);
 
         let option_nationality = {
           title: {

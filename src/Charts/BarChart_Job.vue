@@ -1,5 +1,5 @@
 <template>
-  <div id="barChart_job" style="width: 850px; height: 260px; margin-top: -40px"></div>
+  <div ref="barChart_job" style="width: 850px; height: 260px; margin-top: -40px"></div>
 </template>
 
 <script>
@@ -14,7 +14,7 @@
       async draw(){
         const {data: res_job} = await this.$http.get("getJob");
 
-        let barChart_job = this.$echarts.init((document.getElementById("barChart_job")));
+        let barChart_job = this.$echarts.init(this.$refs.barChart_job);
 
         let option_job = {
           tooltip: {

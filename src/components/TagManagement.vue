@@ -160,7 +160,7 @@
             {{tag}}
           </el-tag>
 
-          <!--          表格-->
+          <!-- 表格 -->
           <el-table
             ref="tagTable"
             :data="tagsTableData"
@@ -233,8 +233,6 @@
         </el-card>
       </el-tab-pane>
     </el-tabs>
-
-
 
   </div>
   <!--  修改标签信息的弹出框-->

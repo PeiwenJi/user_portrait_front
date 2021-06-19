@@ -1,5 +1,5 @@
 <template>
-  <div id="lineChart_logSession" style="width: 1600px; height: 560px;"></div>
+  <div ref="lineChart_logSession" style="width: 1600px; height: 560px;"></div>
 </template>
 
 <script>
@@ -12,7 +12,7 @@
 
     methods: {
       draw(){
-        let lineChart_logSession = this.$echarts.init((document.getElementById("lineChart_logSession")));
+        let lineChart_logSession = this.$echarts.init(this.$refs.lineChart_logSession);
 
         let option_logSession = {
           title: {

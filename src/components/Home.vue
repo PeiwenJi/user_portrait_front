@@ -24,9 +24,9 @@
           </el-link>
         </div>
         <div style="margin-top: 10px">
-          <el-link :underline="false" @click="labelSearch">
+          <el-link :underline="false" @click="tagSearch">
             <i class="el-icon-search"></i>
-            Label Search
+            Tag Search
           </el-link>
         </div>
         <div style="margin-top: 10px">
@@ -102,8 +102,8 @@
         this.$router.push({path: '/DataPage'});
       },
 
-      labelSearch() {
-        this.$router.push({path: '/LabelSearch'});
+      tagSearch() {
+        this.$router.push({path: '/TagSearch'});
       },
 
       userSearch() {

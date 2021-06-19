@@ -1,5 +1,5 @@
 <template>
-  <div id="pieChart_marriage" style="width: 330px; height: 260px;"></div>
+  <div ref="pieChart_marriage" style="width: 330px; height: 260px;"></div>
 </template>
 
 <script>
@@ -14,7 +14,7 @@
       async draw(){
         const {data: res_marriage} = await this.$http.get("getMarriage");
 
-        let pieChart_marriage = this.$echarts.init((document.getElementById("pieChart_marriage")));
+        let pieChart_marriage = this.$echarts.init(this.$refs.pieChart_marriage);
 
         let option_marriage = {
 

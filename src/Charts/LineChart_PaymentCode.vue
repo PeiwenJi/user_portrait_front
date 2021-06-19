@@ -1,5 +1,5 @@
 <template>
-  <div id="lineChart_paymentCode" style="width: 1600px; height: 460px;"></div>
+  <div ref="lineChart_paymentCode" style="width: 1600px; height: 460px;"></div>
 </template>
 
 <script>
@@ -12,7 +12,7 @@
 
     methods: {
       draw(){
-        let lineChart_paymentCode = this.$echarts.init((document.getElementById("lineChart_paymentCode")));
+        let lineChart_paymentCode = this.$echarts.init(this.$refs.lineChart_paymentCode);
 
         let option_paymentCode = {
           title: {

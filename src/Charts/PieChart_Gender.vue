@@ -1,5 +1,5 @@
 <template>
-  <div id="pieChart_gender" style="width: 330px; height: 260px;"></div>
+  <div ref="pieChart_gender" style="width: 330px; height: 260px;"></div>
 </template>
 
 <script>
@@ -14,7 +14,7 @@
       async draw(){
         const {data: res_gender} = await this.$http.get("getGender");
 
-        let pieChart_gender = this.$echarts.init((document.getElementById("pieChart_gender")));
+        let pieChart_gender = this.$echarts.init(this.$refs.pieChart_gender);
 
         let option_gender = {
           tooltip: {

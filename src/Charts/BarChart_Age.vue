@@ -1,5 +1,5 @@
 <template>
-  <div id="barChart_age" style="width: 850px; height: 300px; margin-top: -30px"></div>
+  <div ref="barChart_age" style=" width: 850px; height: 300px; margin-top: -30px"></div>
 </template>
 
 <script>
@@ -12,7 +12,7 @@
 
     methods: {
       draw(){
-        let barChart_age = this.$echarts.init((document.getElementById("barChart_age")));
+        let barChart_age = this.$echarts.init(this.$refs.barChart_age);
 
         let option_age = {
           tooltip: {
