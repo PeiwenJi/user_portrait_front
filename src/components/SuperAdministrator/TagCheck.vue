@@ -1,13 +1,13 @@
 <template>
   <body>
     <!-- 面包屑导航栏 -->
-    <el-breadcrumb separator-class="el-icon-arrow-right" style="font-size: 18px">
-      <el-breadcrumb-item :to="{ path: '/' }">Home</el-breadcrumb-item>
-      <el-breadcrumb-item>Tag Check</el-breadcrumb-item>
-    </el-breadcrumb>
+<!--    <el-breadcrumb separator-class="el-icon-arrow-right" style="font-size: 18px">-->
+<!--      <el-breadcrumb-item :to="{ path: '/' }">Home</el-breadcrumb-item>-->
+<!--      <el-breadcrumb-item>Tag Check</el-breadcrumb-item>-->
+<!--    </el-breadcrumb>-->
     <!-- 卡片 -->
-    <el-card style="margin-top: 50px">
-      <el-row :gutter="20" style="margin: 50px 10px">
+    <el-card style="margin-top: 50px;margin-left: 10px">
+      <el-row :gutter="20"  >
         <el-col :span="8">
           <div class="grid-content bg-purple">
             <div style="width: 100%; height: 500px;"  id="tagStatus" ></div>

@@ -81,11 +81,14 @@
           </div>
 
 <!--标签词云-->
-          <div style="width: 100%;margin-top: 50px" >
-            <template>
-              <div id="tagsWorld" style="width:100%;height:600px;"></div>
-            </template>
-          </div>
+          <el-row>
+            <div style="width: 100%;margin-top: 50px;margin-left: 10px" >
+              <template>
+                <div id="tagsWorld" style="width:100%;height:600px;"></div>
+              </template>
+            </div>
+          </el-row>
+
         </el-row>
 
 
@@ -247,6 +250,9 @@
           <!--          todo：该组件没有发挥作用-->
           <el-backtop target=".labelTable" :visibility-height="0" ></el-backtop>
         </div>
+      </el-tab-pane>
+      <el-tab-pane label="标签审核" name="third" style="margin-bottom: 10px">
+        <tagCheckPange> </tagCheckPange>
       </el-tab-pane>
     </el-tabs>
 
@@ -412,8 +418,11 @@
 </template>
 
 <script>
+  import tagCheckPange from "../components/SuperAdministrator/TagCheck"
   export default {
+
     name: "user_management",
+    components:{tagCheckPange},
     data() {
       return {
         //标签页激活状态
