@@ -9,7 +9,7 @@
           <el-col :span="8"> <el-card class="box-card" style="width: 90%;margin-left: 15px">
             <div slot="header" class="clearfix">
               <el-row :gutter="20">
-                <el-col :span="18"><span class="graph_title">四级标签</span></el-col>
+                <el-col :span="18"><span class="graph_title">五级标签</span></el-col>
                 <el-col :span="6"><span class="ant-tag-green" style="margin-left:50px ">总</span></el-col>
               </el-row>
             </div>
@@ -690,6 +690,7 @@
             this.$refs.tagTable.clearSelection();
             this.createComposedLabelVisible=false
             this.$message.success("success add")
+            this.$set(this.createdComposedLabelForm,"forth","")
           }
           if(response.data=="name complicate"){
             this.$message.error("在该三级标签下有相同的名称的四级标签，请重新命名")
