@@ -2,7 +2,7 @@
   <body id="tags_management">
   <div style="width: 100%">
 
-    <el-tabs v-model="activeName" @tab-click="handleClick">
+    <el-tabs v-model="activeName" @tab-click="handleClick" ref="tabs">
 
       <el-tab-pane label="标签总览" name="first" >
         <el-row>
@@ -463,12 +463,18 @@
         //标签管理：将tag内容和tag表格的行map起来
         dynamicTagRow:[],
         //标签总览：加载项
-        loading_visible:false
+        loading_visible:false,
+
       }
     },
     created(){
       this.initTagsTable();
       this.initCountInfo();
+      //访问组合标签信息
+      this.$http.get("getComposedTagsInfo").then(response => {
+            console.log(response.data)
+        }
+      )
       },
     mounted(){
       this.getSearchForthTags();
@@ -490,7 +496,8 @@
        // console.log(allTagList)
         this.initEcharts(allTagList)
         }
-      )
+      );
+
 
     },
     methods: {
@@ -528,6 +535,7 @@
       },
       handleClick(tab, event) {
         //console.log(tab, event);
+
       },
       //初始化标签表格数据
       initTagsTable(){
@@ -824,7 +832,7 @@
           }
         )
       }
-      }
+      },
 
 
     }

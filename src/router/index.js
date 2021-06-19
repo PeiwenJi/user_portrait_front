@@ -5,7 +5,7 @@ import Login from '@/components/Login'
 import Home from '@/components/Home'
 
 // import DataPage from '@/components/DataPage'
-// import LabelSearch from '@/components/LabelSearch'
+// import TagSearch from '@/components/TagSearch'
 import UserSearch from '@/components/UserSearch'
 import UserInfo from '@/components/UserInfo'
 import UserManagement from '@/components/UserManagement'

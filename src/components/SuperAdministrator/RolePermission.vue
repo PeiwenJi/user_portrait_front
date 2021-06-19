@@ -166,18 +166,18 @@ export default {
             if(response.data == "ok"){
               console.log(response);
               this.getRoleList()
-              this.$message.success("edit successfully！");
+              this.$message.success("edit successfully!");
               console.log("sucess")
             }
             else{
               console.log(response);
-              this.$message.success("edit failure！");
+              this.$message.success("edit failure!");
               console.log("error")
             }
           })
       }
       else{
-        this.$message.success("Please input full information！");
+        this.$message.success("Please input full information!");
       }
     }
   }

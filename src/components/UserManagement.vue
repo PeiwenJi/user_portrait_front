@@ -1,10 +1,10 @@
 <template>
   <body id="user_management">
   <div style="width: 100%">
-    <el-tabs v-model="activeName" @tab-click="handleClick">
+    <el-tabs v-model="activeName" @tab-click="handleClick" ref="tabs" >
       <el-tab-pane label="用户总览" name="first" style="margin-top: 50px;margin-bottom: 10px" >
         <el-row>
-          <el-col :span="8">
+          <el-col :span="cardNum">
             <el-card class="box-card" style="width: 90%;margin-left: 15px">
               <div slot="header" class="clearfix">
                 <el-row :gutter="20">
@@ -18,7 +18,8 @@
                 </el-row>
               </div>
             </el-card> </el-col>
-          <el-col :span="8">   <el-card class="box-card" style="width: 90%;margin-left: 15px">
+          <el-col :span="cardNum" >
+            <el-card class="box-card" style="width: 90%;margin-left: 15px"  >
             <div slot="header" class="clearfix">
               <el-row :gutter="20">
                 <el-col :span=18><span class="graph_title">管理员数目</span></el-col>
@@ -30,9 +31,10 @@
                 <span class="text-2xl" ref="adminNum"  >{{count.adminNum}}位</span>
               </el-row>
             </div>
-          </el-card></el-col>
-          <el-col :span="8">
-            <el-card class="box-card" style="width: 90%;margin-left: 15px">
+          </el-card>
+          </el-col>
+          <el-col :span="cardNum" v-if="super_admin">
+            <el-card class="box-card" style="width: 90%;margin-left: 15px"  >
               <div slot="header" class="clearfix">
                 <el-row :gutter="20">
                   <el-col :span="18"><span class="graph_title">超级管理员数量</span></el-col>
@@ -130,6 +132,9 @@
           </el-table>
         </el-card>
       </el-tab-pane>
+      <el-tab-pane label="管理员管理" name="third" style="margin-bottom: 10px">
+        <AdminManagementPange></AdminManagementPange>
+      </el-tab-pane>
 
     </el-tabs>
 
@@ -202,8 +207,10 @@
 </template>
 
 <script>
+  import AdminManagementPange from "../components/SuperAdministrator/AdminManagement"
   export default {
     name: "user_management",
+    components:{AdminManagementPange},
     data() {
       return {
         activeName: 'first',      //默认的标签页
@@ -229,7 +236,9 @@
         },
         count:{
         },
-        numChanged:false
+        numChanged:false,
+        super_admin:false,
+        cardNum:12
 
       }
     },
@@ -246,6 +255,23 @@
           console.log("error")
         }
       )
+
+      console.log(window.sessionStorage.getItem("Identity"))
+      console.log(this.super_admin)
+      if (window.sessionStorage.getItem("Identity")=="super-admin") {
+        this.super_admin==true
+        this.cardNum=8
+      }
+
+      //初始化标签栏
+      this.$nextTick(() => {
+        if(!this.super_admin){
+          //this.$refs.tabs.$children[0].$refs.tabs[1].style.display = 'none';
+        }
+
+
+      })
+
     },
 
     //html渲染前调用

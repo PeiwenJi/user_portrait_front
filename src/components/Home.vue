@@ -23,12 +23,6 @@
             数据
           </el-link>
         </div>
-<!--        <div style="margin-top: 10px">-->
-<!--          <el-link :underline="false" @click="labelSearch">-->
-<!--            <i class="el-icon-search"></i>-->
-<!--            Label Search-->
-<!--          </el-link>-->
-<!--        </div>-->
         <div style="margin-top: 10px">
           <el-link :underline="false" @click="userSearch">
             <i class="el-icon-picture-outline"></i>
@@ -42,30 +36,30 @@
           </el-link>
         </div>
         <div style="margin-top: 10px">
+          <el-link :underline="false" @click="adminManagement">
+            <i class="el-icon-user"></i>
+            管理员管理
+          </el-link>
+        </div>
+        <div style="margin-top: 10px">
           <el-link :underline="false"
                    @click="tagManagement"
                    v-loading.fullscreen.lock="loading_visible"
-                   element-loading-text="拼命加载中">
+                   element-loading-text="Loading">
             <i class="el-icon-collection-tag"></i>
             标签管理
           </el-link>
         </div>
         <div style="margin-top: 10px">
-          <el-link :underline="false" @click="adminManagement">
-            <i class="el-icon-setting"></i>
-            管理员设置
+          <el-link :underline="false" @click="tagCheck">
+            <i class="el-icon-collection-tag"></i>
+            标签审核
           </el-link>
         </div>
         <div style="margin-top: 10px">
           <el-link :underline="false" @click="rolePermission">
             <i class="el-icon-setting"></i>
             权限设置
-          </el-link>
-        </div>
-        <div style="margin-top: 10px">
-          <el-link :underline="false" @click="tagCheck">
-            <i class="el-icon-check"></i>
-            标签审核
           </el-link>
         </div>
         <div style="margin-top: 10px">
@@ -108,9 +102,9 @@
         this.$router.push({path: '/MainPage'});
       },
 
-      // labelSearch() {
-      //   this.$router.push({path: '/LabelSearch'});
-      // },
+      labelSearch() {
+        this.$router.push({path: '/TagSearch'});
+      },
 
       userSearch() {
         this.$router.push({path: '/UserSearch'});

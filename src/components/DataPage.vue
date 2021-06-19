@@ -1,60 +1,68 @@
 <template>
   <div>
+    <!-- 搜索标签框-->
     <div style="width: 100%">
-      <el-card style="box-shadow: 0 2px 4px #ff6b6b, 0 0 6px rgba(0, 0, 0, .04)">
-        <el-row>
-          <el-col :span="5">
-            <el-select v-model="level_1" placeholder="一级标签">
-              <el-option label="电商" value="电商">
-              </el-option>
-            </el-select>
-          </el-col>
-          <el-col :span="5">
-            <el-select v-model="level_2" placeholder="二级标签">
-              <el-option label="综合" value="综合">
-              </el-option>
-            </el-select>
-          </el-col>
-          <el-col :span="5">
-            <el-select v-model="level_3" placeholder="三级标签">
-              <el-option label="人口属性" value="人口属性">
-              </el-option>
-              <el-option label="商业属性" value="商业属性">
-              </el-option>
-              <el-option label="行为属性" value="行为属性">
-              </el-option>
-              <el-option label="用户价值" value="用户价值">
-              </el-option>
-            </el-select>
-          </el-col>
-          <el-col :span="5">
-            <el-select v-model="level_4" placeholder="四级标签">
-              <el-option label="性别" value="性别" v-show="level_3=='人口属性'">
-              </el-option>
-              <el-option label="年龄段" value="年龄段" v-show="level_3=='人口属性'">
-              </el-option>
-              <el-option label="身高" value="身高" v-show="level_3=='人口属性'">
-              </el-option>
-              <el-option label="民族" value="民族" v-show="level_3=='人口属性'">
-              </el-option>
-              <el-option label="消费周期" value="消费周期" v-show="level_3=='商业属性'">
-              </el-option>
-              <el-option label="消费能力" value="消费能力" v-show="level_3=='商业属性'">
-              </el-option>
-              <el-option label="登录频率" value="登录频率" v-show="level_3=='行为属性'">
-              </el-option>
-              <el-option label="房产" value="房产" v-show="level_3=='用户价值'">
-              </el-option>
-            </el-select>
-          </el-col>
-          <el-col :span="4" style="text-align: center">
-            <el-button icon="el-icon-search" circle style="background-color: #052aae; color: white" @click=""></el-button>
-          </el-col>
-        </el-row>
+      <el-card style="box-shadow: 0 2px 4px #000066, 0 0 6px rgba(0, 0, 0, .04); margin-top: 20px">
+        <el-row style="margin-top: 20px">
+        <el-col :span="6">
+          <el-select v-model="first" placeholder="一级标签">
+            <el-option label="电商" value="电商">
+            </el-option>
+          </el-select>
+        </el-col>
+        <el-col :span="6">
+          <el-select v-model="second" placeholder="二级标签">
+            <el-option label="综合" value="综合">
+            </el-option>
+          </el-select>
+        </el-col>
+        <el-col :span="6">
+          <el-select v-model="third" placeholder="三级标签" @change="getSearchForthTags">
+            <el-option label="全部" value="全部">
+            </el-option>
+            <el-option label="人口属性（用户特征）" value="人口属性（用户特征）">
+            </el-option>
+            <el-option label="商业属性（消费特征）" value="商业属性（消费特征）">
+            </el-option>
+            <el-option label="行为属性（兴趣特征）" value="行为属性（兴趣特征）">
+            </el-option>
+            <el-option label="用户价值" value="用户价值">
+            </el-option>
+          </el-select>
+        </el-col>
+        <el-col :span="6">
+          <el-select v-model="forth" placeholder="四级标签">
+            <el-option label="性别" value="性别" v-show="third == '人口属性（用户特征）' || third == '全部'">
+            </el-option>
+            <el-option label="年龄段" value="年龄段" v-show="third =='人口属性（用户特征）'|| third == '全部'">
+            </el-option>
+            <el-option label="政治面貌" value="政治面貌" v-show="third =='人口属性（用户特征）'|| third == '全部' ">
+            </el-option>
+            <el-option label="职业" value="职业" v-show="third =='人口属性（用户特征）'|| third == '全部'">
+            </el-option>
+            <el-option label="婚姻状况" value="婚姻状况" v-show="third =='人口属性（用户特征）' || third == '全部'">
+            </el-option>
+            <el-option label="星座" value="星座" v-show="third =='人口属性（用户特征）' || third == '全部'">
+            </el-option>
+            <el-option label="消费周期" value="消费周期" v-show="third=='商业属性（消费特征）' || third == '全部'">
+            </el-option>
+            <el-option label="客单价" value="客单价" v-show="third=='商业属性（消费特征）' || third == '全部'">
+            </el-option>
+            <el-option label="支付方式" value="支付方式" v-show="third=='商业属性（消费特征）' || third == '全部'">
+            </el-option>
+            <el-option label="单笔最高" value="单笔最高" v-show="third=='商业属性（消费特征）' || third == '全部'">
+            </el-option>
+            <el-option label="浏览时段" value="浏览时段" v-show="third=='行为属性（兴趣特征）' || third == '全部'">
+            </el-option>
+          </el-select>
+          <el-button icon="el-icon-search" circle style="background-color: #000066; color: white"  @click="searchTags"></el-button>
+        </el-col>
+        </el-row >
       </el-card>
     </div>
+
     <!--用户特征-->
-    <el-card style="box-shadow: 0 2px 4px #ff6b6b, 0 0 6px rgba(0, 0, 0, .04); margin-top: 10px">
+    <el-card v-show="third=='' || third=='全部' || third=='人口属性（用户特征）' " style="box-shadow: 0 2px 4px #000066, 0 0 6px rgba(0, 0, 0, .04); margin-top: 30px">
       <el-row>
         <el-col :span="14">
           <el-row>
@@ -104,7 +112,7 @@
     </el-card>
 
     <!--消费特征-->
-    <el-card style="box-shadow: 0 2px 4px #ff6b6b, 0 0 6px rgba(0, 0, 0, .04); margin-top: 10px">
+    <el-card v-show="third=='' || third=='全部' || third=='商业属性（消费特征）' " style="box-shadow: 0 2px 4px #000066, 0 0 6px rgba(0, 0, 0, .04); margin-top: 30px">
       <el-row>
         <el-col :span="17">
         <el-card class="card_1">
@@ -132,9 +140,27 @@
     </el-card>
 
     <!--行为特征-->
-    <el-card style="box-shadow: 0 2px 4px #ff6b6b, 0 0 6px rgba(0, 0, 0, .04); margin-top: 10px; height: 600px">
+    <el-card v-show="third=='' || third=='全部' || third=='行为属性（兴趣特征）' " style="box-shadow: 0 2px 4px #000066, 0 0 6px rgba(0, 0, 0, .04); margin-top: 30px; height: 600px">
       <lineChart_LogSession></lineChart_LogSession>
     </el-card>
+
+    <!-- dialog查看四级tag图 -->
+    <div class="dialog">
+      <el-dialog :visible.sync="visible_forthTagChart" :append-to-body="true" width="auto">
+        <pieChart_Gender style="margin-left: 50%; transform:translateX(-50%)" v-show="forth=='性别'"></pieChart_Gender>
+        <barChart_Age style="margin-left: 50%; transform:translateX(-50%)" v-show="forth=='年龄段'"></barChart_Age>
+        <pieChart_PoliticalFace style="margin-left: 50%; transform:translateX(-50%)" v-show="forth=='政治面貌'"></pieChart_PoliticalFace>
+        <barChart_Job style="margin-left: 50%; transform:translateX(-50%)" v-show="forth=='职业'"></barChart_Job>
+        <pieChart_Marriage style="margin-left: 50%; transform:translateX(-50%)" v-show="forth=='婚姻状况'"></pieChart_Marriage>
+        <pie-chart_-constellation style="margin-left: 50%; transform:translateX(-50%)" v-show="forth=='星座'"></pie-chart_-constellation>
+        <pieChart_Cycle style="margin-left: 50%; transform:translateX(-50%)" v-show="forth=='消费周期'"></pieChart_Cycle>
+        <barChart_AvgAmount style="margin-left: 50%; transform:translateX(-50%)" v-show="forth=='客单价'"></barChart_AvgAmount>
+        <lineChart_PaymentCode style="margin-left: 50%; transform:translateX(-50%)" v-show="forth=='支付方式'"></lineChart_PaymentCode>
+        <barChart_MaxAmount style="margin-left: 50%; transform:translateX(-50%)" v-show="forth=='单笔最高'"></barChart_MaxAmount>
+        <lineChart_LogSession style="margin-left: 50%; transform:translateX(-50%)" v-show="forth=='浏览时段'"></lineChart_LogSession>
+      </el-dialog>
+    </div>
+
   </div>
 </template>
 
@@ -168,10 +194,18 @@
     },
     data() {
       return {
-        level_1: '',
-        level_2: '',
-        level_3: '',
-        level_4: '',
+        // 设置查看四级标签图的对话框不可见
+        visible_forthTagChart: false,
+        // 搜索框赋值
+        first:'电商',
+        second:'综合',
+        third:'',
+        forth:'',
+      }
+    },
+    methods:{
+      searchTags() {
+        this.visible_forthTagChart = true;
       }
     }
   }
@@ -186,7 +220,7 @@
     font-family: 'Agency FB';
     font-size: x-large;
     font-weight: bolder;
-    color: #ff6b6b
+    color: #2c343c
   }
 
   .card_2 {
