@@ -18,7 +18,7 @@
         </el-row>
       </div>
     </el-card>
-    <el-card style="margin-top: 20px; height: 850px" v-show="info_visible">
+    <div style="margin-top: 20px; height: 850px" v-show="info_visible">
       <el-col :span="10">
         <!--用户特征-->
         <el-card style="height: 400px">
@@ -191,7 +191,7 @@
         </el-card>
 
         <!--行为特征-->
-        <el-card style="height: 400px; margin-top: 10px">
+        <el-card style="height: 400px; margin-top: 20px">
           <div slot="header" class="title">
             <span>行为特征</span>
           </div>
@@ -320,12 +320,7 @@
                   <el-tag color="#E87C25" style="color: white; font-weight: bold">品类偏好</el-tag>
                 </el-col>
                 <el-col :span="14">
-                  <el-dropdown split-button size="medium" type="info">
-                    显示更多
-                    <el-dropdown-menu slot="dropdown">
-                      <el-dropdown-item v-for="(item, index) in cateList" :key="index">{{item}}</el-dropdown-item>
-                    </el-dropdown-menu>
-                  </el-dropdown>
+                  <span class="info">{{cateFeatured}}</span>
                 </el-col>
               </el-row>
             </div>
@@ -496,12 +491,12 @@
         </el-card>
 
         <!--用户价值-->
-        <el-card style="height: 400px; margin-top: 10px">
+        <el-card style="height: 400px; margin-top: 20px">            <!--用户价值-->
+
           <div slot="header" class="title" style="text-align: right">
             <span>用户价值</span>
           </div>
           <el-col :span="11">
-            <!--用户价值-->
             <div>
               <el-row>
                 <el-col :span="10">
@@ -565,7 +560,7 @@
           <el-col :span="11" style="margin-left: 20px"></el-col>
         </el-card>
       </el-col>
-    </el-card>
+    </div>
   </div>
 </template>
 
@@ -603,6 +598,7 @@
         browseFrequency: '',
         logFrequency: '',
         browseTime: '',
+        cateFeatured: '',
 
         userValue: '',
 
@@ -610,8 +606,6 @@
         info_visible: false,
         isMan: true,
         isWoman: false,
-
-        cateList: []
       }
     },
     methods: {
@@ -671,7 +665,7 @@
             this.userValue = res_userValue[0];
 
             const {data: res_cateFeatured} = await this.$http.get("getCateFeatured?id=" + this.user_id);
-            this.cateList = res_cateFeatured.split(",");
+            this.cateFeatured = res_cateFeatured;
 
             this.info_visible = true;
             this.search_loading = false;
@@ -692,14 +686,14 @@
   }
 
   .el-card__header {
-    color: #ff6b6b;
+    color: #000066;
   }
 
   .title {
     font-family: PingFang SC;
     font-size: large;
     font-weight: bold;
-    color: #ff6b6b
+    color: #000066
   }
 
   .el-divider--vertical {

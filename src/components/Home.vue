@@ -52,7 +52,7 @@
         </div>
         <div style="margin-top: 10px">
           <el-link :underline="false" @click="tagCheck">
-            <i class="el-icon-collection-tag"></i>
+            <i class="el-icon-document-checked"></i>
             标签审核
           </el-link>
         </div>

@@ -4,47 +4,114 @@
 
     <el-tabs v-model="activeName" @tab-click="handleClick" ref="tabs">
 
-      <el-tab-pane label="标签总览" name="first" >
+      <el-tab-pane label="标签总览" name="first" style="margin-top: 50px;margin-bottom: 10px" >
         <el-row>
-          <el-col :span="8"> <el-card class="box-card" style="width: 90%;margin-left: 15px">
-            <div slot="header" class="clearfix">
-              <el-row :gutter="20">
-                <el-col :span="18"><span class="graph_title">五级标签</span></el-col>
-                <el-col :span="6"><span class="ant-tag-green" style="margin-left:50px ">总</span></el-col>
-              </el-row>
+          <el-col :span="8">
+            <div class="card-panel" style="height: 150px; margin-left: 15%; width: 70%;
+                                 font-size: 18px; overflow: hidden; color: #666; background: #fff;
+                                 box-shadow: 4px 4px 10px #CC3366; border-color: ##CC3366;">
+              <div class="card-panel-icon-wrapper " style="float: left;
+                                                                margin: 10px 0 0 10px;
+                                                                padding: 16px;
+                                                                transition: all 0.38s ease-out;
+                                                                border-radius: 6px;">
+                <i class="el-icon-s-order" style="font-size: 80px; color: #CC3366"></i>
+              </div>
+              <div class="card-panel-description" style="float: right;
+                                                  font-weight: bold;
+                                                  margin: 38px;
+                                                  margin-left: 0px;">
+                <div class="card-panel-text" style="line-height: 20px; color: rgba(0, 0, 0, 0.45); font-size: 18px; margin-bottom: 12px;">
+                  五级标签数目
+                </div>
+                <count-to :start-val="0" :end-val=count.allTagsCount :duration="2600" class="card-panel-num" style="font-size: 24px;"/>
+              </div>
             </div>
-            <div class="text item">
-              <el-row :gutter="20" type="flex" justify="center">
-                <span class="text-2xl" >{{count.allTagsCount}}条</span>
-              </el-row>
+<!--            <el-card class="box-card" style="width: 90%;margin-left: 15px">-->
+<!--            <div slot="header" class="clearfix">-->
+<!--              <el-row :gutter="20">-->
+<!--                <el-col :span="18"><span class="graph_title">五级标签</span></el-col>-->
+<!--                <el-col :span="6"><span class="ant-tag-green" style="margin-left:50px ">总</span></el-col>-->
+<!--              </el-row>-->
+<!--            </div>-->
+<!--            <div class="text item">-->
+<!--              <el-row :gutter="20" type="flex" justify="center">-->
+<!--                <span class="text-2xl" >{{count.allTagsCount}}条</span>-->
+<!--              </el-row>-->
+<!--            </div>-->
+<!--          </el-card> -->
+
+          </el-col>
+          <el-col :span="8">
+            <div class="card-panel" style="height: 150px; margin-left: 15%; width: 70%;
+                                 font-size: 18px; overflow: hidden; color: #666; background: #fff;
+                                 box-shadow: 4px 4px 10px #009999; border-color: #009999;">
+              <div class="card-panel-icon-wrapper " style="float: left;
+                                                                margin: 10px 0 0 10px;
+                                                                padding: 16px;
+                                                                transition: all 0.38s ease-out;
+                                                                border-radius: 6px;">
+                <i class="el-icon-loading" style="font-size: 80px; color: #009999"></i>
+              </div>
+              <div class="card-panel-description" style="float: right;
+                                                  font-weight: bold;
+                                                  margin: 38px;
+                                                  margin-left: 0px;">
+                <div class="card-panel-text" style="line-height: 20px; color: rgba(0, 0, 0, 0.45); font-size: 18px; margin-bottom: 12px;">
+                  开发总数
+                </div>
+                <count-to :start-val="0" :end-val=count.developingTagsCount :duration="2600" class="card-panel-num" style="font-size: 24px;"/>
+              </div>
             </div>
-          </el-card> </el-col>
-          <el-col :span="8">   <el-card class="box-card" style="width: 90%;margin-left: 15px">
-            <div slot="header" class="clearfix">
-              <el-row :gutter="20">
-                <el-col :span="18"><span class="graph_title">开发总数</span></el-col>
-                <el-col :span="6"><span class="ant-tag-green" style="margin-left:50px ">总</span></el-col>
-              </el-row>
+<!--            <el-card class="box-card" style="width: 90%;margin-left: 15px">-->
+<!--            <div slot="header" class="clearfix">-->
+<!--              <el-row :gutter="20">-->
+<!--                <el-col :span="18"><span class="graph_title">开发总数</span></el-col>-->
+<!--                <el-col :span="6"><span class="ant-tag-green" style="margin-left:50px ">总</span></el-col>-->
+<!--              </el-row>-->
+<!--            </div>-->
+<!--            <div class="text item">-->
+<!--              <el-row :gutter="20" type="flex" justify="center">-->
+<!--                <span class="text-2xl" >{{count.developingTagsCount}}条</span>-->
+<!--              </el-row>-->
+<!--            </div>-->
+<!--          </el-card>-->
+          </el-col>
+          <el-col :span="8">
+            <div class="card-panel" style="height: 150px; margin-left: 15%; width: 70%;
+                                 font-size: 18px; overflow: hidden; color: #666; background: #fff;
+                                 box-shadow: 4px 4px 10px #FFCC00; border-color: #FFCC00;">
+              <div class="card-panel-icon-wrapper " style="float: left;
+                                                                margin: 10px 0 0 10px;
+                                                                padding: 16px;
+                                                                transition: all 0.38s ease-out;
+                                                                border-radius: 6px;">
+                <i class="el-icon-s-opportunity" style="font-size: 80px; color: #FFCC00"></i>
+              </div>
+              <div class="card-panel-description" style="float: right;
+                                                  font-weight: bold;
+                                                  margin: 38px;
+                                                  margin-left: 0px;">
+                <div class="card-panel-text" style="line-height: 20px; color: rgba(0, 0, 0, 0.45); font-size: 18px; margin-bottom: 12px;">
+                  上线总数
+                </div>
+                <count-to :start-val="0" :end-val=count.availableTagsCount :duration="2600" class="card-panel-num" style="font-size: 24px;"/>
+              </div>
             </div>
-            <div class="text item">
-              <el-row :gutter="20" type="flex" justify="center">
-                <span class="text-2xl" >{{count.developingTagsCount}}条</span>
-              </el-row>
-            </div>
-          </el-card></el-col>
-          <el-col :span="8">   <el-card class="box-card" style="width: 90%;margin-left: 15px">
-            <div slot="header" class="clearfix">
-              <el-row :gutter="20">
-                <el-col :span="18"><span class="graph_title">上线总数</span></el-col>
-                <el-col :span="6"><span class="ant-tag-green" style="margin-left:50px ">总</span></el-col>
-              </el-row>
-            </div>
-            <div class="text item">
-              <el-row :gutter="20" type="flex" justify="center">
-                <span class="text-2xl" >{{count.availableTagsCount}}条</span>
-              </el-row>
-            </div>
-          </el-card></el-col>
+<!--            <el-card class="box-card" style="width: 90%;margin-left: 15px">-->
+<!--            <div slot="header" class="clearfix">-->
+<!--              <el-row :gutter="20">-->
+<!--                <el-col :span="18"><span class="graph_title">上线总数</span></el-col>-->
+<!--                <el-col :span="6"><span class="ant-tag-green" style="margin-left:50px ">总</span></el-col>-->
+<!--              </el-row>-->
+<!--            </div>-->
+<!--            <div class="text item">-->
+<!--              <el-row :gutter="20" type="flex" justify="center">-->
+<!--                <span class="text-2xl" >{{count.availableTagsCount}}条</span>-->
+<!--              </el-row>-->
+<!--            </div>-->
+<!--          </el-card>-->
+          </el-col>
           <!--          代办事项和最新动态-->
 
           <div style="width: 100%;margin-top: 200px">
@@ -94,11 +161,11 @@
 
 
       </el-tab-pane>
-      <el-tab-pane label="标签管理" name="second" style="margin-bottom: 10px">
+      <el-tab-pane label="标签管理" name="second" style="margin-bottom: 10px;">
         <div class="labelTable" >
 
           <el-card>
-            <div >
+            <div style="margin-top: 20px">
               <span class="graph_title">标签管理</span>
             </div>
             <!--          用于搜索的标签组合-->
@@ -154,12 +221,10 @@
                   <el-option label="unpassed" value="unpassed"></el-option>
                 </el-select>
               </el-col>
-              <el-col :span="1" style="text-align: center">
-                <el-button icon="el-icon-search" circle style="background-color: #052aae; color: white"  @click="searchTags"></el-button>
-              </el-col>
-              <el-col :span="3"> <el-button
-                size="large"
-                type="primary"
+              <el-col :span="4" style="text-align: right">
+                <el-button icon="el-icon-search" circle style="background-color: #000066; color: white"  @click="searchTags"></el-button>
+                <el-button
+                type="info" plain
                 @click="clickAddComposedLabelButton">添加新的组合标签</el-button></el-col>
             </el-row >
             <!--          选中的五级标签-->
@@ -199,26 +264,31 @@
               <el-table-column
                 prop="first"
                 label="一级标签"
+                align="center"
               >
               </el-table-column>
               <el-table-column
                 prop="second"
                 label="二级标签"
+                align="center"
               >
               </el-table-column>
               <el-table-column
                 prop="third"
                 label="三级标签"
+                align="center"
               >
               </el-table-column>
               <el-table-column
                 prop="forth"
                 label="四级标签"
+                align="center"
               >
               </el-table-column>
               <el-table-column
                 prop="fifth"
                 label="五级标签"
+                align="center"
               >
               </el-table-column>
               <el-table-column
@@ -232,16 +302,13 @@
                     disable-transitions>{{scope.row.status}}</el-tag>
                 </template>
               </el-table-column>
-              <el-table-column label="操作">
+              <el-table-column label="操作" align="center">
                 <template slot-scope="scope">
-                  <el-button
-                    size="mini"
+                  <el-button type="primary" icon="el-icon-edit" circle
                     @click="tagEdit(scope.$index, scope.row) "
-                    v-loading.fullscreen.lock="loading_visible" >编辑</el-button>
-                  <el-button
-                    size="mini"
-                    type="danger"
-                    @click="tagDelete(scope.$index, scope.row)">删除</el-button>
+                    v-loading.fullscreen.lock="loading_visible" ></el-button>
+                  <el-button type="danger" icon="el-icon-delete" circle
+                    @click="tagDelete(scope.$index, scope.row)"></el-button>
                 </template>
               </el-table-column>
             </el-table>
@@ -251,9 +318,10 @@
           <el-backtop target=".labelTable" :visibility-height="0" ></el-backtop>
         </div>
       </el-tab-pane>
-      <el-tab-pane label="标签审核" name="third" style="margin-bottom: 10px">
-        <tagCheckPange> </tagCheckPange>
-      </el-tab-pane>
+
+<!--      <el-tab-pane label="标签审核" name="third" style="margin-bottom: 10px">-->
+<!--        <tagCheckPange> </tagCheckPange>-->
+<!--      </el-tab-pane>-->
     </el-tabs>
 
 
@@ -418,11 +486,12 @@
 </template>
 
 <script>
+  import CountTo from 'vue-count-to'
   import tagCheckPange from "../components/SuperAdministrator/TagCheck"
   export default {
 
     name: "user_management",
-    components:{tagCheckPange},
+    components:{CountTo},
     data() {
       return {
         //标签页激活状态
@@ -866,13 +935,13 @@
     font-family: PingFang SC;
     font-size: x-large;
     font-weight: bolder;
-    color: #3e3ba7
+    color: #000066
   }
   .graph_Num {
     font-family: PingFang SC;
     font-size: x-large;
     font-weight: bolder;
-    color: #3e3ba7
+    color: #000066
   }
   .text-2xl {
     font-size: 1.5rem;

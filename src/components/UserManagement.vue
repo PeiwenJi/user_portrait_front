@@ -6,7 +6,7 @@
         <el-row>
           <el-col :span="cardNum">
           <!--  用户是绿色  -->
-            <div class="card-panel" style="height: 150px; width: 35%; margin-left: 40%;
+            <div class="card-panel" style="height: 150px; margin-left: 15%; width: 70%;
                                  font-size: 18px; overflow: hidden; color: #666; background: #fff;
                                  box-shadow: 4px 4px 10px #66CCCC; border-color: #66CCCC;">
               <div class="card-panel-icon-wrapper icon-people" style="float: left;
@@ -14,7 +14,7 @@
                                                                 padding: 16px;
                                                                 transition: all 0.38s ease-out;
                                                                 border-radius: 6px;">
-                <i class="el-icon-user-solid" style="font-size: 80px; color: #66CCCC"></i>
+                <i class="el-icon-s-custom" style="font-size: 80px; color: #66CCCC"></i>
               </div>
               <div class="card-panel-description" style="float: right;
                                                   font-weight: bold;
@@ -43,7 +43,7 @@
           </el-col>
           <el-col :span="cardNum" >
           <!--  管理员是黄色-->
-            <div class="card-panel" style="height: 150px; width: 35%; margin-left: 40%;
+            <div class="card-panel" style="height: 150px;  margin-left: 15%; width: 70%;
                                  font-size: 18px; overflow: hidden; color: #666; background: #fff;
                                  box-shadow: 4px 4px 10px #FFCC33; border-color: #FFCC33;">
               <div class="card-panel-icon-wrapper icon-people" style="float: left;
@@ -51,7 +51,7 @@
                                                                 padding: 16px;
                                                                 transition: all 0.38s ease-out;
                                                                 border-radius: 6px;">
-                <i class="el-icon-user-solid" style="font-size: 80px; color: #FFCC33"></i>
+                <i class="el-icon-user" style="font-size: 80px; color: #FFCC33"></i>
               </div>
               <div class="card-panel-description" style="float: right;
                                                   font-weight: bold;
@@ -79,7 +79,7 @@
           </el-col>
           <el-col :span="cardNum" v-if="super_admin">
           <!--  超级管理员是红色 -->
-            <div class="card-panel" style="height: 150px; width: 35%; margin-left: 40%;
+            <div class="card-panel" style="height: 150px; margin-left: 15%; width: 70%;
                                  font-size: 18px; overflow: hidden; color: #666; background: #fff;
                                  box-shadow: 4px 4px 10px #FF6666; border-color: #FF6666;">
               <div class="card-panel-icon-wrapper icon-people" style="float: left;
@@ -114,7 +114,7 @@
 <!--            </el-card>-->
           </el-col>
           <!-- 用户变化的折线图-->
-          <el-card class="box-card"style="width:90%;margin-top: 200px;margin-left: 5%" >
+          <el-card style="width:90%;margin-top: 200px;margin-left: 5%" >
             <div >
               <div style="width: 100%;height: 400px" id="userChanged"  ref="userChanged"></div>
             </div>

@@ -33,8 +33,8 @@
 <!--        </el-row>-->
 
     <!--  组合标签资料显示-->
-    <div style="width: 100%;margin-top: 20px">
-      <el-dialog title="信息一览" :visible.sync ="combineTagInfoVisible" :modal-append-to-body="false" >
+    <div style="width: 100%;margin-top: 0px">
+      <el-dialog title="信息一览" :visible.sync ="combineTagInfoVisible" :modal-append-to-body="false" class="title">
         <el-table
           :data="userTableData"
           border
@@ -172,13 +172,15 @@
 
 <style scoped>
   .el-card {
-    width: 500px;
-    height: 300px;
+    margin-bottom:20px;
+    margin-right: 20px
+    /*width: 500px;*/
+    /*height: 300px;*/
   }
   .title {
     font-family: PingFang SC;
     font-size: large;
     font-weight: bold;
-    color: #ff6b6b
+    color: #000066
   }
 </style>

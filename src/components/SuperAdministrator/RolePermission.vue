@@ -1,14 +1,14 @@
 <template>
   <body id="role_permission">
 <!-- 面包屑导航栏 -->
-  <el-breadcrumb separator-class="el-icon-arrow-right" style="font-size: 18px">
-    <el-breadcrumb-item :to="{ path: '/' }">Home</el-breadcrumb-item>
-    <el-breadcrumb-item>Role Permission</el-breadcrumb-item>
-  </el-breadcrumb>
+<!--  <el-breadcrumb separator-class="el-icon-arrow-right" style="font-size: 18px">-->
+<!--    <el-breadcrumb-item :to="{ path: '/' }">Home</el-breadcrumb-item>-->
+<!--    <el-breadcrumb-item>Role Permission</el-breadcrumb-item>-->
+<!--  </el-breadcrumb>-->
 
 <!-- 权限管理表格 -->
 
-  <el-card style="margin-top: 50px">
+  <el-card>
     <el-table
       :data="data"
       :header-cell-style="{background:'#339999',color:'white', opacity:0.8}"
@@ -85,13 +85,13 @@
             header-align="center"
             align="center">
           </el-table-column>
-          <el-table-column
-            prop="tagManagement_3"
-            label="标签审核"
-            width="200"
-            header-align="center"
-            align="center">
-          </el-table-column>
+        </el-table-column>
+        <el-table-column
+          prop="tagManagement_3"
+          label="标签审核"
+          width="200"
+          header-align="center"
+          align="center">
         </el-table-column>
         <el-table-column
           prop="rolePermission"
@@ -294,8 +294,8 @@ export default {
 </script>
 
 <style scoped>
-  .el-card {
-    box-shadow: 0 2px 4px #000066, 0 0 6px rgba(0, 0, 0, .04)
-  }
+  /*.el-card {*/
+  /*  box-shadow: 0 2px 4px #000066, 0 0 6px rgba(0, 0, 0, .04)*/
+  /*}*/
 
 </style>
