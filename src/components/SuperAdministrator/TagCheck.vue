@@ -26,23 +26,24 @@
                 style="width: 100%; font-size: 16px; height: 500px">
                 <el-table-column
                   prop="forth"
-                  label="Forth Tag Name"
+                  label="四级标签"
                   width="500"
                   header-align="center"
                   align="center">
                 </el-table-column>
                 <el-table-column
-                  label="Status"
+                  label="状态"
                   header-align="center"
                   align="center">
                   <el-tag type="danger">unpassed</el-tag>
                 </el-table-column>
                 <el-table-column
                   prop="operation"
-                  label="Operation"
+                  label="操作"
                   header-align="center"
                   align="center">
                   <template slot-scope="scope">
+                    <el-tag type="success">passed</el-tag>
                     <i class="el-icon-circle-check" slot="reference" style="font-size: 24px; cursor: pointer;" @click="checkTag(scope.row)"></i>
                   </template>
                 </el-table-column>

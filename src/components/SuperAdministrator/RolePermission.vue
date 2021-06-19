@@ -17,18 +17,18 @@
       style="width: 100%; font-size: 16px; margin: 20px 0px">
       <el-table-column
         prop="identity"
-        label="Identity"
+        label="角色"
         width="300"
         header-align="center"
         align="center">
       </el-table-column>
       <el-table-column
         prop="description"
-        label="Description">
+        label="描述">
       </el-table-column>
       <el-table-column
         prop="permission"
-        label="Permission"
+        label="权限"
         header-align="center"
         align="center"
         width="300">
@@ -66,13 +66,13 @@
   <!--修改权限表单-->
   <el-dialog title="Edit" :visible.sync="visible_editRole_form" :append-to-body="true">
       <el-form ref="editRole_form" :model="editRole_form" label-width="100px">
-        <el-form-item label="Identity" >
+        <el-form-item label="角色" >
           <el-input v-model="editRole_form.identity" :disabled="true"></el-input>
         </el-form-item>
-        <el-form-item label="Description">
+        <el-form-item label="描述">
           <el-input type="textarea" v-model="editRole_form.description"></el-input>
         </el-form-item>
-        <el-form-item label="Permission">
+        <el-form-item label="权限">
           <el-checkbox-group v-model="editRole_form.permission">
             <el-checkbox label="Lable Search" name="lableSearch"></el-checkbox>
             <el-checkbox label="Admin Management" name="adminManagement"></el-checkbox>
