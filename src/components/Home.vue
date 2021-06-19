@@ -64,7 +64,8 @@
         </div>
         <div style="margin-top: 10px">
           <el-link :underline="false" @click="tagCheck">
-            Tag Check
+            <i class="el-icon-check"></i>
+            标签审核
           </el-link>
         </div>
         <div style="margin-top: 10px">
