@@ -132,6 +132,9 @@
           </el-table>
         </el-card>
       </el-tab-pane>
+      <el-tab-pane label="管理员管理" name="third" style="margin-bottom: 10px">
+        <AdminManagementPange></AdminManagementPange>
+      </el-tab-pane>
 
     </el-tabs>
 
@@ -204,8 +207,10 @@
 </template>
 
 <script>
+  import AdminManagementPange from "../components/SuperAdministrator/AdminManagement"
   export default {
     name: "user_management",
+    components:{AdminManagementPange},
     data() {
       return {
         activeName: 'first',      //默认的标签页
