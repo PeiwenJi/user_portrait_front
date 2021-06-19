@@ -11,9 +11,7 @@
     name: "LineChart_LogSession",
 
     methods: {
-      async draw(){
-        const {data: res} = await this.$http.get("getLogSession");
-
+      draw(){
         let lineChart_logSession = this.$echarts.init(this.$refs.lineChart_logSession);
 
         let option_logSession = {
@@ -45,19 +43,19 @@
             dimension: 0,
             pieces: [{
               lte: 1,
-              color: 'blue'
+              color: 'red'
             }, {
               gt: 1,
               lte: 2,
-              color: 'red'
+              color: 'green'
             }, {
               gt: 2,
               lte: 3,
-              color: 'green'
+              color: 'red'
             }, {
               gt: 3,
               lte: 4,
-              color: 'blue'
+              color: 'green'
             }]
           },
           series: [
@@ -65,7 +63,7 @@
               name: '浏览时段',
               type: 'line',
               smooth: true,
-              data: [res[0], res[1], res[2], res[3], res[4]],
+              data: [102, 345, 250, 470, 132],
               markArea: {
                 itemStyle: {
                   color: 'rgba(255, 173, 177, 0.4)'

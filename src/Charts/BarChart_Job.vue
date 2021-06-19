@@ -1,5 +1,5 @@
 <template>
-  <div ref="barChart_job" style="width: 600px; height: 360px; margin-top: -40px"></div>
+  <div ref="barChart_job" style="width: 850px; height: 260px; margin-top: -40px"></div>
 </template>
 
 <script>

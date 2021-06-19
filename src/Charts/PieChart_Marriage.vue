@@ -1,5 +1,5 @@
 <template>
-  <div ref="pieChart_marriage" style="width: 400px; height: 360px;"></div>
+  <div ref="pieChart_marriage" style="width: 330px; height: 260px;"></div>
 </template>
 
 <script>

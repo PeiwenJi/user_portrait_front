@@ -1,5 +1,5 @@
 <template>
-  <div ref="barChart_age" style="width: 650px; height: 400px; margin-top: -30px"></div>
+  <div ref="barChart_age" style=" width: 850px; height: 300px; margin-top: -30px"></div>
 </template>
 
 <script>
@@ -11,9 +11,7 @@
     name: "BarChart_Age",
 
     methods: {
-      async draw(){
-        const {data: res} = await this.$http.get("getAge");
-
+      draw(){
         let barChart_age = this.$echarts.init(this.$refs.barChart_age);
 
         let option_age = {
@@ -41,8 +39,8 @@
             {
               type: 'value',
               min: 0,
-              max: 400,
-              interval: 50,
+              max: 1500,
+              interval: 300,
             },
           ],
 
@@ -62,7 +60,7 @@
                   }
                 }
               },
-              data: [res[0], res[1], res[2], res[3], res[4], res[5], res[6], res[7]]
+              data: [50, 120, 210, 380, 780, 1260, 330, 23]
             }
           ]
 

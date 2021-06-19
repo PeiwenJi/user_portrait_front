@@ -1,12 +1,10 @@
 <template>
-  <el-card>
 
-  </el-card>
 </template>
 
 <script>
   export default {
-    name: "CombineTag"
+    name: 'behAttribute'
   }
 </script>
 

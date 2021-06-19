@@ -18,7 +18,6 @@ Vue.prototype.$http = axios
 axios.defaults.baseURL = "http://localhost:9000"
 
 import * as echarts from 'echarts';
-require('echarts-wordcloud')
 Vue.prototype.$echarts = echarts;
 
 Vue.use(ElementUI)

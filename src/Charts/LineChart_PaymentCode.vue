@@ -1,5 +1,5 @@
 <template>
-  <div ref="lineChart_paymentCode" style="width: 1050px; height: 360px;"></div>
+  <div ref="lineChart_paymentCode" style="width: 1600px; height: 460px;"></div>
 </template>
 
 <script>
@@ -11,15 +11,12 @@
     name: "LineChart_PaymentCode",
 
     methods: {
-      async draw(){
-        const {data: res} = await this.$http.get("getPaymentCode");
-
+      draw(){
         let lineChart_paymentCode = this.$echarts.init(this.$refs.lineChart_paymentCode);
 
         let option_paymentCode = {
           title: {
-            text: '支付方式',
-            left: 'left'
+            text: '支付方式'
           },
           tooltip: {
             trigger: 'axis'
@@ -32,7 +29,7 @@
           },
           xAxis: {
             type: 'category',
-            data: ['支付宝', '微信', '货到付款']
+            data: ['支付宝', '微信', '储蓄卡', '信用卡']
           },
           yAxis: {
             type: 'value'
@@ -41,7 +38,8 @@
             {
               name: '人数',
               type: 'line',
-              data: [res[0], res[1], res[2]],
+              step: 'start',
+              data: [520, 332, 101, 134],
               itemStyle: {
                 color: '#b5c334'
               }

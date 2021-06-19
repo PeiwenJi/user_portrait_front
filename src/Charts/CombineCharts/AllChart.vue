@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="allChart">
     <!--用户特征-->
     <el-card style="box-shadow: 0 2px 4px #ff6b6b, 0 0 6px rgba(0, 0, 0, .04);">
       <el-row>
@@ -73,7 +73,10 @@
   import lineChart_LogSession from '../Charts/LineChart_LogSession'
 
   export default {
-    name: "DataPage",
+    mounted() {
+      this.draw();
+    },
+    name: 'AllChart',
     components: {
       pieChart_Gender,
       pieChart_PoliticalFace,
@@ -84,10 +87,16 @@
       lineChart_PaymentCode,
       lineChart_LogSession
     },
+    methods: {
+      draw () {
+        let allChart = this.$echarts.init((document.getElementById("allChart")));
+      }
+    }
   }
 </script>
 
-<style scoped>
+<style scoped
+>
   .card_1 {
     height: 300px;
   }
