@@ -251,9 +251,9 @@
           <el-backtop target=".labelTable" :visibility-height="0" ></el-backtop>
         </div>
       </el-tab-pane>
-      <el-tab-pane label="标签审核" name="third" style="margin-bottom: 10px">
-        <tagCheckPange> </tagCheckPange>
-      </el-tab-pane>
+<!--      <el-tab-pane label="标签审核" name="third" style="margin-bottom: 10px">-->
+<!--        <tagCheckPange> </tagCheckPange>-->
+<!--      </el-tab-pane>-->
     </el-tabs>
 
 
@@ -418,11 +418,11 @@
 </template>
 
 <script>
-  import tagCheckPange from "../components/SuperAdministrator/TagCheck"
+  //import tagCheckPange from "../components/SuperAdministrator/TagCheck"
   export default {
 
     name: "user_management",
-    components:{tagCheckPange},
+    //components:{tagCheckPange},
     data() {
       return {
         //标签页激活状态

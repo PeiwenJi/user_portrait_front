@@ -35,12 +35,12 @@
             用户管理
           </el-link>
         </div>
-        <div style="margin-top: 10px">
-          <el-link :underline="false" @click="adminManagement">
-            <i class="el-icon-user"></i>
-            管理员管理
-          </el-link>
-        </div>
+<!--        <div style="margin-top: 10px">-->
+<!--          <el-link :underline="false" @click="adminManagement">-->
+<!--            <i class="el-icon-user"></i>-->
+<!--            管理员管理-->
+<!--          </el-link>-->
+<!--        </div>-->
         <div style="margin-top: 10px">
           <el-link :underline="false"
                    @click="tagManagement"
@@ -53,7 +53,7 @@
         <div style="margin-top: 10px">
           <el-link :underline="false" @click="tagCheck">
             <i class="el-icon-collection-tag"></i>
-            标签审核
+            审核标签
           </el-link>
         </div>
         <div style="margin-top: 10px">
@@ -122,7 +122,7 @@
         setTimeout( () => {
 
           this.loading_visible = false
-        }, 500);
+        }, 100);
       },
 
       adminManagement() {

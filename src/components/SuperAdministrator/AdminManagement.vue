@@ -1,10 +1,10 @@
 <template>
   <body>
   <!-- 面包屑导航栏 -->
-  <el-breadcrumb separator-class="el-icon-arrow-right" style="font-size: 18px">
-    <el-breadcrumb-item :to="{ path: '/' }">Home</el-breadcrumb-item>
-    <el-breadcrumb-item>Admin Management</el-breadcrumb-item>
-  </el-breadcrumb>
+<!--  <el-breadcrumb separator-class="el-icon-arrow-right" style="font-size: 18px">-->
+<!--    <el-breadcrumb-item :to="{ path: '/' }">Home</el-breadcrumb-item>-->
+<!--    <el-breadcrumb-item>Admin Management</el-breadcrumb-item>-->
+<!--  </el-breadcrumb>-->
   <!-- 管理员人数卡片-->
   <div class="card-panel" style="height: 150px; width: 20%; margin-top: 50px; margin-left: 40%;
                                  font-size: 18px; overflow: hidden; color: #666; background: #fff;
