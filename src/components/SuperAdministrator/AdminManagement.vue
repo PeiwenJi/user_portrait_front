@@ -1,37 +1,14 @@
 <template>
   <body>
-  <!-- 面包屑导航栏 -->
-  <el-breadcrumb separator-class="el-icon-arrow-right" style="font-size: 18px">
-    <el-breadcrumb-item :to="{ path: '/' }">Home</el-breadcrumb-item>
-    <el-breadcrumb-item>Admin Management</el-breadcrumb-item>
-  </el-breadcrumb>
-  <!-- 管理员人数卡片-->
-  <div class="card-panel" style="height: 150px; width: 20%; margin-top: 50px; margin-left: 40%;
-                                 font-size: 18px; overflow: hidden; color: #666; background: #fff;
-                                 box-shadow: 4px 4px 10px #40c9c6; border-color: #40c9c6;">
-    <div class="card-panel-icon-wrapper icon-people" style="float: left;
-                                                                  margin: 10px 0 0 10px;
-                                                                  padding: 16px;
-                                                                  transition: all 0.38s ease-out;
-                                                                  border-radius: 6px;">
-      <i class="el-icon-user-solid" style="font-size: 80px; color: #40c9c6"></i>
-    </div>
-    <div class="card-panel-description" style="float: right;
-                                                    font-weight: bold;
-                                                    margin: 38px;
-                                                    margin-left: 0px;">
-      <div class="card-panel-text" style="line-height: 20px; color: rgba(0, 0, 0, 0.45); font-size: 18px; margin-bottom: 12px;">
-        Administrator
-      </div>
-      <count-to :start-val="0" :end-val=total_admin :duration="2600" class="card-panel-num" style="font-size: 24px;"/>
-    </div>
-  </div>
-
   <!--  管理员管理  -->
-  <el-card style="margin-top: 50px">
+  <el-card>
     <div style="margin: 10px 0 25px 0">
+      <!-- 标题  -->
+      <el-row :gutter="20" style="margin-top: 20px" >
+        <el-col :span="18"><span class="graph_title">管理员管理</span></el-col>
+      </el-row>
       <!-- 搜索管理员 -->
-      <a-input-search v-model="searchEmail" placeholder="Please input the email of admin." style="width: 500px;font-size: 20px" @search="searchAdmin_byEmail" />
+      <a-input-search v-model="searchEmail" placeholder="Please input the email of admin." style="width: 500px;font-size: 20px; margin-top: 30px " @search="searchAdmin_byEmail" />
 
       <!-- 刷新列表 -->
       <a-button type="dashed" @click="refresh">
@@ -39,7 +16,7 @@
       </a-button>
 
       <!-- 增加管理员 -->
-      <a-button type="dashed" @click="visible_addAdmin_form = true" style="float:right">
+      <a-button type="dashed" @click="visible_addAdmin_form = true" style="float:right;margin-top: 30px">
         Add
       </a-button>
     </div>
@@ -118,7 +95,7 @@
 </template>
 
 <script>
-  import CountTo from 'vue-count-to'
+  // import CountTo from 'vue-count-to'
 
   const columns = [
     {
@@ -202,9 +179,9 @@
       }
     },
     // 计数器
-    components: {
-      CountTo
-    },
+    // components: {
+    //   CountTo
+    // },
     // 初始化
     created(){
       this.getAdminList();
@@ -372,6 +349,11 @@
 </script>
 
 <style >
+  .graph_title {
+    font-size: x-large;
+    font-weight: bolder;
+    color: #000066
+  }
   /*卡片样式 */
   .el-card {
     box-shadow: 0 2px 4px #000066, 0 0 6px rgba(0, 0, 0, .04)

@@ -5,48 +5,114 @@
       <el-tab-pane label="用户总览" name="first" style="margin-top: 50px;margin-bottom: 10px" >
         <el-row>
           <el-col :span="cardNum">
-            <el-card class="box-card" style="width: 90%;margin-left: 15px">
-              <div slot="header" class="clearfix">
-                <el-row :gutter="20">
-                  <el-col :span=18><span class="graph_title">用户数目</span></el-col>
-                  <el-col :span=6><span class="ant-tag-green" style="margin-left:50px ">总</span></el-col>
-                </el-row>
+          <!--  用户是绿色  -->
+            <div class="card-panel" style="height: 150px; width: 35%; margin-left: 40%;
+                                 font-size: 18px; overflow: hidden; color: #666; background: #fff;
+                                 box-shadow: 4px 4px 10px #66CCCC; border-color: #66CCCC;">
+              <div class="card-panel-icon-wrapper icon-people" style="float: left;
+                                                                margin: 10px 0 0 10px;
+                                                                padding: 16px;
+                                                                transition: all 0.38s ease-out;
+                                                                border-radius: 6px;">
+                <i class="el-icon-user-solid" style="font-size: 80px; color: #66CCCC"></i>
               </div>
-              <div class="text item">
-                <el-row :gutter="20" type="flex" justify="center">
-                  <span class="text-2xl">{{count.userNum}}人</span>
-                </el-row>
+              <div class="card-panel-description" style="float: right;
+                                                  font-weight: bold;
+                                                  margin: 38px;
+                                                  margin-left: 0px;">
+                <div class="card-panel-text" style="line-height: 20px; color: rgba(0, 0, 0, 0.45); font-size: 18px; margin-bottom: 12px;">
+                  用户数目
+                </div>
+                <count-to :start-val="0" :end-val=count.userNum :duration="2600" class="card-panel-num" style="font-size: 24px;"/>
               </div>
-            </el-card> </el-col>
+            </div>
+<!--            <el-card class="box-card" style="width: 90%;margin-left: 15px">-->
+<!--              <div slot="header" class="clearfix">-->
+<!--                <el-row :gutter="20">-->
+<!--                  <el-col :span=18><span class="graph_title">用户数目</span></el-col>-->
+<!--                  <el-col :span=6><span class="ant-tag-green" style="margin-left:50px ">总</span></el-col>-->
+<!--                </el-row>-->
+<!--              </div>-->
+<!--              <div class="text item">-->
+<!--                <el-row :gutter="20" type="flex" justify="center">-->
+<!--                  <span class="text-2xl">{{count.userNum}}人</span>-->
+<!--                </el-row>-->
+<!--              </div>-->
+<!--            </el-card> -->
+
+          </el-col>
           <el-col :span="cardNum" >
-            <el-card class="box-card" style="width: 90%;margin-left: 15px"  >
-            <div slot="header" class="clearfix">
-              <el-row :gutter="20">
-                <el-col :span=18><span class="graph_title">管理员数目</span></el-col>
-                <el-col :span=6><span class="ant-tag-green" style="margin-left:50px ">总</span></el-col>
-              </el-row>
+          <!--  管理员是黄色-->
+            <div class="card-panel" style="height: 150px; width: 35%; margin-left: 40%;
+                                 font-size: 18px; overflow: hidden; color: #666; background: #fff;
+                                 box-shadow: 4px 4px 10px #FFCC33; border-color: #FFCC33;">
+              <div class="card-panel-icon-wrapper icon-people" style="float: left;
+                                                                margin: 10px 0 0 10px;
+                                                                padding: 16px;
+                                                                transition: all 0.38s ease-out;
+                                                                border-radius: 6px;">
+                <i class="el-icon-user-solid" style="font-size: 80px; color: #FFCC33"></i>
+              </div>
+              <div class="card-panel-description" style="float: right;
+                                                  font-weight: bold;
+                                                  margin: 38px;
+                                                  margin-left: 0px;">
+                <div class="card-panel-text" style="line-height: 20px; color: rgba(0, 0, 0, 0.45); font-size: 18px; margin-bottom: 12px;">
+                  管理员数目
+                </div>
+                <count-to :start-val="0" :end-val=count.adminNum :duration="2600" class="card-panel-num" style="font-size: 24px;"/>
+              </div>
             </div>
-            <div class="text item">
-              <el-row :gutter="20" type="flex" justify="center">
-                <span class="text-2xl" ref="adminNum"  >{{count.adminNum}}位</span>
-              </el-row>
-            </div>
-          </el-card>
+<!--            <el-card class="box-card" style="width: 90%;margin-left: 15px"  >-->
+<!--            <div slot="header" class="clearfix">-->
+<!--              <el-row :gutter="20">-->
+<!--                <el-col :span=18><span class="graph_title">管理员数目</span></el-col>-->
+<!--                <el-col :span=6><span class="ant-tag-green" style="margin-left:50px ">总</span></el-col>-->
+<!--              </el-row>-->
+<!--            </div>-->
+<!--            <div class="text item">-->
+<!--              <el-row :gutter="20" type="flex" justify="center">-->
+<!--                <span class="text-2xl" ref="adminNum"  >{{count.adminNum}}位</span>-->
+<!--              </el-row>-->
+<!--            </div>-->
+<!--          </el-card>-->
           </el-col>
           <el-col :span="cardNum" v-if="super_admin">
-            <el-card class="box-card" style="width: 90%;margin-left: 15px"  >
-              <div slot="header" class="clearfix">
-                <el-row :gutter="20">
-                  <el-col :span="18"><span class="graph_title">超级管理员数量</span></el-col>
-                  <el-col :span="6"><span class="ant-tag-green" style="margin-left:50px ">总</span></el-col>
-                </el-row>
+          <!--  超级管理员是红色 -->
+            <div class="card-panel" style="height: 150px; width: 35%; margin-left: 40%;
+                                 font-size: 18px; overflow: hidden; color: #666; background: #fff;
+                                 box-shadow: 4px 4px 10px #FF6666; border-color: #FF6666;">
+              <div class="card-panel-icon-wrapper icon-people" style="float: left;
+                                                                margin: 10px 0 0 10px;
+                                                                padding: 16px;
+                                                                transition: all 0.38s ease-out;
+                                                                border-radius: 6px;">
+                <i class="el-icon-user-solid" style="font-size: 80px; color: #FF6666"></i>
               </div>
-              <div class="text item">
-                <el-row :gutter="20" type="flex" justify="center">
-                  <span class="text-2xl" >{{count.superAdminNum}}位</span>
-                </el-row>
+              <div class="card-panel-description" style="float: right;
+                                                  font-weight: bold;
+                                                  margin: 38px;
+                                                  margin-left: 0px;">
+                <div class="card-panel-text" style="line-height: 20px; color: rgba(0, 0, 0, 0.45); font-size: 18px; margin-bottom: 12px;">
+                  超级管理员数目
+                </div>
+                <count-to :start-val="0" :end-val=count.superAdminNum :duration="2600" class="card-panel-num" style="font-size: 24px;"/>
               </div>
-            </el-card></el-col>
+            </div>
+<!--            <el-card class="box-card" style="width: 90%;margin-left: 15px"  >-->
+<!--              <div slot="header" class="clearfix">-->
+<!--                <el-row :gutter="20">-->
+<!--                  <el-col :span="18"><span class="graph_title">超级管理员数量</span></el-col>-->
+<!--                  <el-col :span="6"><span class="ant-tag-green" style="margin-left:50px ">总</span></el-col>-->
+<!--                </el-row>-->
+<!--              </div>-->
+<!--              <div class="text item">-->
+<!--                <el-row :gutter="20" type="flex" justify="center">-->
+<!--                  <span class="text-2xl" >{{count.superAdminNum}}位</span>-->
+<!--                </el-row>-->
+<!--              </div>-->
+<!--            </el-card>-->
+          </el-col>
           <!-- 用户变化的折线图-->
           <el-card class="box-card"style="width:90%;margin-top: 200px;margin-left: 5%" >
             <div >
@@ -54,17 +120,14 @@
             </div>
           </el-card>
         </el-row>
-
-
-
       </el-tab-pane>
       <el-tab-pane label="用户管理" name="second" style="margin-bottom: 10px">
-        <el-card class="box-card" style="width: 95%;margin-left: 2.5%">
+        <el-card class="box-card" style="">
 
           <el-row :gutter="20" style="margin-top: 20px" >
             <el-col :span="18"><span class="graph_title">用户管理</span></el-col>
           </el-row>
-          <el-row :gutter="20" style="margin-top: 20px" >
+          <el-row :gutter="20" style="margin-top: 30px" >
             <el-col :span="6">
               <span>邮箱</span>
               <el-input v-model="userInfo.email" placeholder="请输入内容" class="input"></el-input>
@@ -208,9 +271,11 @@
 
 <script>
   import AdminManagementPange from "../components/SuperAdministrator/AdminManagement"
+  import CountTo from 'vue-count-to'
+
   export default {
     name: "user_management",
-    components:{AdminManagementPange},
+    // components:{AdminManagementPange},
     data() {
       return {
         activeName: 'first',      //默认的标签页
@@ -235,12 +300,18 @@
           ],
         },
         count:{
+
         },
         numChanged:false,
-        super_admin:false,
+        super_admin:true,
         cardNum:12
 
       }
+    },
+    // 计数器
+    components: {
+      CountTo,
+      AdminManagementPange
     },
     mounted() {
       //在这里读取数据之后传入
@@ -422,6 +493,7 @@
           },
           yAxis: {},
           series:{
+            color: "#0099CC",
             type: 'line',
             smooth: true,
             data:userChangedList
@@ -450,19 +522,43 @@
     border-color: #b7eb8f;
   }
   .graph_title {
-    font-family: PingFang SC;
     font-size: x-large;
     font-weight: bolder;
-    color: #3e3ba7
+    color: #000066
   }
   .graph_Num {
     font-family: PingFang SC;
     font-size: x-large;
     font-weight: bolder;
-    color: #3e3ba7
+    color: #000066
   }
   .text-2xl {
     font-size: 1.5rem;
     line-height: 2rem;
+  }
+
+  /* 卡片样式 */
+
+  @media (max-width:550px) {
+    .card-panel-description {
+      display: none;
+    }
+
+    .card-panel-icon-wrapper {
+      float: none !important;
+      width: 100%;
+      height: 100%;
+      margin: 0 !important;
+    }
+
+    .svg-icon {
+      display: block;
+      margin: 14px auto !important;
+      float: none !important;
+    }
+  }
+
+  .editable-row-operations a {
+    margin-right: 8px;
   }
 </style>

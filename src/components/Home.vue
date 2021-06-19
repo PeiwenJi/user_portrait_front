@@ -35,12 +35,12 @@
             用户管理
           </el-link>
         </div>
-        <div style="margin-top: 10px">
-          <el-link :underline="false" @click="adminManagement">
-            <i class="el-icon-user"></i>
-            管理员管理
-          </el-link>
-        </div>
+<!--        <div style="margin-top: 10px">-->
+<!--          <el-link :underline="false" @click="adminManagement">-->
+<!--            <i class="el-icon-user"></i>-->
+<!--            管理员管理-->
+<!--          </el-link>-->
+<!--        </div>-->
         <div style="margin-top: 10px">
           <el-link :underline="false"
                    @click="tagManagement"
