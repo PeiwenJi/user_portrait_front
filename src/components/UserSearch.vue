@@ -2,15 +2,15 @@
   <div style="width: 100%">
     <el-card>
       <div>
-        <el-row>
-          <el-col :span="2">
+        <el-row style="margin: 10px 0px">
+          <el-col :span="3">
             <el-input v-model="user_id" placeholder="请输入用户ID"></el-input>
           </el-col>
-          <el-col :span="4" style="text-align: center">
+          <el-col :span="1" style="text-align: center">
             <el-button
               icon="el-icon-search"
               circle
-              style="background-color: #ff6b6b; color: white"
+              style="background-color: #000066; color: white"
               @click="search"
               v-loading.fullscreen.lock="search_loading"
               element-loading-text="Searching in..."></el-button>
@@ -18,7 +18,7 @@
         </el-row>
       </div>
     </el-card>
-    <el-card style="margin-top: 10px; height: 850px" v-show="info_visible">
+    <el-card style="margin-top: 20px; height: 850px" v-show="info_visible">
       <el-col :span="10">
         <!--用户特征-->
         <el-card style="height: 400px">

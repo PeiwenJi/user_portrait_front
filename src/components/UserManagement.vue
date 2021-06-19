@@ -128,20 +128,21 @@
             <el-col :span="18"><span class="graph_title">用户管理</span></el-col>
           </el-row>
           <el-row :gutter="20" style="margin-top: 30px" >
-            <el-col :span="6">
-              <span>邮箱</span>
-              <el-input v-model="userInfo.email" placeholder="请输入内容" class="input"></el-input>
+            <el-col :span="8">
+<!--              <span>邮箱</span>-->
+              <el-input v-model="userInfo.email" placeholder="请输入邮箱" class="input"></el-input>
             </el-col>
-            <el-col :span="6">
-              <span>公司组织</span>
-              <el-input v-model="userInfo.company" placeholder="请输入内容" class="input"></el-input>
+            <el-col :span="8">
+<!--              <span>公司组织</span>-->
+              <el-input v-model="userInfo.company" placeholder="请输入公司" class="input"></el-input>
             </el-col>
-            <el-col :span="9" style="text-align: left">
+<!--            <el-col :span="9" style="text-align: left">-->
+<!--              -->
+<!--            </el-col>-->
+            <el-col :span="8" style="text-align: right">
               <el-button icon="el-icon-search" circle style="background-color: #052aae; color: white" @click="clickSearch"></el-button>
-            </el-col>
-            <el-col :span="2"> <el-button
-              size="large"
-              type="primary"
+              <el-button
+                type="info" plain
               @click="addUserVisible = true">添加用户</el-button></el-col>
           </el-row>
           <el-table
@@ -183,13 +184,10 @@
             </el-table-column>
             <el-table-column label="操作" align="center" >
               <template slot-scope="scope">
-                <el-button
-                  size="mini"
-                  @click="handleEdit(scope.$index, scope.row) ">编辑</el-button>
-                <el-button
-                  size="mini"
-                  type="danger"
-                  @click="deleteUserInfo(scope.$index, scope.row)">删除</el-button>
+                <el-button type="primary" icon="el-icon-edit" circle
+                  @click="handleEdit(scope.$index, scope.row) "></el-button>
+                <el-button type="danger" icon="el-icon-delete" circle
+                  @click="deleteUserInfo(scope.$index, scope.row)"></el-button>
               </template>
             </el-table-column>
           </el-table>

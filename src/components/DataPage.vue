@@ -2,8 +2,8 @@
   <div>
     <!-- 搜索标签框-->
     <div style="width: 100%">
-      <el-card style="box-shadow: 0 2px 4px #000066, 0 0 6px rgba(0, 0, 0, .04); margin-top: 20px">
-        <el-row style="margin-top: 20px">
+      <el-card>
+        <el-row style="margin: 10px 0px">
         <el-col :span="6">
           <el-select v-model="first" placeholder="一级标签">
             <el-option label="电商" value="电商">
@@ -62,7 +62,7 @@
     </div>
 
     <!--用户特征-->
-    <el-card v-show="third=='' || third=='全部' || third=='人口属性（用户特征）' " style="box-shadow: 0 2px 4px #000066, 0 0 6px rgba(0, 0, 0, .04); margin-top: 30px">
+    <div v-show="third=='' || third=='全部' || third=='人口属性（用户特征）' " style="margin-top: 20px">
       <el-row>
         <el-col :span="14">
           <el-row>
@@ -72,19 +72,19 @@
               </el-card>
             </el-col>
             <el-col :span="13">
-              <el-card class="card_1">
+              <el-card class="card_1" style="margin-left: 20px">
                 <pieChart_PoliticalFace></pieChart_PoliticalFace>
               </el-card>
             </el-col>
           </el-row>
           <el-row>
             <el-col :span="11">
-              <el-card class="card_1">
+              <el-card class="card_1" style="margin-top:20px;">
                 <pieChart_Marriage></pieChart_Marriage>
               </el-card>
             </el-col>
             <el-col :span="13">
-              <el-card class="card_1">
+              <el-card class="card_1" style="margin-top:20px;margin-left: 20px">
                 <pieChart_Constellation></pieChart_Constellation>
               </el-card>
             </el-col>
@@ -99,7 +99,7 @@
               <barChart_Age></barChart_Age>
             </el-card>
           </el-row>
-          <el-row style="margin-left: 20px">
+          <el-row style="margin-left: 20px;margin-top: 20px">
             <el-card class="card_2">
               <div class="title">
                 <span>Job</span>
@@ -109,10 +109,10 @@
           </el-row>
         </el-col>
       </el-row>
-    </el-card>
+    </div>
 
     <!--消费特征-->
-    <el-card v-show="third=='' || third=='全部' || third=='商业属性（消费特征）' " style="box-shadow: 0 2px 4px #000066, 0 0 6px rgba(0, 0, 0, .04); margin-top: 30px">
+    <div v-show="third=='' || third=='全部' || third=='商业属性（消费特征）' " style="margin-top: 20px">
       <el-row>
         <el-col :span="17">
         <el-card class="card_1">
@@ -120,29 +120,31 @@
         </el-card>
       </el-col>
         <el-col :span="7">
-          <el-card class="card_1">
+          <el-card class="card_1" style="margin-left: 20px">
             <pieChart_Cycle></pieChart_Cycle>
           </el-card>
         </el-col>
       </el-row>
       <el-row>
         <el-col :span="12">
-          <el-card class="card_1">
+          <el-card class="card_1" style="margin-top: 20px">
             <barChart_AvgAmount></barChart_AvgAmount>
           </el-card>
         </el-col>
         <el-col :span="12">
-          <el-card class="card_1">
+          <el-card class="card_1" style="margin-top: 20px;margin-left: 20px">
             <barChart_MaxAmount></barChart_MaxAmount>
           </el-card>
         </el-col>
       </el-row>
-    </el-card>
+    </div>
 
     <!--行为特征-->
-    <el-card v-show="third=='' || third=='全部' || third=='行为属性（兴趣特征）' " style="box-shadow: 0 2px 4px #000066, 0 0 6px rgba(0, 0, 0, .04); margin-top: 30px; height: 600px">
-      <lineChart_LogSession></lineChart_LogSession>
-    </el-card>
+    <div v-show="third=='' || third=='全部' || third=='行为属性（兴趣特征）' " style="margin-top: 20px; height: 600px">
+      <el-card>
+        <lineChart_LogSession></lineChart_LogSession>
+      </el-card>
+    </div>
 
     <!-- dialog查看四级tag图 -->
     <div class="dialog">

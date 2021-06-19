@@ -7,18 +7,26 @@
       <el-row :gutter="20" style="margin-top: 20px" >
         <el-col :span="18"><span class="graph_title">管理员管理</span></el-col>
       </el-row>
+      <el-row>
       <!-- 搜索管理员 -->
-      <a-input-search v-model="searchEmail" placeholder="Please input the email of admin." style="width: 500px;font-size: 20px; margin-top: 30px " @search="searchAdmin_byEmail" />
+      <el-col :span="4" style="margin-top: 30px">
+        <el-input v-model="searchEmail" placeholder="请输入邮箱" class="input"></el-input>
+<!--      <a-input-search v-model="searchEmail" placeholder="Please input the email of admin." style="width: 500px;font-size: 20px; margin-top: 30px " @search="searchAdmin_byEmail" />-->
+      </el-col>
+      <div style="float:right;margin-top: 30px">
+        <el-button icon="el-icon-search" circle style="background-color: #052aae; color: white" @click="searchAdmin_byEmail"></el-button>
+        <!-- 刷新列表 -->
+        <el-button type="info" plain @click="refresh">
+          刷新
+        </el-button>
 
-      <!-- 刷新列表 -->
-      <a-button type="dashed" @click="refresh">
-        Refresh
-      </a-button>
+        <!-- 增加管理员 -->
+        <el-button type="info" plain @click="visible_addAdmin_form = true" >
+          添加管理员
+        </el-button>
 
-      <!-- 增加管理员 -->
-      <a-button type="dashed" @click="visible_addAdmin_form = true" style="float:right;margin-top: 30px">
-        Add
-      </a-button>
+      </div>
+      </el-row>
     </div>
 
     <!-- 管理员表格 -->
@@ -99,37 +107,38 @@
 
   const columns = [
     {
-      title: 'name',
+      align:'center',
+      title: '昵称',
       dataIndex: 'name',
       width: '15%',
       scopedSlots: { customRender: 'name' }
     },
     {
-      title: 'password',
+      title: '密码',
       dataIndex: 'password',
       width: '15%',
       scopedSlots: { customRender: 'password' }
     },
     {
-      title: 'email',
+      title: '邮箱',
       dataIndex: 'email',
       width: '15%',
       scopedSlots: { customRender: 'email' }
     },
     {
-      title: 'company',
+      title: '公司',
       dataIndex: 'company',
       width: '15%',
       scopedSlots: { customRender: 'company' }
     },
     {
-      title: 'identity',
+      title: '角色',
       dataIndex: 'identity',
       width: '15%',
       scopedSlots: { customRender: 'identity' }
     },
     {
-      title: 'operation',
+      title: '操作',
       dataIndex: 'operation',
       scopedSlots: { customRender: 'operation' }
     }
