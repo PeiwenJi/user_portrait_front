@@ -6,16 +6,9 @@
     <el-breadcrumb-item>Admin Management</el-breadcrumb-item>
   </el-breadcrumb>
   <!-- 管理员人数卡片-->
-  <div class="card-panel" @click="handleSetLineChartData('newVisitis')" style="height: 150px;
-                                                                                     width: 20%;
-                                                                                     margin-top: 50px;
-                                                                                     margin-left: 40%;
-                                                                                     font-size: 18px;
-                                                                                     overflow: hidden;
-                                                                                     color: #666;
-                                                                                     background: #fff;
-                                                                                     box-shadow: 4px 4px 10px #40c9c6;
-                                                                                     border-color: #40c9c6;">
+  <div class="card-panel" style="height: 150px; width: 20%; margin-top: 50px; margin-left: 40%;
+                                 font-size: 18px; overflow: hidden; color: #666; background: #fff;
+                                 box-shadow: 4px 4px 10px #40c9c6; border-color: #40c9c6;">
     <div class="card-panel-icon-wrapper icon-people" style="float: left;
                                                                   margin: 10px 0 0 10px;
                                                                   padding: 16px;
@@ -38,7 +31,7 @@
   <el-card style="margin-top: 50px">
     <div style="margin: 10px 0 25px 0">
       <!-- 搜索管理员 -->
-      <a-input-search v-model="searchEmail" placeholder="Please input the email of admin you want to search for." style="width: 500px;font-size: 20px" @search="searchAdmin_byEmail" />
+      <a-input-search v-model="searchEmail" placeholder="Please input the email of admin." style="width: 500px;font-size: 20px" @search="searchAdmin_byEmail" />
 
       <!-- 刷新列表 -->
       <a-button type="dashed" @click="refresh">

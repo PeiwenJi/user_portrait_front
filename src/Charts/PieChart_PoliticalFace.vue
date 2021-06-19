@@ -1,5 +1,5 @@
 <template>
-  <div ref="pieChart_politicalFace" style="width: 330px; height: 260px;"></div>
+  <div ref="pieChart_politicalFace" style="width: 470px; height: 360px;"></div>
 </template>
 
 <script>

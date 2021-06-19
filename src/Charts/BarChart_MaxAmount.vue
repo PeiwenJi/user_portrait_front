@@ -1,5 +1,5 @@
 <template>
-  <div ref="barChart_job" style="width: 600px; height: 360px; margin-top: -40px"></div>
+  <div ref="barChart_maxAmount" style="width: 750px; height: 360px"></div>
 </template>
 
 <script>
@@ -8,15 +8,19 @@
       this.draw();
     },
 
-    name: "BarChart_Job",
+    name: "BarChart_MaxAmount",
 
     methods: {
       async draw(){
-        const {data: res_job} = await this.$http.get("getJob");
+        const {data: res} = await this.$http.get("getMaxAmount");
 
-        let barChart_job = this.$echarts.init(this.$refs.barChart_job);
+        let barChart_maxAmount = this.$echarts.init(this.$refs.barChart_maxAmount);
 
-        let option_job = {
+        let option_maxAmount = {
+          title: {
+            text: '单笔最高',
+            left: 'right'
+          },
           tooltip: {
             trigger: 'axis',
             axisPointer: {
@@ -35,30 +39,28 @@
           },
           yAxis: {
             type: 'category',
-            data: ['学生', '公务员', '军人', '警察', '教师', '白领']
+            data: ['1-999', '1000-2999', '3000-4999', '5000-9999', '10000+']
           },
           series: [
             {
-              name: 'Number',
+              name: '人数',
               type: 'bar',
+              data: [res[0], res[1], res[2], res[3], res[4]],
               itemStyle: {
                 normal: {
                   color: function(params) {
                     var colorList = [
-                      '#C1232B','#B5C334','#FCCE10','#E87C25','#27727B',
-                      '#FE8463','#9BCA63','#FAD860','#F3A43B','#60C0DD',
-                      '#D7504B','#C6E579','#F4E001','#F0805A','#26C0C0'
+                      '#C1232B','#B5C334','#FCCE10','#E87C25','#27727B'
                     ];
                     return colorList[params.dataIndex]
                   }
                 }
               },
-              data: [res_job[0], res_job[1], res_job[2], res_job[3], res_job[4], res_job[5]]
             }
           ]
         }
 
-        barChart_job.setOption(option_job);
+        barChart_maxAmount.setOption(option_maxAmount);
       }
     }
   }
