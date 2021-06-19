@@ -31,7 +31,75 @@
 <!--            </el-table>-->
 <!--          </el-col>-->
 <!--        </el-row>-->
+
+    <!--  组合标签资料显示-->
+    <div style="width: 100%;margin-top: 20px">
+      <el-dialog title="信息一览" :visible.sync ="combineTagInfoVisible" :modal-append-to-body="false" >
+        <el-table
+          :data="userTableData"
+          border
+          style="width: 100%;margin-top: 20px">
+          <el-table-column
+            fixed
+            type="index"
+            prop="num"
+            label="序号"
+            width="100"
+            align="center"
+          >
+          </el-table-column>
+          <el-table-column
+            prop="username"
+            label="用户名称"
+            align="center"
+          >
+          </el-table-column>
+          <el-table-column
+            prop="birthday"
+            label="生日"
+            align="center"
+          ></el-table-column>
+          <el-table-column
+            prop="ageGroup"
+            label="年龄段"
+            align="center"
+          ></el-table-column>
+            <el-table-column
+              prop="gender"
+              label="性别"
+              align="center"
+          ></el-table-column>
+
+            <el-table-column
+              prop="nationality"
+              label="国籍"
+              align="center"
+            >
+            </el-table-column>
+            <el-table-column
+              prop="politicalFace"
+              label="政治面貌"
+              align="center"
+            >
+            </el-table-column>
+            <el-table-column
+              prop="marriage"
+              label="婚姻状况"
+              align="center"
+            >
+            </el-table-column>
+            <el-table-column
+              prop="job"
+              label="工作"
+              align="center"
+            >
+            </el-table-column>
+        </el-table>
+      </el-dialog>
+    </div>
+
   </div>
+
 </template>
 
 <script>
@@ -44,20 +112,34 @@
     data() {
       return {
         tagList: [],
+        //组合标签名称
         nameList: [],
+        //组合标签包含的五级标签列表
         contentList: [],
+        //组合标签状态列表
         statusList: [],
+        //组合标签状态显示的颜色
         typeList: [],
+        //按钮的是否禁用
         disableList: [],
-        showList: [false, false, false],
-        tableData: []
+        tableData: [],
+        combineTagInfoVisible:false,
+        //满足组合标签的用户的信息列表
+        userTableData:[]
       }
     },
 
     methods: {
       click(index) {
-        this.showList[index] = true;
-        console.log(this.showList);
+        //console.log(this.contentList[index]);
+        this.combineTagInfoVisible = true;
+        this.$http.get("getComposedTagsUserList?composedTagName="+this.nameList[index]).then(response => {
+            this.userTableData = response.data;
+          }, response => {
+            console.log("error")
+          }
+        )
+
       },
 
       async getCombineTag() {

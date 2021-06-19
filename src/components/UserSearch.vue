@@ -463,7 +463,7 @@
             <div style="margin-top: 10px">
               <el-row>
                 <el-col :span="10">
-                  <el-tag color="#B5C334" style="color: white; font-weight: bold">客单价</el-tag>
+                  <el-tag color="#B5C334" style="color: white; font-weight: bold">省钱能手</el-tag>
                 </el-col>
                 <el-col :span="14">
                   <span class="info">Developing...</span>
@@ -611,7 +611,7 @@
         isMan: true,
         isWoman: false,
 
-        cateList: ['111','222','333']
+        cateList: []
       }
     },
     methods: {
@@ -669,6 +669,9 @@
 
             const {data: res_userValue} = await this.$http.get("searchUserValue?id=" + this.user_id);
             this.userValue = res_userValue[0];
+
+            const {data: res_cateFeatured} = await this.$http.get("getCateFeatured?id=" + this.user_id);
+            this.cateList = res_cateFeatured.split(",");
 
             this.info_visible = true;
             this.search_loading = false;

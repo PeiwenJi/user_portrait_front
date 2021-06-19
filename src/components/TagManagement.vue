@@ -9,7 +9,7 @@
           <el-col :span="8"> <el-card class="box-card" style="width: 90%;margin-left: 15px">
             <div slot="header" class="clearfix">
               <el-row :gutter="20">
-                <el-col :span="18"><span class="graph_title">四级标签</span></el-col>
+                <el-col :span="18"><span class="graph_title">五级标签</span></el-col>
                 <el-col :span="6"><span class="ant-tag-green" style="margin-left:50px ">总</span></el-col>
               </el-row>
             </div>
@@ -81,11 +81,14 @@
           </div>
 
 <!--标签词云-->
-          <div style="width: 100%;margin-top: 50px" >
-            <template>
-              <div id="tagsWorld" style="width:100%;height:600px;"></div>
-            </template>
-          </div>
+          <el-row>
+            <div style="width: 100%;margin-top: 50px;margin-left: 10px" >
+              <template>
+                <div id="tagsWorld" style="width:100%;height:600px;"></div>
+              </template>
+            </div>
+          </el-row>
+
         </el-row>
 
 
@@ -247,6 +250,9 @@
           <!--          todo：该组件没有发挥作用-->
           <el-backtop target=".labelTable" :visibility-height="0" ></el-backtop>
         </div>
+      </el-tab-pane>
+      <el-tab-pane label="标签审核" name="third" style="margin-bottom: 10px">
+        <tagCheckPange> </tagCheckPange>
       </el-tab-pane>
     </el-tabs>
 
@@ -412,8 +418,11 @@
 </template>
 
 <script>
+  import tagCheckPange from "../components/SuperAdministrator/TagCheck"
   export default {
+
     name: "user_management",
+    components:{tagCheckPange},
     data() {
       return {
         //标签页激活状态
@@ -690,6 +699,7 @@
             this.$refs.tagTable.clearSelection();
             this.createComposedLabelVisible=false
             this.$message.success("success add")
+            this.$set(this.createdComposedLabelForm,"forth","")
           }
           if(response.data=="name complicate"){
             this.$message.error("在该三级标签下有相同的名称的四级标签，请重新命名")
