@@ -320,7 +320,12 @@
                   <el-tag color="#E87C25" style="color: white; font-weight: bold">品类偏好</el-tag>
                 </el-col>
                 <el-col :span="14">
-                  <span class="info">Developing...</span>
+                  <el-dropdown split-button size="medium" type="info">
+                    显示更多
+                    <el-dropdown-menu slot="dropdown">
+                      <el-dropdown-item v-for="(item, index) in cateList" :key="index">{{item}}</el-dropdown-item>
+                    </el-dropdown-menu>
+                  </el-dropdown>
                 </el-col>
               </el-row>
             </div>
@@ -410,7 +415,7 @@
                   <el-tag color="#9BCA63" style="color: white; font-weight: bold">消费能力</el-tag>
                 </el-col>
                 <el-col :span="14">
-                  <span class="info">Developing...</span>
+                  <span class="info">{{spendingPower}}</span>
                 </el-col>
               </el-row>
             </div>
@@ -589,6 +594,7 @@
         avgOrderAmount: '',
         paymentCode: '',
         maxOrderAmount: '',
+        spendingPower: '',
 
         lastLogin: '',
         browsePage: '',
@@ -603,7 +609,9 @@
         search_loading: false,
         info_visible: false,
         isMan: true,
-        isWoman: false
+        isWoman: false,
+
+        cateList: ['111','222','333']
       }
     },
     methods: {
@@ -641,12 +649,14 @@
             }
 
             const {data: res_consumption} = await this.$http.get("searchConsumptionFeature?id=" + this.user_id);
+            console.log(res_consumption);
             this.consumptionCycle = res_consumption[0];
-            this.avgOrderAmount = res_consumption[1];
+            this.avgOrderAmount = res_consumption[1].split("：")[1];
             this.paymentCode = res_consumption[2];
-            if(res_consumption[3] == "10000-")
+            if(res_consumption[3].split("：")[1] == "10000-")
               res_consumption[3] = "10000+";
             this.maxOrderAmount = res_consumption[3];
+            this.spendingPower = res_consumption[4];
 
             const {data: res_behavior} = await this.$http.get("searchBehaviorFeature?id=" + this.user_id);
             this.lastLogin = res_behavior[0];

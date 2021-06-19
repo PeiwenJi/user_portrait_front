@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-tabs v-model="activeName" @tab-click="handleClick">
+    <el-tabs v-model="activeName">
       <el-tab-pane label="用户群画像" name="first" style="margin-bottom: 10px">
         <DataPage></DataPage>
       </el-tab-pane>
