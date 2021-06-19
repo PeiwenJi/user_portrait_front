@@ -38,7 +38,7 @@
   <el-card style="margin-top: 50px">
     <div style="margin: 10px 0 25px 0">
       <!-- 搜索管理员 -->
-      <a-input-search v-model="searchEmail" placeholder="Please input the email of admin." style="width: 500px;font-size: 20px" @search="searchAdmin_byEmail" />
+      <a-input-search v-model="searchEmail" placeholder="Please input the email of admin you want to search for." style="width: 500px;font-size: 20px" @search="searchAdmin_byEmail" />
 
       <!-- 刷新列表 -->
       <a-button type="dashed" @click="refresh">
