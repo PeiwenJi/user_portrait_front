@@ -637,6 +637,9 @@
         if(row["status"] == "unpassed"){
           this.whetherUnPassed=true;
         }
+        else{
+          this.whetherUnPassed=false
+        }
         this.getSelectedTagHistory(row["id"])
 
         setTimeout(()=>{
