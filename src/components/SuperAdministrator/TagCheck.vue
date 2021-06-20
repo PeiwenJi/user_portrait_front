@@ -6,7 +6,7 @@
       <el-breadcrumb-item>Tag Check</el-breadcrumb-item>
     </el-breadcrumb>
     <!-- 卡片 -->
-    <el-card style="width: 100%">
+    <el-card style="width: 100%;margin-top: 50px">
       <el-row>
         <el-col :span="8">
           <div class="grid-content bg-purple">

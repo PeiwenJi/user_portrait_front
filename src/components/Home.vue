@@ -17,20 +17,20 @@
       </div>
       <el-divider></el-divider>
       <div class="router">
-        <div style="margin-top: 10px">
-          <el-link :underline="false" @click="goHome">
+        <div style="margin-top: 10px" v-if="dataVisible =='true'">
+          <el-link :underline="false" @click="goHome"   >
             <i class="el-icon-s-data"></i>
             数据
           </el-link>
         </div>
-        <div style="margin-top: 10px">
-          <el-link :underline="false" @click="userSearch">
+        <div style="margin-top: 10px"  v-if="userSearchVisible == 'true'">
+          <el-link :underline="false" @click="userSearch" >
             <i class="el-icon-picture-outline"></i>
             用户画像
           </el-link>
         </div>
-        <div style="margin-top: 10px">
-          <el-link :underline="false" @click="userManagement">
+        <div style="margin-top: 10px" v-if="userManagementVisible == 'true'">
+          <el-link :underline="false" @click="userManagement" >
             <i class="el-icon-user"></i>
             用户管理
           </el-link>
@@ -41,23 +41,24 @@
 <!--            管理员管理-->
 <!--          </el-link>-->
 <!--        </div>-->
-        <div style="margin-top: 10px">
+        <div style="margin-top: 10px"  v-if="tagManagementVisible == 'true'">
           <el-link :underline="false"
                    @click="tagManagement"
                    v-loading.fullscreen.lock="loading_visible"
-                   element-loading-text="Loading">
+                   element-loading-text="Loading"
+                  >
             <i class="el-icon-collection-tag"></i>
             标签管理
           </el-link>
         </div>
-        <div style="margin-top: 10px">
-          <el-link :underline="false" @click="tagCheck">
+        <div style="margin-top: 10px" v-if="tagManagement3Visible == 'true'">
+          <el-link :underline="false" @click="tagCheck" >
             <i class="el-icon-collection-tag"></i>
             审核标签
           </el-link>
         </div>
-        <div style="margin-top: 10px">
-          <el-link :underline="false" @click="rolePermission">
+        <div style="margin-top: 10px" v-if = "roleList.rolePermissionVisible=='true'">
+          <el-link :underline="false" @click="rolePermission"   >
             <i class="el-icon-setting"></i>
             权限设置
           </el-link>
@@ -90,9 +91,66 @@
         exit_loading_visible: false,
         user_info_visible: false,
         //标签总览：loading选项
-        loading_visible:false
+        loading_visible: false,
+        //rolePermissionVisible: false,
+        //根据用户登录信息显示界面的权限变量
+        dataVisible: false,
+        userSearchVisible: false,
+        userManagementVisible: false,
+        tagManagement3Visible: true,
+        tagManagementVisible: false,
+        roleList:[{
+          rolePermissionVisible: true,
+        }]
+
       }
     },
+    created(){
+
+      console.log(window.sessionStorage.getItem("Identity"))
+      this.$http.get("getRoleList").then(response=> {
+          let map= null
+          if (window.sessionStorage.getItem("Identity")=="user") {
+            this.tagManagement3Visible=response.data[0]["user"]["tagManagement_3"]
+            //console.log(this.tagManagement3Visible)
+            this.userSearchVisible =response.data[0]["user"]["userSearch"]
+            //this.rolePermissionVisible=response.data[0]["user"]["rolePermission"]
+            this.$set(this.roleList,"rolePermissionVisible",response.data[0]["user"]["rolePermission"])
+            //console.log(response.data[0]["user"]["rolePermission"])
+           // console.log(this.roleList.rolePermissionVisible)
+            map = response.data[0]["user"]
+          }
+          if (window.sessionStorage.getItem("Identity")== "admin") {
+            this.tagManagement3Visible=response.data[0]["admin"]["tagManagement_3"]
+            this.userSearchVisible =response.data[0]["admin"]["userSearch"]
+            this.rolePermissionVisible=response.data[0]["admin"]["rolePermission"]
+            map = response.data[0]["admin"]
+          }
+          if (window.sessionStorage.getItem("Identity")=="super-admin") {
+            this.tagManagement3Visible=response.data[0]["super-admin"]["tagManagement_3"]
+            this.userSearchVisible =response.data[0]["super-admin"]["userSearch"]
+            this.$set(this.roleList,"rolePermissionVisible",response.data[0]["super-admin"]["rolePermission"])
+            map = response.data[0]["super-admin"]
+          }
+          console.log(this.roleList.rolePermissionVisible)
+          console.log(response.data)
+          if(map["userManagement_1"] =='true' || map["userManagement_2"] =='true' || map["userManagement_3"] =='true'){
+            this.userManagementVisible='true'
+          }
+          if(map["tagManagement_1"] =='true'|| map["tagManagement_2"]=='true'){
+            this.tagManagementVisible='true'
+          }
+          if(map["data_1"] =='true'|| map["data_2"]=='true'){
+            this.dataVisible='true'
+          }
+
+        }
+      )
+    },
+    mounted(){
+
+    },
+
     methods: {
       openUserInfo() {
         this.$router.push({path: '/UserInfo'});

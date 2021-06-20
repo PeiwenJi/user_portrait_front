@@ -319,8 +319,8 @@
         </el-row>
 
 
-        <el-form-item label="状态" label-width="formLabelWidth">
-          <el-select v-model="form.status" >
+        <el-form-item label="状态" label-width="formLabelWidth" >
+          <el-select v-model="form.status"  :disabled="whetherUnPassed">
             <el-option label="applying" value="applying"></el-option>
             <el-option label="developing" value="developing"></el-option>
             <el-option label="developed" value="developed"></el-option>
@@ -329,7 +329,6 @@
             <el-option label="disabled" value="disabled"></el-option>
             <el-option label="unprocessed" value="unprocessed"></el-option>
             <el-option label="passed" value="passed"></el-option>
-            <el-option label="unpassed" value="unpassed"></el-option>
           </el-select>
         </el-form-item>
 
@@ -437,6 +436,8 @@
         status:'',
         //编辑五级标签信息的弹出框是否可见
         handleEditVisible:false,
+        //编辑五级标签信息如果是unpassed的,不能编辑
+        whetherUnPassed:false,
         //创建新的组合标签的弹出框是否可见
         createComposedLabelVisible:false,
         //创建组合标签的弹出框表单数据
@@ -507,6 +508,38 @@
         }
       );
 
+      //管理标签页
+      this.$http.get("getRoleList").then(response=> {
+          let tagManagement1Visible = null
+          let tagManagement2Visible = null
+
+
+          if (window.sessionStorage.getItem("Identity")=="user") {
+            tagManagement1Visible =response.data[0]['user']["tagManagement_1"]
+            tagManagement2Visible =response.data[0]['user']["tagManagement_2"]
+
+          }
+
+          if (window.sessionStorage.getItem("Identity")=="admin") {
+            tagManagement1Visible =response.data[0]['user']["tagManagement_1"]
+            tagManagement2Visible =response.data[0]['user']["tagManagement_2"]
+          }
+
+          if (window.sessionStorage.getItem("Identity")=="super-admin") {
+            tagManagement1Visible =response.data[0]['user']["tagManagement_1"]
+            tagManagement2Visible =response.data[0]['user']["tagManagement_2"]
+          }
+          if(tagManagement1Visible =='fasle'){
+            this.$refs.tabs.$children[0].$refs.tabs[0].style.display = 'none';
+          }
+          if(!tagManagement2Visible=='fasle'){
+            this.$refs.tabs.$children[0].$refs.tabs[1].style.display = 'none';
+          }
+
+        }
+      )
+
+
 
     },
     methods: {
@@ -521,6 +554,9 @@
         this.$set(this.form,"forth",row["forth"])
         this.$set(this.form,"fifth",row["fifth"])
         this.$set(this.form,"status",row["status"])
+        if(row["status"] == "unpassed"){
+          this.whetherUnPassed=true;
+        }
         this.getSelectedTagHistory(row["id"])
 
         setTimeout(()=>{

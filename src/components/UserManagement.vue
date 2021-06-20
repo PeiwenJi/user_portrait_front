@@ -237,7 +237,7 @@
         count:{
         },
         numChanged:false,
-        super_admin:true,
+        super_admin:false,
         cardNum:12
 
       }
@@ -256,22 +256,41 @@
         }
       )
 
-      console.log(window.sessionStorage.getItem("Identity"))
-      console.log(this.super_admin)
-      if (window.sessionStorage.getItem("Identity")=="super-admin") {
-        this.super_admin==true
 
-      }
-      this.cardNum=8
-      //初始化标签栏
-      this.$nextTick(() => {
-        if(!this.super_admin){
+      //管理标签页
+      this.$http.get("getRoleList").then(response=> {
+        let userManagement1Visible = null
+        let userManagement2Visible = null
+        let userManagement3Visible = null
 
+        if (window.sessionStorage.getItem("Identity")=="user") {
+          userManagement1Visible =response.data[0]['user']["userManagement_1"]
+          userManagement2Visible =response.data[0]['user']["userManagement_2"]
+          userManagement3Visible =response.data[0]['user']["userManagement_3"]
+          }
+
+          if (window.sessionStorage.getItem("Identity")=="admin") {
+            userManagement1Visible =response.data[0]['admin']["userManagement_1"]
+            userManagement2Visible =response.data[0]['admin']["userManagement_2"]
+            userManagement3Visible =response.data[0]['admin']["userManagement_3"]
+          }
+
+          if (window.sessionStorage.getItem("Identity")=="super-admin") {
+            userManagement1Visible =response.data[0]['super-admin']["userManagement_1"]
+            userManagement2Visible =response.data[0]['super-admin']["userManagement_2"]
+            userManagement3Visible =response.data[0]['super-admin']["userManagement_3"]
+          }
+        if(userManagement1Visible =='false'){
+          this.$refs.tabs.$children[0].$refs.tabs[0].style.display = 'none';
+        }
+        if(userManagement2Visible =='fasle'){
           this.$refs.tabs.$children[0].$refs.tabs[1].style.display = 'none';
         }
-
-
-      })
+        if(userManagement3Visible =='false'){
+          this.$refs.tabs.$children[0].$refs.tabs[2].style.display = 'none';
+        }
+        }
+      )
 
     },
 
@@ -279,6 +298,12 @@
     created() {
       this.initUserList();
       this.initCountINfo();
+
+      console.log(window.sessionStorage.getItem("Identity"))
+      if (window.sessionStorage.getItem("Identity")=="super-admin") {
+        this.cardNum =8
+        this.super_admin=true
+      }
 
     },
     methods: {
