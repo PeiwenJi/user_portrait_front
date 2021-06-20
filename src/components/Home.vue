@@ -57,8 +57,8 @@
             审核标签
           </el-link>
         </div>
-        <div style="margin-top: 10px" v-if = "roleList.rolePermissionVisible=='true'">
-          <el-link :underline="false" @click="rolePermission"   >
+        <div style="margin-top: 10px" >
+          <el-link :underline="false" @click="rolePermission"  v-if = "roleList.rolePermissionVisible=='true'" >
             <i class="el-icon-setting"></i>
             权限设置
           </el-link>
@@ -174,13 +174,12 @@
 
       tagManagement() {
 
-        this.loading_visible = true;
+       // this.loading_visible = true;
         this.$router.push({path: '/TagManagement'});
         //跳转页面之前需要先加载一下
-        setTimeout( () => {
-
-          this.loading_visible = false
-        }, 100);
+        // setTimeout( () => {
+        //   this.loading_visible = false
+        // }, 100);
       },
 
       adminManagement() {

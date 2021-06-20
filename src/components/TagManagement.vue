@@ -148,7 +148,7 @@
           </div>
 
 <!--标签词云-->
-          <el-row>
+          <el-row v-loading="loading">
             <div style="width: 100%;margin-top: 50px;margin-left: 10px" >
               <template>
                 <div id="tagsWorld" style="width:100%;height:600px;"></div>
@@ -161,7 +161,7 @@
 
 
       </el-tab-pane>
-      <el-tab-pane label="标签管理" name="second" style="margin-bottom: 10px;">
+      <el-tab-pane label="标签管理" name="second" style="margin-top: 20px">
         <div class="labelTable" >
 
           <el-card>
@@ -545,6 +545,8 @@
         dynamicTagRow:[],
         //标签总览：加载项
         loading_visible:false,
+        //词云显示loading加载
+        loading:false
 
       }
     },
@@ -556,7 +558,14 @@
             console.log(response.data)
         }
       )
-      },
+
+      //加载页面的时候
+      this.loading= true
+      setTimeout(()=>{
+        this.loading =false
+      },2000)
+
+    },
     mounted(){
       this.getSearchForthTags();
       this.$http.post("showTags?dict=tagWorld",{

@@ -1,12 +1,12 @@
 <template>
   <body id="role_permission">
-<!-- 面包屑导航栏 -->
-<!--  <el-breadcrumb separator-class="el-icon-arrow-right" style="font-size: 18px">-->
-<!--    <el-breadcrumb-item :to="{ path: '/' }">Home</el-breadcrumb-item>-->
-<!--    <el-breadcrumb-item>Role Permission</el-breadcrumb-item>-->
-<!--  </el-breadcrumb>-->
+  <!-- 面包屑导航栏 -->
+  <!--  <el-breadcrumb separator-class="el-icon-arrow-right" style="font-size: 18px">-->
+  <!--    <el-breadcrumb-item :to="{ path: '/' }">Home</el-breadcrumb-item>-->
+  <!--    <el-breadcrumb-item>Role Permission</el-breadcrumb-item>-->
+  <!--  </el-breadcrumb>-->
 
-<!-- 权限管理表格 -->
+  <!-- 权限管理表格 -->
 
   <el-card>
     <el-table
@@ -101,19 +101,19 @@
           align="center">
         </el-table-column>
       </el-table-column>
-<!--      <el-table-column-->
-<!--        prop="permission"-->
-<!--        label="权限"-->
-<!--        header-align="center"-->
-<!--        align="center">-->
+      <!--      <el-table-column-->
+      <!--        prop="permission"-->
+      <!--        label="权限"-->
+      <!--        header-align="center"-->
+      <!--        align="center">-->
 
-<!--        <template slot-scope="scope">-->
+      <!--        <template slot-scope="scope">-->
 
 
-<!--&lt;!&ndash;          <el-tag v-if="viewPermission_form.data_1 == 'true'" name="viewPermission_form.data_1">数据->用户群画像</el-tag>&ndash;&gt;-->
-<!--&lt;!&ndash;          <i class="el-icon-view" style="font-size: 24px; cursor: pointer;"  @click="viewPermission(scope.$index,scope.row)" ></i>&ndash;&gt;-->
-<!--        </template>-->
-<!--      </el-table-column>-->
+      <!--&lt;!&ndash;          <el-tag v-if="viewPermission_form.data_1 == 'true'" name="viewPermission_form.data_1">数据->用户群画像</el-tag>&ndash;&gt;-->
+      <!--&lt;!&ndash;          <i class="el-icon-view" style="font-size: 24px; cursor: pointer;"  @click="viewPermission(scope.$index,scope.row)" ></i>&ndash;&gt;-->
+      <!--        </template>-->
+      <!--      </el-table-column>-->
       <el-table-column
         prop="operation"
         label="Operation"
@@ -130,137 +130,129 @@
   </el-card>
 
   <!-- 查看权限表单 -->
-<!--  <el-dialog title="View" :visible.sync="visible_viewPermission_form" :append-to-body="true">-->
-<!--    <el-form ref="viewPermission_form" :model="viewPermission_form" label-width="100px">-->
-<!--      <el-form-item label="权限">-->
-<!--        <el-row>-->
-<!--&lt;!&ndash;          <el-tag :disabled="true" v-if="viewPermission_form.data_1" name="viewPermission_form.data_1">数据->用户群画像</el-tag>&ndash;&gt;-->
-<!--          <el-tag :disabled="true" v-model="viewPermission_form.data_2" label="" name="viewPermission_form.data_2">数据->组合标签一览</el-tag>-->
-<!--        </el-row>-->
-<!--        <el-row>-->
-<!--          <el-tag :disabled="true" v-model="viewPermission_form.userSearch" label="" name="viewPermission_form.userSearch">用户画像</el-tag>-->
-<!--        </el-row>-->
-<!--        <el-row>-->
-<!--          <el-tag :disabled="true" v-model="viewPermission_form.userManagement_1" label="" name="viewPermission_form.userManagement_1">用户管理->用户总览</el-tag>-->
-<!--          <el-tag :disabled="true" v-model="viewPermission_form.userManagement_2" label="" name="viewPermission_form.userManagement_2">用户管理->用户管理</el-tag>-->
-<!--          <el-tag :disabled="true" v-model="viewPermission_form.userManagement_3" label="" name="viewPermission_form.userManagement_3">用户管理->管理员管理</el-tag>-->
-<!--        </el-row>-->
-<!--        <el-row>-->
-<!--          <el-tag :disabled="true" v-model="viewPermission_form.tagManagement_1" label="" name="viewPermission_form.tagManagement_1">标签管理->标签总览</el-tag>-->
-<!--          <el-tag :disabled="true" v-model="viewPermission_form.tagManagement_2" label="" name="viewPermission_form.tagManagement_2">标签管理->标签管理</el-tag>-->
-<!--          <el-tag :disabled="true" v-model="viewPermission_form.tagManagement_3" label="" name="viewPermission_form.tagManagement_3">标签管理->标签审核</el-tag>-->
-<!--        </el-row>-->
-<!--        <el-row>-->
-<!--          <el-tag :disabled="true" v-model="viewPermission_form.rolePermission" label="" name="viewPermission_form.rolePermission">权限设置</el-tag>-->
-<!--        </el-row>-->
-<!--      </el-form-item>-->
-<!--    </el-form>-->
-<!--  </el-dialog>-->
+  <!--  <el-dialog title="View" :visible.sync="visible_viewPermission_form" :append-to-body="true">-->
+  <!--    <el-form ref="viewPermission_form" :model="viewPermission_form" label-width="100px">-->
+  <!--      <el-form-item label="权限">-->
+  <!--        <el-row>-->
+  <!--&lt;!&ndash;          <el-tag :disabled="true" v-if="viewPermission_form.data_1" name="viewPermission_form.data_1">数据->用户群画像</el-tag>&ndash;&gt;-->
+  <!--          <el-tag :disabled="true" v-model="viewPermission_form.data_2" label="" name="viewPermission_form.data_2">数据->组合标签一览</el-tag>-->
+  <!--        </el-row>-->
+  <!--        <el-row>-->
+  <!--          <el-tag :disabled="true" v-model="viewPermission_form.userSearch" label="" name="viewPermission_form.userSearch">用户画像</el-tag>-->
+  <!--        </el-row>-->
+  <!--        <el-row>-->
+  <!--          <el-tag :disabled="true" v-model="viewPermission_form.userManagement_1" label="" name="viewPermission_form.userManagement_1">用户管理->用户总览</el-tag>-->
+  <!--          <el-tag :disabled="true" v-model="viewPermission_form.userManagement_2" label="" name="viewPermission_form.userManagement_2">用户管理->用户管理</el-tag>-->
+  <!--          <el-tag :disabled="true" v-model="viewPermission_form.userManagement_3" label="" name="viewPermission_form.userManagement_3">用户管理->管理员管理</el-tag>-->
+  <!--        </el-row>-->
+  <!--        <el-row>-->
+  <!--          <el-tag :disabled="true" v-model="viewPermission_form.tagManagement_1" label="" name="viewPermission_form.tagManagement_1">标签管理->标签总览</el-tag>-->
+  <!--          <el-tag :disabled="true" v-model="viewPermission_form.tagManagement_2" label="" name="viewPermission_form.tagManagement_2">标签管理->标签管理</el-tag>-->
+  <!--          <el-tag :disabled="true" v-model="viewPermission_form.tagManagement_3" label="" name="viewPermission_form.tagManagement_3">标签管理->标签审核</el-tag>-->
+  <!--        </el-row>-->
+  <!--        <el-row>-->
+  <!--          <el-tag :disabled="true" v-model="viewPermission_form.rolePermission" label="" name="viewPermission_form.rolePermission">权限设置</el-tag>-->
+  <!--        </el-row>-->
+  <!--      </el-form-item>-->
+  <!--    </el-form>-->
+  <!--  </el-dialog>-->
 
   <!--修改权限表单-->
   <el-dialog title="Edit" :visible.sync="visible_editRole_form" :append-to-body="true">
-      <el-form ref="editRole_form" :model="editRole_form" label-width="100px">
-        <el-form-item label="角色" >
-          <el-input v-model="editRole_form.identity" :disabled="true"></el-input>
-        </el-form-item>
-        <el-form-item label="权限">
-          <el-row>
-            <el-checkbox v-model="editRole_form.data_1" label="数据->用户群画像" name="editRole_form.data_1"></el-checkbox>
-            <el-checkbox v-model="editRole_form.data_2" label="数据->组合标签一览" name="editRole_form.data_2"></el-checkbox>
-          </el-row>
-          <el-row>
-            <el-checkbox v-model="editRole_form.userSearch" label="用户画像" name="editRole_form.userSearch"></el-checkbox>
-          </el-row>
-          <el-row>
-            <el-checkbox v-model="editRole_form.userManagement_1" label="用户管理->用户总览" name="editRole_form.userManagement_1"></el-checkbox>
-            <el-checkbox v-model="editRole_form.userManagement_2" label="用户管理->用户管理" name="editRole_form.userManagement_2"></el-checkbox>
-            <el-checkbox v-model="editRole_form.userManagement_3" label="用户管理->管理员管理" name="editRole_form.userManagement_3"></el-checkbox>
-          </el-row>
-          <el-row>
-            <el-checkbox v-model="editRole_form.tagManagement_1" label="标签管理->标签总览" name="editRole_form.tagManagement_1"></el-checkbox>
-            <el-checkbox v-model="editRole_form.tagManagement_2" label="标签管理->标签管理" name="editRole_form.tagManagement_2"></el-checkbox>
-            <el-checkbox v-model="editRole_form.tagManagement_3" label="标签管理->标签审核" name="editRole_form.tagManagement_3"></el-checkbox>
-          </el-row>
-          <el-row>
-            <el-checkbox v-model="editRole_form.rolePermission" label="权限设置" name="editRole_form.rolePermission"></el-checkbox>
-          </el-row>
-        </el-form-item>
-        <el-row type="flex" justify="end">
-          <el-button type="danger" icon="el-icon-delete" circle @click="closeForm"></el-button>
-          <el-button type="success" icon="el-icon-check" circle @click="confirmEdit"></el-button>
+    <el-form ref="editRole_form" :model="editRole_form" label-width="100px">
+      <el-form-item label="角色" >
+        <el-input v-model="editRole_form.identity" :disabled="true"></el-input>
+      </el-form-item>
+      <el-form-item label="权限">
+        <el-row>
+          <el-checkbox v-model="editRole_form.data_1" label="数据->用户群画像" name="editRole_form.data_1"></el-checkbox>
+          <el-checkbox v-model="editRole_form.data_2" label="数据->组合标签一览" name="editRole_form.data_2"></el-checkbox>
         </el-row>
-      </el-form>
-    </el-dialog>
+        <el-row>
+          <el-checkbox v-model="editRole_form.userSearch" label="用户画像" name="editRole_form.userSearch"></el-checkbox>
+        </el-row>
+        <el-row>
+          <el-checkbox v-model="editRole_form.userManagement_1" label="用户管理->用户总览" name="editRole_form.userManagement_1"></el-checkbox>
+          <el-checkbox v-model="editRole_form.userManagement_2" label="用户管理->用户管理" name="editRole_form.userManagement_2"></el-checkbox>
+          <el-checkbox v-model="editRole_form.userManagement_3" label="用户管理->管理员管理" name="editRole_form.userManagement_3"></el-checkbox>
+        </el-row>
+        <el-row>
+          <el-checkbox v-model="editRole_form.tagManagement_1" label="标签管理->标签总览" name="editRole_form.tagManagement_1"></el-checkbox>
+          <el-checkbox v-model="editRole_form.tagManagement_2" label="标签管理->标签管理" name="editRole_form.tagManagement_2"></el-checkbox>
+          <el-checkbox v-model="editRole_form.tagManagement_3" label="标签管理->标签审核" name="editRole_form.tagManagement_3"></el-checkbox>
+        </el-row>
+        <el-row>
+          <el-checkbox v-model="editRole_form.rolePermission" label="权限设置" name="editRole_form.rolePermission"></el-checkbox>
+        </el-row>
+      </el-form-item>
+      <el-row type="flex" justify="end">
+        <el-button type="danger" icon="el-icon-delete" circle @click="closeForm"></el-button>
+        <el-button type="success" icon="el-icon-check" circle @click="confirmEdit"></el-button>
+      </el-row>
+    </el-form>
+  </el-dialog>
 
   </body>
 </template>
 
 <script>
-export default {
-  name: 'RolePermission',
-  data () {
-    return {
-      // 设置添加问题表单不可见
-      visible_editRole_form: false,
+  export default {
+    name: 'RolePermission',
+    data () {
+      return {
+        // 设置添加问题表单不可见
+        visible_editRole_form: false,
 
-      // 设置查看权限表单不可见
-      // visible_viewPermission_form: false,
+        data: [],
 
-      data: [],
+        // 修改权限的表单
+        editRole_form: {
+          identity: '',
+          data_1: true,
+          data_2: true,
+          userSearch: true,
+          userManagement_1: true,
+          userManagement_2: true,
+          userManagement_3: true,
+          tagManagement_1: true,
+          tagManagement_2: true,
+          tagManagement_3: true,
+          rolePermission: true
+        },
+      }
+    },
+    created(){
+      this.getRoleList();
+    },
 
-      // 修改权限的表单
-      editRole_form: {
-        identity: '',
-
+    methods: {
+      // 获取管理员列表
+      getRoleList () {
+        this.$http.get("getRoleListRolePermission").then(response=>{
+            console.log(response.data);
+            this.data = response.data;
+          console.log(this.data);
+          },response => {
+            console.log("error")
+          }
+        )
       },
 
-      // role_list: ['数据->用户群画像', '数据->组合标签一览', '权限设置',
-      //   '标签管理->标签总览', '标签管理->标签管理', '标签管理->标签审核',
-      //   '用户管理->用户总览', '用户管理->用户管理', '用户管理->管理员管理', '用户画像'],
-      // admin_role_list: [],
-      // user_role_list: [],
-      // superAdmin_role_list: []
-    }
-  },
-  created(){
-    this.getRoleList();
-  },
+      // 打开编辑表单
+      openEditForm(row){
+        this.$set(this.editRole_form,'identity',row["identity"])
+        this.visible_editRole_form = true;
+      },
 
-  methods: {
-    // 获取管理员列表
-    getRoleList () {
-      this.$http.get("getRoleList").then(response=>{
-        console.log(response.data);
-        this.data = response.data;
-        // for(var i=0; i<this.data.length; i++){
-        //   this.viewPermission_form.data_1[i] = this.data[i].data_1
-        // }
-        },response => {
-          console.log("error")
-        }
-      )
-    },
+      // 关闭表单
+      closeForm(){
+        this.visible_editRole_form = false
+      },
 
-    // 查看权限表单
-    // viewPermission(index, row){
-    //   this.visible_viewPermission_form = true
-    // },
-
-    // 打开编辑表单
-    openEditForm(row){
-      this.$set(this.editRole_form,'identity',row["identity"])
-      this.visible_editRole_form = true;
-    },
-
-    // 关闭表单
-    closeForm(){
-      this.visible_editRole_form = false
-    },
-
-    // 修改用户权限
-    confirmEdit(){
-      this.visible_editRole_form=false;
-      console.log(this.editRole_form.data_1)
+      // 修改用户权限
+      confirmEdit(){
+        this.visible_editRole_form=false;
+        console.log(this.editRole_form.data_1)
         this.$http.post("editRole", {
           identity: this.editRole_form.identity,
           data_1: this.editRole_form.data_1,
@@ -289,8 +281,8 @@ export default {
           })
       }
 
+    }
   }
-}
 </script>
 
 <style scoped>
