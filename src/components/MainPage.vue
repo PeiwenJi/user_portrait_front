@@ -1,10 +1,10 @@
 <template>
   <div>
     <el-tabs v-model="activeName">
-      <el-tab-pane label="用户群画像" name="first" style="margin-bottom: 10px">
+      <el-tab-pane label="用户群画像" name="first" >
         <DataPage></DataPage>
       </el-tab-pane>
-      <el-tab-pane label="组合标签一览" name="second" style="margin-bottom: 10px">
+      <el-tab-pane label="组合标签一览" name="second" >
         <CombineTag></CombineTag>
       </el-tab-pane>
     </el-tabs>

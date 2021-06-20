@@ -1,10 +1,5 @@
 <template>
   <body>
-    <!-- 面包屑导航栏 -->
-    <el-breadcrumb separator-class="el-icon-arrow-right" style="font-size: 18px">
-      <el-breadcrumb-item :to="{ path: '/' }">Home</el-breadcrumb-item>
-      <el-breadcrumb-item>Tag Check</el-breadcrumb-item>
-    </el-breadcrumb>
     <!-- 卡片 -->
     <el-card style="width: 100%;margin-top: 50px">
       <el-row>
@@ -23,26 +18,27 @@
                 stripe
                 border
                 max-height="500"
-                style="width: 90%; font-size: 16px; height: 500px">
+                style="width: 100%; font-size: 16px; height: 500px">
                 <el-table-column
                   prop="forth"
-                  label="Forth Tag Name"
+                  label="四级标签"
                   width="500"
                   header-align="center"
                   align="center">
                 </el-table-column>
                 <el-table-column
-                  label="Status"
+                  label="状态"
                   header-align="center"
                   align="center">
                   <el-tag type="danger">unpassed</el-tag>
                 </el-table-column>
                 <el-table-column
                   prop="operation"
-                  label="Operation"
+                  label="操作"
                   header-align="center"
                   align="center">
                   <template slot-scope="scope">
+                    <el-tag type="success">passed</el-tag>
                     <i class="el-icon-circle-check" slot="reference" style="font-size: 24px; cursor: pointer;" @click="checkTag(scope.row)"></i>
                   </template>
                 </el-table-column>
@@ -226,8 +222,8 @@
 
 <style scoped>
   /*卡片样式 */
-  .el-card {
-    box-shadow: 0 2px 4px #000066, 0 0 6px rgba(0, 0, 0, .04)
-  }
+  /*.el-card {*/
+  /*  box-shadow: 0 2px 4px #000066, 0 0 6px rgba(0, 0, 0, .04)*/
+  /*}*/
 
 </style>
